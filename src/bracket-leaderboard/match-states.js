@@ -1,0 +1,6 @@
+export const MATCH_STATES = {
+  PLAYED: 'PLAYED',
+  NO_SHOW: 'NO_SHOW',
+  WALKOVER: 'WALKOVER',
+  NO_PARTY: 'NO_PARTY',
+};

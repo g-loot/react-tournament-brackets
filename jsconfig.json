@@ -1,0 +1,28 @@
+{
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "dist", "devapp-build"],
+  "compilerOptions": {
+    "baseUrl": "src",
+    "module": "commonjs",
+    "target": "ES6",
+    "sourceMap": true,
+    "inlineSources": true,
+    "jsx": "react",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "paths": {
+      "Atoms/*": ["./atoms/*"],
+      "Components/*": ["./components/*"],
+      "Elements/*": ["./elements/*"],
+      "Fonts/*": ["./fonts/*"],
+      "Form/*": ["./form/*"],
+      "Hooks/*": ["./hooks/*"],
+      "Layout/*": ["./layout/*"],
+      "Misc/*": ["./misc/*"],
+      "Services/*": ["./services/*"],
+      "Stories/*": ["./stories/*"],
+      "Styles/*": ["./styles/*"],
+      "Utils/*": ["./utils/*"]
+    }
+  }
+}
