@@ -173,12 +173,10 @@ const BracketLeaderboard = ({
                           dominantBaseline="middle"
                           textAnchor="middle"
                         >
-                          {parseInt(match.tournamentRoundText, 10) ===
-                            columns.length && 'Final'}
-                          {parseInt(match.tournamentRoundText, 10) ===
-                            columns.length - 1 && 'Semi-final'}
-                          {parseInt(match.tournamentRoundText, 10) <
-                            columns.length - 1 &&
+                          {columnIndex + 1 === columns.length && 'Final'}
+                          {columnIndex + 1 === columns.length - 1 &&
+                            'Semi-final'}
+                          {columnIndex + 1 < columns.length - 1 &&
                             `Round ${match.tournamentRoundText}`}
                         </text>
                       </g>
