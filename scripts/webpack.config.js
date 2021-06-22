@@ -1,4 +1,3 @@
-const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const aliases = require('./aliases');
 
@@ -10,15 +9,6 @@ const BUILD_DIR = path.resolve(ROOT_DIR, buildDir);
 module.exports = {
   entry: './index.js',
   mode: 'production',
-  plugins: [
-    new CopyPlugin([
-      {
-        context: SRC_DIR,
-        from: 'fonts/**/**.*',
-        to: BUILD_DIR,
-      },
-    ]),
-  ],
   module: {
     rules: [
       {
@@ -31,18 +21,6 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'fonts/',
-            },
-          },
-        ],
       },
       {
         test: /\.(jpg|png|svg|ttf|otf)$/,

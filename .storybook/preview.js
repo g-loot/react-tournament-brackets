@@ -3,7 +3,6 @@ import { addDecorator } from '@storybook/react';
 import styled, { ThemeProvider } from 'styled-components';
 import theme from '../src/vars';
 
-import '../src/fonts/fonts.css';
 import 'minireset.css/minireset.min.css';
 
 const Wrapper = styled.div`

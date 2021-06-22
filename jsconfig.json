@@ -14,7 +14,6 @@
       "Atoms/*": ["./atoms/*"],
       "Components/*": ["./components/*"],
       "Elements/*": ["./elements/*"],
-      "Fonts/*": ["./fonts/*"],
       "Form/*": ["./form/*"],
       "Hooks/*": ["./hooks/*"],
       "Layout/*": ["./layout/*"],

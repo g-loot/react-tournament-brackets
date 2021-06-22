@@ -32,37 +32,23 @@ module.exports = {
     // 'PRODUCTION' is used when building the static version of storybook.
 
     // Make whatever fine-grained changes you need
-    config.module.rules.push(
-      {
-        test: /\.(js|jsx)$/,
-        exclude: {
-          test: path.resolve(ROOT_DIR, 'node_modules'),
-        },
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-            plugins: [
-              '@babel/plugin-transform-regenerator',
-              '@babel/plugin-transform-runtime',
-              '@babel/plugin-syntax-dynamic-import',
-            ],
-          },
+    config.module.rules.push({
+      test: /\.(js|jsx)$/,
+      exclude: {
+        test: path.resolve(ROOT_DIR, 'node_modules'),
+      },
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env', '@babel/preset-react'],
+          plugins: [
+            '@babel/plugin-transform-regenerator',
+            '@babel/plugin-transform-runtime',
+            '@babel/plugin-syntax-dynamic-import',
+          ],
         },
       },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'fonts/',
-            },
-          },
-        ],
-      }
-    );
+    });
     // Alternately, for an alias:
     config.resolve.alias = Object.keys(aliases).reduce(
       (obj, alias) => ({

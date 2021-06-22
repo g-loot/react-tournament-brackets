@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config scripts/webpack.config.js",
-    "dev": "start-storybook -s ./src/fonts/ -p 4442",
-    "start": "start-storybook -s ./src/fonts/ -p $PORT -h 0.0.0.0",
-    "build-storybook": "build-storybook -s ./src/fonts/ -o devapp-build",
+    "dev": "start-storybook -p 4442",
+    "start": "start-storybook -p $PORT -h 0.0.0.0",
+    "build-storybook": "build-storybook -o devapp-build",
     "test": "jest --verbose false",
     "lint": "eslint \"src/**/*.js\" \"src/**/*.jsx\"",
     "format": "eslint --fix \"src/**/*.js\" \"src/**/*.jsx\""
