@@ -1,0 +1,50 @@
+name: Publish npm package
+on:
+  push:
+    # Sequence of patterns matched against refs/heads
+    branches:
+      - master
+      - v2
+jobs:
+  pre-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Bump version and get tag
+        id: version_bump
+        uses: anothrNick/github-tag-action@1.13.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_BRANCHES: 'master,v2'
+          DEFAULT_BUMP: 'patch'
+          WITH_V: true
+  publish:
+    runs-on: ubuntu-latest
+    needs: pre-publish
+    steps:
+      - uses: actions/checkout@v1
+
+      # Setup .npmrc file to publish to GitHub Packages
+      - uses: actions/setup-node@v1
+        env:
+          RUNNER_TEMP: /tmp #TODO: REMOVE THIS BEFORE COMMITING.
+        with:
+          node-version: '12.x'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@g-loot' # Defaults to the user or organization that owns the workflow file
+
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::$( git describe --tag --abbrev=0 )
+      - run: git describe --tag --abbrev=0
+      - run: npm --no-git-tag-version version $( git describe --tag --abbrev=0 )
+
+      - run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGE_TOKEN }}
+      - run: npm run build
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: npm run build-storybook
+      - run: npm run deploy
