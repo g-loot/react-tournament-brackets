@@ -1,6 +1,6 @@
 {
   "name": "@g-loot/react-tournament-brackets",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A react component to visualize bracket leaderboards",
   "main": "index.js",
   "scripts": {
