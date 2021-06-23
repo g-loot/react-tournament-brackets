@@ -34,21 +34,22 @@ function Match({
   const computedStyles = getCalculatedStyles(style);
   const { width = 300, boxHeight = 70, connectorColor } = computedStyles;
 
-  const top = teams?.[0] ?? {};
-  const bottom = teams?.[1] ?? {};
+  const topParty = teams?.[0] ?? {};
+  const bottomParty = teams?.[1] ?? {};
 
   const topHovered =
     !Number.isNaN(hoveredPartyId) &&
-    top?.id !== undefined &&
-    hoveredPartyId === top.id;
+    topParty?.id !== undefined &&
+    hoveredPartyId === topParty.id;
   const bottomHovered =
     !Number.isNaN(hoveredPartyId) &&
-    bottom?.id !== undefined &&
-    hoveredPartyId === bottom.id;
+    bottomParty?.id !== undefined &&
+    hoveredPartyId === bottomParty.id;
 
   // Lower placement is better
-  const topWon = top.status === MATCH_STATES.WALKOVER || top.isWinner;
-  const bottomWon = bottom.status === MATCH_STATES.WALKOVER || bottom.isWinner;
+  const topWon = topParty.status === MATCH_STATES.WALKOVER || topParty.isWinner;
+  const bottomWon =
+    bottomParty.status === MATCH_STATES.WALKOVER || bottomParty.isWinner;
 
   const matchState = MATCH_STATES[match.state];
   const teamNameFallback = matchState === MATCH_STATES.WALKOVER ? '' : 'TBD';
@@ -58,6 +59,21 @@ function Match({
       [MATCH_STATES.NO_SHOW]: computedStyles.lostByNoShowText,
       [MATCH_STATES.NO_PARTY]: computedStyles.lostByNoShowText,
     }[participant.status] ?? '');
+
+  const onMouseEnter = partyId => {
+    dispatch({
+      type: 'SET_HOVERED_PARTYID',
+      payload: {
+        partyId,
+        matchId: match.id,
+        rowIndex,
+        columnIndex,
+      },
+    });
+  };
+  const onMouseLeave = () => {
+    dispatch({ type: 'SET_HOVERED_PARTYID', payload: null });
+  };
 
   return (
     <svg
@@ -74,8 +90,10 @@ function Match({
               match,
               onMatchClick,
               onPartyClick,
-              top,
-              bottom,
+              onMouseEnter,
+              onMouseLeave,
+              topParty,
+              bottomParty,
               topWon,
               bottomWon,
               topHovered,
@@ -100,52 +118,28 @@ function Match({
             </div>
             <StyledMatch>
               <Side
-                onMouseEnter={() => {
-                  dispatch({
-                    type: 'SET_HOVERED_PARTYID',
-                    payload: {
-                      partyId: top.id,
-                      matchId: match.id,
-                      rowIndex,
-                      columnIndex,
-                    },
-                  });
-                }}
-                onMouseLeave={() => {
-                  dispatch({ type: 'SET_HOVERED_PARTYID', payload: null });
-                }}
+                onMouseEnter={() => onMouseEnter(topParty.id)}
+                onMouseLeave={onMouseLeave}
                 won={topWon}
                 hovered={topHovered}
-                onClick={() => onPartyClick?.(top, topWon)}
+                onClick={() => onPartyClick?.(topParty, topWon)}
               >
-                <Team>{top?.name ?? teamNameFallback}</Team>
+                <Team>{topParty?.name ?? teamNameFallback}</Team>
                 <Score won={topWon}>
-                  {top?.resultText ?? resultFallback(top)}
+                  {topParty?.resultText ?? resultFallback(topParty)}
                 </Score>
               </Side>
               <Line highlighted={topHovered || bottomHovered} />
               <Side
-                onMouseEnter={() => {
-                  dispatch({
-                    type: 'SET_HOVERED_PARTYID',
-                    payload: {
-                      partyId: bottom.id,
-                      matchId: match.id,
-                      rowIndex,
-                      columnIndex,
-                    },
-                  });
-                }}
-                onMouseLeave={() => {
-                  dispatch({ type: 'SET_HOVERED_PARTYID', payload: null });
-                }}
+                onMouseEnter={() => onMouseEnter(bottomParty.id)}
+                onMouseLeave={onMouseLeave}
                 won={bottomWon}
                 hovered={bottomHovered}
-                onClick={() => onPartyClick?.(bottom, bottomWon)}
+                onClick={() => onPartyClick?.(bottomParty, bottomWon)}
               >
-                <Team>{bottom?.name ?? teamNameFallback}</Team>
+                <Team>{bottomParty?.name ?? teamNameFallback}</Team>
                 <Score won={bottomWon}>
-                  {bottom?.resultText ?? resultFallback(bottom)}
+                  {bottomParty?.resultText ?? resultFallback(bottomParty)}
                 </Score>
               </Side>
             </StyledMatch>
