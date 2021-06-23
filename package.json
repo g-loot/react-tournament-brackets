@@ -2,7 +2,7 @@
   "name": "@g-loot/react-tournament-brackets",
   "version": "1.0.3",
   "description": "A react component to visualize bracket leaderboards",
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "scripts": {
     "build": "webpack --config scripts/webpack.config.js",
     "dev": "start-storybook -p 4442",
