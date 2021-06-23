@@ -23,7 +23,6 @@ jobs:
     needs: pre-publish
     steps:
       - uses: actions/checkout@v1
-
       # Setup .npmrc file to publish to GitHub Packages
       - uses: actions/setup-node@v1
         env:
@@ -31,7 +30,7 @@ jobs:
         with:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
-          scope: '@g-loot' # Defaults to the user or organization that owns the workflow file
+          scope: '@g-loot'
 
       - name: Get the version
         id: get_version
@@ -43,9 +42,22 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGE_TOKEN }}
       - run: npm run build
+
+      - name: publish-npm
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@g-loot'
+      - name: publish-git
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - run: npm run build-storybook
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
