@@ -47,10 +47,17 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm run build-storybook
-      - name: Netlify Deploy
-        uses: jsmrcaga/action-netlify-deploy@v1.6.0
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
         with:
+          publish-dir: './devapp-build'
+          production-branch: master
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions"
+          enable-pull-request-comment: false
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+        env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_DEPLOY_TO_PROD: true
-          build_directory: 'devapp-build'
+        timeout-minutes: 1
