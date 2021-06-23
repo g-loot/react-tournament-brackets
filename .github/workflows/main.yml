@@ -30,6 +30,7 @@ jobs:
           RUNNER_TEMP: /tmp #TODO: REMOVE THIS BEFORE COMMITING.
         with:
           node-version: '12.x'
+          registry-url: 'https://registry.npmjs.org'
           scope: '@g-loot' # Defaults to the user or organization that owns the workflow file
 
       - name: Get the version
@@ -42,8 +43,8 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGE_TOKEN }}
       - run: npm run build
-      - run: npm publish
+      - run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm run build-storybook
       - run: npm run deploy
