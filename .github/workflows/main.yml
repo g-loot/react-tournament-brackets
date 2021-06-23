@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       # Setup .npmrc file to publish to GitHub Packages
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         env:
           RUNNER_TEMP: /tmp #TODO: REMOVE THIS BEFORE COMMITING.
         with:
@@ -48,7 +48,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
           node-version: '12.x'
           registry-url: 'https://npm.pkg.github.com'
