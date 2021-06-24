@@ -13,6 +13,7 @@
     "noImplicitAny": false,
     "strictNullChecks": false,
     "jsx": "react-jsx",
+    "declaration": true,
     "esModuleInterop": true,
     "types": ["node"],
     "rootDirs": ["./src"],
