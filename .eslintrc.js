@@ -22,10 +22,13 @@ module.exports = {
   },
 
   globals: {
+    JSX: true,
     localStorage: true,
   },
 
   rules: {
+    'max-classes-per-file': ['off'],
+    'react/jsx-filename-extension': [0],
     'array-callback-return': ['off'],
     'no-use-before-define': [
       'error',

@@ -5,6 +5,7 @@ import Connectors from './connectors';
 import { calculatePositionOfMatch } from './utils';
 import { defaultStyle, getCalculatedStyles } from './settings';
 import { MatchContextProvider } from './match-context';
+import { BracketLeaderboardProps } from '../types';
 /*
   {
     id: number|string,
@@ -33,21 +34,6 @@ import { MatchContextProvider } from './match-context';
     * @param {[{ id: number|string,name: 'Final - Match',nextMatchId: number,nextLooserMatchId: number,tournamentRoundText: string,startTime: string,state: 'PLAYED'|'NO_SHOW'|'WALKOVER'|'NO_PARTY',participants: [  {    id: (string|number),    resultText: string,    isWinner: boolean,    status: 'PLAYED'|'NO_SHOW'|'WALKOVER'|'NO_PARTY',    name: string,  },  {    id: (string|number),    resultText: string,    isWinner: boolean,    status: 'PLAYED'|'NO_SHOW'|'WALKOVER'|'NO_PARTY',    name: string,  },],}]} matches - Called on clicking on the any of the two parties
   } */
 /**
- * @param {Object} props
- * @param {Object[]} props.matches - a list of linked matches for displaying the bracket
- * @param {(number|string)} props.matches[].id -
- * @param {string} props.matches[].name -
- * @param {number} props.matches[].nextMatch -
- * @param {number} props.matches[].nextLooserMatch -
- * @param {string} props.matches[].tournamentRoundText -
- * @param {string} props.matches[].startTime - Start time of the match in ISO format example: 2021-03-02T23:00:00.000+0000
- * @param {('PLAYED'|'NO_SHOW'|'WALKOVER'|'NO_PARTY')} props.matches[].state -
- * @param {Object[]} props.matches[].participants -
- * @param {(string|number)} props.matches[].participants[]. -
- * @param {string} props.matches[].participants[].resultText -
- * @param {boolean} props.matches[].participants[].isWinner -
- * @param {'PLAYED'|'NO_SHOW'|'WALKOVER'|'NO_PARTY'} props.matches[].participants[].status -
- * @param {string} props.matches[].participants[].name -
  * @param {JSX.Element} props.matchComponent - A react component for rendering the match it will get passed all the props you need to customize the match view
  * @param {string} props.currentRound - the current ongoing round column in the tournament, the SVG viewer
  * @param {function} props.onPartyClick - Called on clicking on the any of the two parties
@@ -62,9 +48,9 @@ const BracketLeaderboard = ({
   currentRound,
   onMatchClick,
   onPartyClick,
-  svgWrapper: SvgWrapper = <div />,
-  options: { style: inputStyle = defaultStyle } = {},
-}) => {
+  svgWrapper: SvgWrapper = ({ children }) => <div>{children}</div>,
+  options: { style: inputStyle } = { style: defaultStyle },
+}: BracketLeaderboardProps) => {
   const style = {
     ...defaultStyle,
     ...inputStyle,
@@ -120,7 +106,9 @@ const BracketLeaderboard = ({
     (roundHeader.isShown ? roundHeader.height + roundHeader.marginBottom : 0);
   const gameWidth = bracketWidth + canvasPadding * 2;
   const startPosition = [
-    currentRound ? -(currentRound * columnWidth - canvasPadding * 2) : 0, // Go to the current round on mount
+    currentRound
+      ? -(parseInt(currentRound, 10) * columnWidth - canvasPadding * 2)
+      : 0, // Go to the current round on mount
     0,
   ];
 

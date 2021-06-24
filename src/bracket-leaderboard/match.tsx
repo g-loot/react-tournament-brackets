@@ -106,7 +106,7 @@ function Match({
           />
         ) : (
           <Wrapper>
-            <div styles={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <TopText>{topText}</TopText>
               {typeof onMatchClick === 'function' && (
                 <Anchor
