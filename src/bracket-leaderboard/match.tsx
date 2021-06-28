@@ -52,6 +52,7 @@ function Match({
     bottomParty.status === MATCH_STATES.WALKOVER || bottomParty.isWinner;
 
   const matchState = MATCH_STATES[match.state];
+
   const teamNameFallback = matchState === MATCH_STATES.WALKOVER ? '' : 'TBD';
   const resultFallback = participant =>
     ({
@@ -102,6 +103,8 @@ function Match({
               bottomText,
               connectorColor,
               computedStyles,
+              teamNameFallback,
+              resultFallback,
             }}
           />
         ) : (

@@ -114,6 +114,8 @@ export class BracketLeaderboardProps {
     bottomText: string;
     connectorColor: string;
     computedStyles: ComputedOptions;
+    teamNameFallback: string;
+    resultFallback: (participant: Participant) => string;
   }) => JSX.Element;
 
   currentRound: string;

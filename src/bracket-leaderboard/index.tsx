@@ -6,42 +6,7 @@ import { calculatePositionOfMatch } from './utils';
 import { defaultStyle, getCalculatedStyles } from './settings';
 import { MatchContextProvider } from './match-context';
 import { BracketLeaderboardProps } from '../types';
-/*
-  {
-    id: number|string,
-    name: string,
-    nextMatchId: number,
-    nextLooserMatchId: number,
-    tournamentRoundText: string,
-    startTime: string,
-    state: 'PLAYED'|'NO_SHOW'|'WALKOVER'|'NO_PARTY',
-    participants: [
-      {
-        id: (string|number),
-        resultText: string,
-        isWinner: boolean,
-        status: 'PLAYED'|'NO_SHOW'|'WALKOVER'|'NO_PARTY',
-        name: string,
-      },
-      {
-        id: (string|number),
-        resultText: string,
-        isWinner: boolean,
-        status: 'PLAYED'|'NO_SHOW'|'WALKOVER'|'NO_PARTY',
-        name: string,
-      },
-    ],
-    * @param {[{ id: number|string,name: 'Final - Match',nextMatchId: number,nextLooserMatchId: number,tournamentRoundText: string,startTime: string,state: 'PLAYED'|'NO_SHOW'|'WALKOVER'|'NO_PARTY',participants: [  {    id: (string|number),    resultText: string,    isWinner: boolean,    status: 'PLAYED'|'NO_SHOW'|'WALKOVER'|'NO_PARTY',    name: string,  },  {    id: (string|number),    resultText: string,    isWinner: boolean,    status: 'PLAYED'|'NO_SHOW'|'WALKOVER'|'NO_PARTY',    name: string,  },],}]} matches - Called on clicking on the any of the two parties
-  } */
-/**
- * @param {JSX.Element} props.matchComponent - A react component for rendering the match it will get passed all the props you need to customize the match view
- * @param {string} props.currentRound - the current ongoing round column in the tournament, the SVG viewer
- * @param {function} props.onPartyClick - Called on clicking on the any of the two parties
- * @param {function} props.onMatchClick - Called on clicking on the match details
- * @param {*} props.svgWrapper - Used to inject anything as a parent to the SVG Node, Usually an SVG Viewer for panning and zooming
- * @param {Object} props.options - Used to inject anything as a parent to the SVG Node, Usually an SVG Viewer for panning and zooming
- * @returns
- */
+
 const BracketLeaderboard = ({
   matches,
   matchComponent,
