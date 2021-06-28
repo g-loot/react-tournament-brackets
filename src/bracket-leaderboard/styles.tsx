@@ -29,25 +29,33 @@ export const StyledMatch = styled.div`
 `;
 
 export const Team = styled.div``;
-export const Score = styled.div`
+
+interface ScoreProps {
+  won?: boolean;
+}
+export const Score = styled.div<ScoreProps>`
   display: flex;
   height: 100%;
   padding: 0 1rem;
   align-items: center;
   width: 20%;
   justify-content: center;
-  background: ${({ theme, won }) =>
+  background: ${({ theme, won }: any) =>
     won ? theme.darkCanvas3 : theme.darkCanvas3};
-  color: ${({ theme, won }) =>
+  color: ${({ theme, won }: any) =>
     won ? theme.textColor.main : theme.textColor.dark};
 `;
-export const Side = styled.div`
+interface SideProps {
+  won?: boolean;
+  hovered?: boolean;
+}
+export const Side = styled.div<SideProps>`
   display: flex;
   height: 100%;
   align-items: center;
   justify-content: space-between;
   padding: 0 0 0 1rem;
-  background: ${({ theme, won }) =>
+  background: ${({ theme, won }: any) =>
     won ? theme.darkCanvas5 : theme.darkCanvas4};
 
   :first-of-type {
@@ -67,14 +75,14 @@ export const Side = styled.div`
 
   transition: border-color 0.5s ${({ theme }) => theme.smooth};
   ${Team} {
-    color: ${({ theme, won }) =>
+    color: ${({ theme, won }: any) =>
       won ? theme.textColor.main : theme.textColor.dark};
   }
   ${Score} {
-    color: ${({ theme, won }) =>
+    color: ${({ theme, won }: any) =>
       won ? theme.textColor.main : theme.textColor.dark};
   }
-  ${({ hovered, theme, won }) =>
+  ${({ hovered, theme, won }: any) =>
     hovered &&
     css`
       /* background: ${theme.mediumCanvas1}; */
@@ -87,21 +95,25 @@ export const Side = styled.div`
       }
     `}
 `;
-export const Line = styled.div`
+interface LineProps {
+  highlighted?: boolean;
+}
+export const Line = styled.div<LineProps>`
   height: 1px;
   transition: border-color 0.5s ${({ theme }) => theme.smooth};
 
   border-width: 1px;
   border-style: solid;
-  border-color: ${({ highlighted, theme }) =>
+  border-color: ${({ highlighted, theme }: any) =>
     highlighted ? theme.lightCanvas3 : theme.mediumCanvas2};
 `;
 
 export const Anchor = styled.a`
-  font-family: ${props => (props.font ? props.font : props.theme.fontFamily1)};
-  font-weight: ${props => (props.bold ? '700' : '400')};
-  color: ${props => props.theme.textColor.main};
-  font-size: ${props => (props.size ? props.size : '1rem')};
+  font-family: ${(props: any) =>
+    props.font ? props.font : props.theme.fontFamily1};
+  font-weight: ${(props: any) => (props.bold ? '700' : '400')};
+  color: ${(props: any) => props.theme.textColor.main};
+  font-size: ${(props: any) => (props.size ? props.size : '1rem')};
   line-height: 1.375rem;
   text-decoration: none;
   cursor: pointer;

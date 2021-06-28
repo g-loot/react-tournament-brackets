@@ -40,7 +40,11 @@ module.exports = {
       use: {
         loader: 'babel-loader',
         options: {
-          presets: ['@babel/preset-env', '@babel/preset-react'],
+          presets: [
+            '@babel/preset-env',
+            '@babel/preset-react',
+            '@babel/preset-typescript',
+          ],
           plugins: [
             '@babel/plugin-transform-regenerator',
             '@babel/plugin-transform-runtime',
@@ -49,6 +53,12 @@ module.exports = {
         },
       },
     });
+    config.module.rules.push({
+      test: /\.(ts|tsx)$/,
+      exclude: /node_modules/,
+      use: ['ts-loader'],
+    });
+    config.resolve.extensions.push('.ts', '.tsx');
     // Alternately, for an alias:
     config.resolve.alias = Object.keys(aliases).reduce(
       (obj, alias) => ({

@@ -7,7 +7,7 @@ const buildDir = 'dist';
 const BUILD_DIR = path.resolve(ROOT_DIR, buildDir);
 
 module.exports = {
-  entry: './index.js',
+  entry: './index.ts',
   mode: 'production',
   module: {
     rules: [
@@ -17,6 +17,11 @@ module.exports = {
         use: {
           loader: 'babel-loader',
         },
+      },
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: ['ts-loader'],
       },
       {
         test: /\.css$/,
@@ -34,7 +39,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.css'],
+    extensions: ['*', '.js', '.jsx', '.ts', '.tsx', '.css'],
     alias: Object.keys(aliases).reduce(
       (obj, alias) => ({
         ...obj,
@@ -47,7 +52,7 @@ module.exports = {
     path: BUILD_DIR,
     publicPath: '/',
     filename: 'bundle.js',
-    library: '@g-loot/gll-react-components',
+    library: '@g-loot/react-tournament-brackets',
     libraryTarget: 'umd',
   },
   externals: {
