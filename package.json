@@ -3,6 +3,7 @@
   "version": "1.0.3",
   "description": "A react component to visualize bracket leaderboards",
   "main": "dist/bundle.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
