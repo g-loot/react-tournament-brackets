@@ -3,7 +3,7 @@ const aliases = require('./scripts/aliases.js');
 
 module.exports = {
   extends: ['airbnb', 'plugin:prettier/recommended', 'prettier/react'],
-  plugins: ['prettier', 'react-hooks'],
+  plugins: ['prettier', 'react-hooks', 'typescript'],
 
   env: {
     node: true,

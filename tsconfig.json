@@ -2,6 +2,7 @@
   "include": ["./src/**/*"],
   "exclude": ["node_modules", "dist", "devapp-build"],
   "compilerOptions": {
+    "baseUrl": "src",
     "moduleResolution": "node",
     "target": "es2017",
     "module": "commonjs",
