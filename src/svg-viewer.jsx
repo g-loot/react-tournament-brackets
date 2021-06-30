@@ -3,13 +3,6 @@ import { INITIAL_VALUE, ReactSVGPanZoom, TOOL_AUTO } from 'react-svg-pan-zoom';
 import styled from 'styled-components';
 import { precisionRound } from 'Utils/numbers';
 
-const StyledReactSVGPanZoom = styled(ReactSVGPanZoom).attrs(props => {
-  return {
-    background: props.theme.darkCanvas2,
-    SVGBackground: props.theme.darkCanvas2,
-  };
-})``;
-
 const SvgViewer = ({
   height = 500,
   width = 500,
@@ -49,7 +42,7 @@ const SvgViewer = ({
   };
 
   return (
-    <StyledReactSVGPanZoom
+    <ReactSVGPanZoom
       detectAutoPan={false}
       ref={Viewer}
       scaleFactor={scaleFactor}
@@ -67,7 +60,7 @@ const SvgViewer = ({
       {...rest}
     >
       {children}
-    </StyledReactSVGPanZoom>
+    </ReactSVGPanZoom>
   );
 };
 export default SvgViewer;

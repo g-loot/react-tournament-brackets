@@ -9,11 +9,19 @@ import {
   simpleBracket,
   simpleSmallBracket,
 } from './mock-data/simple-data';
+import styled from 'styled-components';
 
 export default {
   title: 'Components/Bracket',
   component: BracketLeaderboard,
 };
+
+const StyledSvgViewer = styled(SvgViewer).attrs(props => {
+  return {
+    background: props.theme.darkCanvas2,
+    SVGBackground: props.theme.darkCanvas2,
+  };
+})``;
 
 const Template = ({ ...args }) => {
   const [width, height] = useWindowSize();
@@ -23,9 +31,9 @@ const Template = ({ ...args }) => {
     <BracketLeaderboard
       // currentRound={4}
       svgWrapper={({ children, ...props }) => (
-        <SvgViewer width={finalWidth} height={finalHeight} {...props}>
+        <StyledSvgViewer width={finalWidth} height={finalHeight} {...props}>
           {children}
-        </SvgViewer>
+        </StyledSvgViewer>
       )}
       {...args}
     />
