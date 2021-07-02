@@ -1,4 +1,5 @@
 import React from 'react';
+import { MatchComponentProps } from '../types';
 import {
   Score,
   Side,
@@ -27,7 +28,7 @@ function Match({
   topWon,
   teamNameFallback,
   resultFallback,
-}) {
+}: MatchComponentProps) {
   return (
     <Wrapper>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>

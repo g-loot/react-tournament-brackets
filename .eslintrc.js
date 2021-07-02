@@ -27,6 +27,16 @@ module.exports = {
   },
 
   rules: {
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
     'max-classes-per-file': ['off'],
     'react/jsx-filename-extension': [0],
     'array-callback-return': ['off'],

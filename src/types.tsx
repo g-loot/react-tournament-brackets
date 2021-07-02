@@ -91,32 +91,49 @@ export class SvgViewerProps {
   scaleFactor: number;
 }
 
+export class MatchComponentProps {
+  match: Match;
+
+  onMatchClick: (args: {
+    match: Match;
+    topWon: boolean;
+    bottomWon: boolean;
+  }) => void;
+
+  onPartyClick: (party: Participant, partyWon: boolean) => void;
+
+  onMouseEnter: (partyId: string | number) => void;
+
+  onMouseLeave: () => void;
+
+  topParty: Participant;
+
+  bottomParty: Participant;
+
+  topWon: boolean;
+
+  bottomWon: boolean;
+
+  topHovered: boolean;
+
+  bottomHovered: boolean;
+
+  topText: string;
+
+  bottomText: string;
+
+  connectorColor: string;
+
+  computedStyles: ComputedOptions;
+
+  teamNameFallback: string;
+
+  resultFallback: (participant: Participant) => string;
+}
 export class BracketLeaderboardProps {
   matches: Match[];
 
-  matchComponent: (props: {
-    match: Match;
-    onMatchClick: (args: {
-      match: Match;
-      topWon: boolean;
-      bottomWon: boolean;
-    }) => void;
-    onPartyClick: (party: Participant, partyWon: boolean) => void;
-    onMouseEnter: (partyId: string) => void;
-    onMouseLeave: () => void;
-    topParty: Participant;
-    bottomParty: Participant;
-    topWon: boolean;
-    bottomWon: boolean;
-    topHovered: boolean;
-    bottomHovered: boolean;
-    topText: string;
-    bottomText: string;
-    connectorColor: string;
-    computedStyles: ComputedOptions;
-    teamNameFallback: string;
-    resultFallback: (participant: Participant) => string;
-  }) => JSX.Element;
+  matchComponent: (props: MatchComponentProps) => JSX.Element;
 
   currentRound: string;
 
