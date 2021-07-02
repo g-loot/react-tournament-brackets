@@ -1,11 +1,12 @@
 import React from 'react';
 import { sortAlphanumerically } from 'Utils/string';
-import Match from './match';
-import Connectors from './connectors';
-import { calculatePositionOfMatch } from './utils';
-import { defaultStyle, getCalculatedStyles } from './settings';
-import { MatchContextProvider } from './match-context';
 import { BracketLeaderboardProps } from '../types';
+import { defaultStyle, getCalculatedStyles } from './settings';
+import { calculatePositionOfMatch } from './utils';
+
+import { MatchContextProvider } from './match-context';
+import MatchWrapper from './match-wrapper';
+import Connectors from './connectors';
 
 const BracketLeaderboard = ({
   matches,
@@ -147,7 +148,7 @@ const BracketLeaderboard = ({
                       />
                     )}
                     <g>
-                      <Match
+                      <MatchWrapper
                         x={x}
                         y={
                           y +

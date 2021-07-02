@@ -42,7 +42,7 @@ const theme = {
   darkCanvas3: '#10131C',
   darkCanvas4: '#141822',
   darkCanvas5: '#1D2232',
-  mediumCanvas2: '#22293B',
+  lineColor: '#22293B',
   mediumCanvas1: '#2F3648',
   lightCanvas3: '#707582',
   lightCanvas2: '#BEC0C6',

@@ -34,8 +34,12 @@ function Match({
   const computedStyles = getCalculatedStyles(style);
   const { width = 300, boxHeight = 70, connectorColor } = computedStyles;
 
-  const topParty = teams?.[0] ?? {};
-  const bottomParty = teams?.[1] ?? {};
+  const topParty = teams?.[0]
+    ? { ...teams[0], name: teams[0].name, resultText: teams[0].resultText }
+    : {};
+  const bottomParty = teams?.[1]
+    ? { ...teams[1], name: teams[1].name, resultText: teams[1].resultText }
+    : {};
 
   const topHovered =
     !Number.isNaN(hoveredPartyId) &&
@@ -76,6 +80,11 @@ function Match({
     dispatch({ type: 'SET_HOVERED_PARTYID', payload: null });
   };
 
+  bottomParty.name = bottomParty.name || teamNameFallback;
+  bottomParty.resultText =
+    bottomParty.resultText || resultFallback(bottomParty);
+  topParty.name = topParty.name || teamNameFallback;
+  topParty.resultText = topParty.resultText || resultFallback(bottomParty);
   return (
     <svg
       width={width}
@@ -85,7 +94,7 @@ function Match({
     >
       <foreignObject x={0} y={0} width={width} height={boxHeight}>
         {/* TODO: Add OnClick Match handler */}
-        {MatchComponent ? (
+        {MatchComponent && (
           <MatchComponent
             {...{
               match,
@@ -107,47 +116,6 @@ function Match({
               resultFallback,
             }}
           />
-        ) : (
-          <Wrapper>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <TopText>{topText}</TopText>
-              {typeof onMatchClick === 'function' && (
-                <Anchor
-                  onClick={() => onMatchClick?.({ match, topWon, bottomWon })}
-                >
-                  <TopText>Match Details</TopText>
-                </Anchor>
-              )}
-            </div>
-            <StyledMatch>
-              <Side
-                onMouseEnter={() => onMouseEnter(topParty.id)}
-                onMouseLeave={onMouseLeave}
-                won={topWon}
-                hovered={topHovered}
-                onClick={() => onPartyClick?.(topParty, topWon)}
-              >
-                <Team>{topParty?.name ?? teamNameFallback}</Team>
-                <Score won={topWon}>
-                  {topParty?.resultText ?? resultFallback(topParty)}
-                </Score>
-              </Side>
-              <Line highlighted={topHovered || bottomHovered} />
-              <Side
-                onMouseEnter={() => onMouseEnter(bottomParty.id)}
-                onMouseLeave={onMouseLeave}
-                won={bottomWon}
-                hovered={bottomHovered}
-                onClick={() => onPartyClick?.(bottomParty, bottomWon)}
-              >
-                <Team>{bottomParty?.name ?? teamNameFallback}</Team>
-                <Score won={bottomWon}>
-                  {bottomParty?.resultText ?? resultFallback(bottomParty)}
-                </Score>
-              </Side>
-            </StyledMatch>
-            <BottomText>{bottomText ?? ' '}</BottomText>
-          </Wrapper>
         )}
       </foreignObject>
     </svg>

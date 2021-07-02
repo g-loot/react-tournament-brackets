@@ -33,6 +33,7 @@
     "@storybook/addon-storysource": "^6.1.5",
     "@storybook/react": "^6.1.5",
     "@types/styled-components": "^5.1.10",
+    "@typescript-eslint/parser": "^4.28.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-module-resolver": "^4.1.0",

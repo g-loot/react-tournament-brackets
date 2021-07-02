@@ -68,10 +68,10 @@ export const Side = styled.div<SideProps>`
     border-bottom-left-radius: 3px;
     border-bottom-width: 2px;
   }
-  border-right: 4px solid ${({ theme }) => theme.mediumCanvas2};
-  border-left: 4px solid ${({ theme }) => theme.mediumCanvas2};
-  border-top: 1px solid ${({ theme }) => theme.mediumCanvas2};
-  border-bottom: 1px solid ${({ theme }) => theme.mediumCanvas2};
+  border-right: 4px solid ${({ theme }) => theme.lineColor};
+  border-left: 4px solid ${({ theme }) => theme.lineColor};
+  border-top: 1px solid ${({ theme }) => theme.lineColor};
+  border-bottom: 1px solid ${({ theme }) => theme.lineColor};
 
   transition: border-color 0.5s ${({ theme }) => theme.smooth};
   ${Team} {
@@ -105,7 +105,7 @@ export const Line = styled.div<LineProps>`
   border-width: 1px;
   border-style: solid;
   border-color: ${({ highlighted, theme }: any) =>
-    highlighted ? theme.lightCanvas3 : theme.mediumCanvas2};
+    highlighted ? theme.lightCanvas3 : theme.lineColor};
 `;
 
 export const Anchor = styled.a`

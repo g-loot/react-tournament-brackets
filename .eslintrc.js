@@ -56,7 +56,7 @@ module.exports = {
           (arr, alias) => [...arr, [alias, `./src/${aliases[alias]}`]],
           []
         ),
-        extensions: ['.js', '.jsx'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
       },
     },
   },

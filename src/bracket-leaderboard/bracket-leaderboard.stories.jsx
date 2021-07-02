@@ -10,6 +10,7 @@ import {
   simpleSmallBracket,
 } from './mock-data/simple-data';
 import styled from 'styled-components';
+import Match from './match';
 
 export default {
   title: 'Components/Bracket',
@@ -43,15 +44,19 @@ const Template = ({ ...args }) => {
 export const Bracket = Template.bind({});
 Bracket.args = {
   matches: simpleBracket,
+  matchComponent: Match,
 };
 export const SmallBracket = Template.bind({});
 SmallBracket.args = {
   matches: simpleSmallBracket,
+  matchComponent: Match,
 };
 export const WalkOverBracket = Template.bind({});
 WalkOverBracket.args = {
   matches: walkOverData,
+  matchComponent: Match,
 };
+
 export const CustomMatchViewBracket = Template.bind({});
 CustomMatchViewBracket.args = {
   matches: simpleBracket,
