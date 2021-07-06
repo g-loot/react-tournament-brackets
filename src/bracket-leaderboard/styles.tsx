@@ -5,8 +5,8 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
-
   height: 100%;
+  font-family: ${({ theme }) => theme.fontFamily};
 `;
 export const TopText = styled.p`
   color: ${({ theme }) => theme.textColor.dark};
@@ -41,9 +41,9 @@ export const Score = styled.div<ScoreProps>`
   width: 20%;
   justify-content: center;
   background: ${({ theme, won }: any) =>
-    won ? theme.darkCanvas3 : theme.darkCanvas3};
+    won ? theme.score.background.wonColor : theme.score.background.lostColor};
   color: ${({ theme, won }: any) =>
-    won ? theme.textColor.main : theme.textColor.dark};
+    won ? theme.textColor.highlighted : theme.textColor.dark};
 `;
 interface SideProps {
   won?: boolean;
@@ -56,7 +56,7 @@ export const Side = styled.div<SideProps>`
   justify-content: space-between;
   padding: 0 0 0 1rem;
   background: ${({ theme, won }: any) =>
-    won ? theme.darkCanvas5 : theme.darkCanvas4};
+    won ? theme.matchBackground.wonColor : theme.matchBackground.lostColor};
 
   :first-of-type {
     border-top-right-radius: 3px;
@@ -73,25 +73,24 @@ export const Side = styled.div<SideProps>`
   border-top: 1px solid ${({ theme }) => theme.lineColor};
   border-bottom: 1px solid ${({ theme }) => theme.lineColor};
 
-  transition: border-color 0.5s ${({ theme }) => theme.smooth};
+  transition: border-color 0.5s ${({ theme }) => theme.transitionTimingFunction};
   ${Team} {
     color: ${({ theme, won }: any) =>
-      won ? theme.textColor.main : theme.textColor.dark};
+      won ? theme.textColor.highlighted : theme.textColor.dark};
   }
   ${Score} {
     color: ${({ theme, won }: any) =>
-      won ? theme.textColor.main : theme.textColor.dark};
+      won ? theme.textColor.highlighted : theme.textColor.dark};
   }
   ${({ hovered, theme, won }: any) =>
     hovered &&
     css`
-      /* background: ${theme.mediumCanvas1}; */
-      border-color: ${theme.lightCanvas3};
+      border-color: ${theme.border.highlightedColor};
       ${Team} {
-        color: ${theme.textColor.main};
+        color: ${theme.textColor.highlighted};
       }
       ${Score} {
-        color: ${won ? theme.highlight.main : theme.attention.main};
+        color: ${won ? theme.score.text.wonColor : theme.score.text.lostColor};
       }
     `}
 `;
@@ -105,12 +104,12 @@ export const Line = styled.div<LineProps>`
   border-width: 1px;
   border-style: solid;
   border-color: ${({ highlighted, theme }: any) =>
-    highlighted ? theme.lightCanvas3 : theme.lineColor};
+    highlighted ? theme.border.highlightedColor : theme.border.color};
 `;
 
 export const Anchor = styled.a`
   font-family: ${(props: any) =>
-    props.font ? props.font : props.theme.fontFamily1};
+    props.font ? props.font : props.theme.fontFamily};
   font-weight: ${(props: any) => (props.bold ? '700' : '400')};
   color: ${(props: any) => props.theme.textColor.main};
   font-size: ${(props: any) => (props.size ? props.size : '1rem')};

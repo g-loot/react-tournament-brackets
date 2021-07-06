@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
 import { sortAlphanumerically } from 'Utils/string';
 import { BracketLeaderboardProps } from '../types';
 import { defaultStyle, getCalculatedStyles } from './settings';
@@ -7,6 +8,7 @@ import { calculatePositionOfMatch } from './utils';
 import { MatchContextProvider } from './match-context';
 import MatchWrapper from './match-wrapper';
 import Connectors from './connectors';
+import defaultTheme from './themes';
 
 const BracketLeaderboard = ({
   matches,
@@ -15,7 +17,10 @@ const BracketLeaderboard = ({
   onMatchClick,
   onPartyClick,
   svgWrapper: SvgWrapper = ({ children }) => <div>{children}</div>,
-  options: { style: inputStyle } = { style: defaultStyle },
+  theme = defaultTheme.dark,
+  options: { style: inputStyle } = {
+    style: defaultStyle,
+  },
 }: BracketLeaderboardProps) => {
   const style = {
     ...defaultStyle,
@@ -79,103 +84,106 @@ const BracketLeaderboard = ({
   ];
 
   return (
-    <SvgWrapper
-      bracketWidth={gameWidth}
-      bracketHeight={gameHeight}
-      startAt={startPosition}
-    >
-      <svg
-        height={gameHeight}
-        width={gameWidth}
-        viewBox={`0 0 ${gameWidth} ${gameHeight}`}
+    <ThemeProvider theme={theme}>
+      <SvgWrapper
+        bracketWidth={gameWidth}
+        bracketHeight={gameHeight}
+        startAt={startPosition}
       >
-        <MatchContextProvider>
-          <g>
-            {columns.map((matchesColumn, columnIndex) =>
-              matchesColumn.map((match, rowIndex) => {
-                const { x, y } = calculatePositionOfMatch(
-                  rowIndex,
-                  columnIndex,
-                  {
-                    canvasPadding,
-                    columnWidth,
-                    rowHeight,
-                  }
-                );
+        <svg
+          height={gameHeight}
+          width={gameWidth}
+          viewBox={`0 0 ${gameWidth} ${gameHeight}`}
+        >
+          <MatchContextProvider>
+            <g>
+              {columns.map((matchesColumn, columnIndex) =>
+                matchesColumn.map((match, rowIndex) => {
+                  const { x, y } = calculatePositionOfMatch(
+                    rowIndex,
+                    columnIndex,
+                    {
+                      canvasPadding,
+                      columnWidth,
+                      rowHeight,
+                    }
+                  );
 
-                return (
-                  <>
-                    {roundHeader.isShown && (
-                      <g>
-                        <rect
-                          x={x}
-                          y={canvasPadding}
-                          width={width}
-                          height={roundHeader.height}
-                          fill={roundHeader.backgroundColor}
-                          rx="3"
-                          ry="3"
-                        />
-                        <text
-                          x={x + width / 2}
-                          y={canvasPadding + roundHeader.height / 2}
-                          style={{
-                            fontSize: `${roundHeader.fontSize}px`,
-                            color: roundHeader.fontColor,
+                  return (
+                    <>
+                      {roundHeader.isShown && (
+                        <g>
+                          <rect
+                            x={x}
+                            y={canvasPadding}
+                            width={width}
+                            height={roundHeader.height}
+                            fill={roundHeader.backgroundColor}
+                            rx="3"
+                            ry="3"
+                          />
+                          <text
+                            fontFamily={roundHeader.fontFamily}
+                            x={x + width / 2}
+                            y={canvasPadding + roundHeader.height / 2}
+                            style={{
+                              fontSize: `${roundHeader.fontSize}px`,
+                              color: roundHeader.fontColor,
+                            }}
+                            fill="currentColor"
+                            dominantBaseline="middle"
+                            textAnchor="middle"
+                          >
+                            {columnIndex + 1 === columns.length && 'Final'}
+                            {columnIndex + 1 === columns.length - 1 &&
+                              'Semi-final'}
+                            {columnIndex + 1 < columns.length - 1 &&
+                              `Round ${match.tournamentRoundText}`}
+                          </text>
+                        </g>
+                      )}
+                      {columnIndex !== 0 && (
+                        <Connectors
+                          {...{
+                            columns,
+                            rowIndex,
+                            columnIndex,
+                            gameHeight,
+                            gameWidth,
+                            style,
                           }}
-                          fill="currentColor"
-                          dominantBaseline="middle"
-                          textAnchor="middle"
-                        >
-                          {columnIndex + 1 === columns.length && 'Final'}
-                          {columnIndex + 1 === columns.length - 1 &&
-                            'Semi-final'}
-                          {columnIndex + 1 < columns.length - 1 &&
-                            `Round ${match.tournamentRoundText}`}
-                        </text>
+                        />
+                      )}
+                      <g>
+                        <MatchWrapper
+                          x={x}
+                          y={
+                            y +
+                            (roundHeader.isShown
+                              ? roundHeader.height + roundHeader.marginBottom
+                              : 0)
+                          }
+                          rowIndex={rowIndex}
+                          columnIndex={columnIndex}
+                          match={match}
+                          topText={match.startTime}
+                          bottomText={match.name}
+                          teams={match.participants}
+                          onMatchClick={onMatchClick}
+                          onPartyClick={onPartyClick}
+                          style={style}
+                          matchComponent={matchComponent}
+                        />
                       </g>
-                    )}
-                    {columnIndex !== 0 && (
-                      <Connectors
-                        {...{
-                          columns,
-                          rowIndex,
-                          columnIndex,
-                          gameHeight,
-                          gameWidth,
-                          style,
-                        }}
-                      />
-                    )}
-                    <g>
-                      <MatchWrapper
-                        x={x}
-                        y={
-                          y +
-                          (roundHeader.isShown
-                            ? roundHeader.height + roundHeader.marginBottom
-                            : 0)
-                        }
-                        rowIndex={rowIndex}
-                        columnIndex={columnIndex}
-                        match={match}
-                        topText={match.startTime}
-                        bottomText={match.name}
-                        teams={match.participants}
-                        onMatchClick={onMatchClick}
-                        onPartyClick={onPartyClick}
-                        style={style}
-                        matchComponent={matchComponent}
-                      />
-                    </g>
-                  </>
-                );
-              })
-            )}
-          </g>
-        </MatchContextProvider>
-      </svg>
-    </SvgWrapper>
+                    </>
+                  );
+                })
+              )}
+            </g>
+          </MatchContextProvider>
+        </svg>
+      </SvgWrapper>
+    </ThemeProvider>
   );
 };
 

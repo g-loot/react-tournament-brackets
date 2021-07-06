@@ -13,6 +13,7 @@ export const defaultStyle = {
     fontSize: 16,
     fontColor: 'white',
     backgroundColor: 'rgb(47, 54, 72)',
+    fontFamily: '"Roboto", "Arial", "Helvetica", "sans-serif"',
   },
   roundSeparatorWidth: 24,
   lineInfo: {

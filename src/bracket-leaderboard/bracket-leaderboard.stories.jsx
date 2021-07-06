@@ -2,6 +2,7 @@ import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 
 import useWindowSize from 'Hooks/use-window-size';
+import styled from 'styled-components';
 import BracketLeaderboard from './index';
 import SvgViewer from '../svg-viewer';
 import {
@@ -9,7 +10,6 @@ import {
   simpleBracket,
   simpleSmallBracket,
 } from './mock-data/simple-data';
-import styled from 'styled-components';
 import Match from './match';
 
 export default {
@@ -19,8 +19,8 @@ export default {
 
 const StyledSvgViewer = styled(SvgViewer).attrs(props => {
   return {
-    background: props.theme.darkCanvas2,
-    SVGBackground: props.theme.darkCanvas2,
+    background: props.theme.canvasBackground,
+    SVGBackground: props.theme.canvasBackground,
   };
 })``;
 

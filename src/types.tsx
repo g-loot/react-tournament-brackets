@@ -53,6 +53,7 @@ export class Options {
     fontSize: number;
     fontColor: string;
     backgroundColor: string;
+    fontFamily: string;
   };
 
   roundSeparatorWidth: number;
@@ -130,6 +131,48 @@ export class MatchComponentProps {
 
   resultFallback: (participant: Participant) => string;
 }
+
+export type Themes = 'dark' | string | undefined;
+export class Theme {
+  fontFamily: string;
+
+  transitionTimingFunction: string;
+
+  disabledColor: string;
+
+  matchBackground: {
+    wonColor: string;
+    lostColor: string;
+  };
+
+  border: {
+    color: string;
+    highlightedColor: string;
+  };
+
+  textColor: {
+    highlighted: string;
+    main: string;
+    dark: string;
+    disabled: string;
+  };
+
+  score: {
+    text: {
+      wonColor: string;
+      lostColor: string;
+    };
+    background: {
+      wonColor: string;
+      lostColor: string;
+    };
+  };
+
+  lineColor: string;
+
+  canvasBackground: string;
+}
+
 export class BracketLeaderboardProps {
   matches: Match[];
 
@@ -151,6 +194,8 @@ export class BracketLeaderboardProps {
     startAt: number[];
     children: ReactElement;
   }) => React.ReactElement;
+
+  theme: Object;
 
   options: { style: Options };
 }

@@ -25,8 +25,37 @@ export const WhiteThemeBracket = () => {
       }}
       svgWrapper={({ children, ...props }) => (
         <SvgViewer
-          background={'#FFF'}
-          SVGBackground={'#FFF'}
+          background="#FFF"
+          SVGBackground="#FFF"
+          width={finalWidth}
+          height={finalHeight}
+          {...props}
+        >
+          {children}
+        </SvgViewer>
+      )}
+    />
+  );
+};
+
+export const WhiteThemeCustomMatch = () => {
+  const [width, height] = useWindowSize();
+  const finalWidth = Math.max(width - 50, 500);
+  const finalHeight = Math.max(height - 100, 500);
+  return (
+    <BracketLeaderboard
+      matches={simpleSmallBracket}
+      options={{
+        style: {
+          roundHeader: { backgroundColor: '#AAA' },
+          connectorColor: '#FF8C00',
+          connectorColorHighlight: '#000',
+        },
+      }}
+      svgWrapper={({ children, ...props }) => (
+        <SvgViewer
+          background="#FFF"
+          SVGBackground="#FFF"
           width={finalWidth}
           height={finalHeight}
           {...props}
