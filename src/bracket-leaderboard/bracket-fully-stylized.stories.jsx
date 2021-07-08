@@ -3,6 +3,8 @@ import useWindowSize from 'Hooks/use-window-size';
 import BracketLeaderboard from './index';
 import SvgViewer from '../svg-viewer';
 import { simpleSmallBracket } from './mock-data/simple-data';
+import { createTheme } from './themes';
+import Match from './match';
 
 export default {
   title: 'Components/Custom',
@@ -13,14 +15,28 @@ export const WhiteThemeBracket = () => {
   const [width, height] = useWindowSize();
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);
+  const customTheme = createTheme({
+    textColor: { main: '#000000', highlighted: '#22222', dark: '#000000' },
+    matchBackground: { wonColor: '#DDDDDD', lostColor: '#BBBBBB' },
+    score: {
+      background: { wonColor: '#8471db', lostColor: '#e09987' },
+      text: { highlightedWonColor: '#2b3158', highlightedLostColor: '#572a2a' },
+    },
+    border: {
+      color: '#707582',
+      highlightedColor: '#000',
+    },
+  });
   return (
     <BracketLeaderboard
       matches={simpleSmallBracket}
+      matchComponent={Match}
+      theme={customTheme}
       options={{
         style: {
-          roundHeader: { backgroundColor: '#AAA' },
-          connectorColor: '#FF8C00',
-          connectorColorHighlight: '#000',
+          roundHeader: { backgroundColor: '#AAA', fontColor: '#000' },
+          connectorColor: '#707582',
+          connectorColorHighlight: '#000000',
         },
       }}
       svgWrapper={({ children, ...props }) => (

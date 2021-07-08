@@ -68,10 +68,10 @@ export const Side = styled.div<SideProps>`
     border-bottom-left-radius: 3px;
     border-bottom-width: 2px;
   }
-  border-right: 4px solid ${({ theme }) => theme.lineColor};
-  border-left: 4px solid ${({ theme }) => theme.lineColor};
-  border-top: 1px solid ${({ theme }) => theme.lineColor};
-  border-bottom: 1px solid ${({ theme }) => theme.lineColor};
+  border-right: 4px solid ${({ theme }) => theme.border.color};
+  border-left: 4px solid ${({ theme }) => theme.border.color};
+  border-top: 1px solid ${({ theme }) => theme.border.color};
+  border-bottom: 1px solid ${({ theme }) => theme.border.color};
 
   transition: border-color 0.5s ${({ theme }) => theme.transitionTimingFunction};
   ${Team} {
@@ -90,7 +90,9 @@ export const Side = styled.div<SideProps>`
         color: ${theme.textColor.highlighted};
       }
       ${Score} {
-        color: ${won ? theme.score.text.wonColor : theme.score.text.lostColor};
+        color: ${won
+          ? theme.score.text.highlightedWonColor
+          : theme.score.text.highlightedLostColor};
       }
     `}
 `;

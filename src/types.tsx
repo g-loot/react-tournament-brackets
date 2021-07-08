@@ -131,8 +131,6 @@ export class MatchComponentProps {
 
   resultFallback: (participant: Participant) => string;
 }
-
-export type Themes = 'dark' | string | undefined;
 export class Theme {
   fontFamily: string;
 
@@ -159,16 +157,14 @@ export class Theme {
 
   score: {
     text: {
-      wonColor: string;
-      lostColor: string;
+      highlightedWonColor: string;
+      highlightedLostColor: string;
     };
     background: {
       wonColor: string;
       lostColor: string;
     };
   };
-
-  lineColor: string;
 
   canvasBackground: string;
 }
@@ -195,7 +191,7 @@ export class BracketLeaderboardProps {
     children: ReactElement;
   }) => React.ReactElement;
 
-  theme: Object;
+  theme: Theme;
 
   options: { style: Options };
 }

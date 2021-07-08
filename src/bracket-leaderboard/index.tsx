@@ -17,7 +17,7 @@ const BracketLeaderboard = ({
   onMatchClick,
   onPartyClick,
   svgWrapper: SvgWrapper = ({ children }) => <div>{children}</div>,
-  theme = defaultTheme.dark,
+  theme = defaultTheme,
   options: { style: inputStyle } = {
     style: defaultStyle,
   },

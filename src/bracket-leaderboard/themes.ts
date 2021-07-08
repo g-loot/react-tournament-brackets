@@ -1,7 +1,7 @@
 import merge from 'deepmerge';
-import { Theme, Themes } from '../types';
+import { Theme } from '../types';
 
-const darkTheme: Theme = {
+const defaultTheme: Theme = {
   fontFamily: '"Roboto", "Arial", "Helvetica", "sans-serif"',
   transitionTimingFunction: 'cubic-bezier(0, 0.92, 0.77, 0.99)',
 
@@ -22,27 +22,19 @@ const darkTheme: Theme = {
   },
   score: {
     text: {
-      wonColor: '#118ADE',
-      lostColor: '#FF9505',
+      highlightedWonColor: '#118ADE',
+      highlightedLostColor: '#FF9505',
     },
     background: {
       wonColor: '#10131C',
       lostColor: '#10131C',
     },
   },
-  lineColor: '#22293B',
   canvasBackground: '#0B0D13',
 };
-const defaultThemes = {
-  dark: darkTheme,
-};
-export function createTheme<T>(
-  name: Themes = 'default',
-  customTheme?: T
-): Theme {
-  defaultThemes[name] = merge(defaultThemes.dark, customTheme || {});
 
-  return defaultThemes[name];
+export function createTheme<T>(customTheme?: Theme | T): Theme {
+  return merge(defaultTheme, customTheme || {});
 }
 
-export default defaultThemes;
+export default defaultTheme;
