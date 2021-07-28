@@ -10,6 +10,8 @@ import MatchWrapper from './match-wrapper';
 import Connectors from './connectors';
 import defaultTheme from './themes';
 
+import RoundHeader from './svg-components/round-header';
+
 const BracketLeaderboard = ({
   matches,
   matchComponent,
@@ -112,35 +114,15 @@ const BracketLeaderboard = ({
                   return (
                     <>
                       {roundHeader.isShown && (
-                        <g>
-                          <rect
-                            x={x}
-                            y={canvasPadding}
-                            width={width}
-                            height={roundHeader.height}
-                            fill={roundHeader.backgroundColor}
-                            rx="3"
-                            ry="3"
-                          />
-                          <text
-                            fontFamily={roundHeader.fontFamily}
-                            x={x + width / 2}
-                            y={canvasPadding + roundHeader.height / 2}
-                            style={{
-                              fontSize: `${roundHeader.fontSize}px`,
-                              color: roundHeader.fontColor,
-                            }}
-                            fill="currentColor"
-                            dominantBaseline="middle"
-                            textAnchor="middle"
-                          >
-                            {columnIndex + 1 === columns.length && 'Final'}
-                            {columnIndex + 1 === columns.length - 1 &&
-                              'Semi-final'}
-                            {columnIndex + 1 < columns.length - 1 &&
-                              `Round ${match.tournamentRoundText}`}
-                          </text>
-                        </g>
+                        <RoundHeader
+                          x={x}
+                          roundHeader={roundHeader}
+                          canvasPadding={canvasPadding}
+                          width={width}
+                          columns={columns}
+                          tournamentRoundText={match.tournamentRoundText}
+                          columnIndex={columnIndex}
+                        />
                       )}
                       {columnIndex !== 0 && (
                         <Connectors

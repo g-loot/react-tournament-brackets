@@ -10,7 +10,8 @@ import {
   simpleBracket,
   simpleSmallBracket,
 } from './mock-data/simple-data';
-import Match from './match';
+import { soloWalkover } from './mock-data/solo-walkover';
+import Match from './match/index';
 
 export default {
   title: 'Components/Bracket',
@@ -54,6 +55,11 @@ SmallBracket.args = {
 export const WalkOverBracket = Template.bind({});
 WalkOverBracket.args = {
   matches: walkOverData,
+  matchComponent: Match,
+};
+export const SoloWalkOverBracket = Template.bind({});
+SoloWalkOverBracket.args = {
+  matches: soloWalkover,
   matchComponent: Match,
 };
 

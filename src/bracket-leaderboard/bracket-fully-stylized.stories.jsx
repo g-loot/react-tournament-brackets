@@ -4,7 +4,7 @@ import BracketLeaderboard from './index';
 import SvgViewer from '../svg-viewer';
 import { simpleSmallBracket } from './mock-data/simple-data';
 import { createTheme } from './themes';
-import Match from './match';
+import Match from './match/index';
 
 export default {
   title: 'Components/Custom',

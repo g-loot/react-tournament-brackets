@@ -1,5 +1,5 @@
 import React from 'react';
-import { MatchComponentProps } from '../types';
+import { MatchComponentProps } from '../../types';
 import {
   Score,
   Side,

@@ -5,7 +5,7 @@ import useWindowSize from 'Hooks/use-window-size';
 import styled from 'styled-components';
 import BracketLeaderboard from './index';
 import SvgViewer from '../svg-viewer';
-import Match from './match';
+import Match from './match/index';
 import { simpleDouble } from './mock-data/simple-data-double';
 
 export default {
