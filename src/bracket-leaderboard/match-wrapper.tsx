@@ -39,20 +39,49 @@ function Match({
     bottomParty?.id !== undefined &&
     hoveredPartyId === bottomParty.id;
 
+  const participantWalkedOver = participant =>
+    match.state === MATCH_STATES.WALK_OVER &&
+    teams.filter(team => !!team.id).length < 2 &&
+    participant.id;
+
   // Lower placement is better
-  const topWon = topParty.status === MATCH_STATES.WALKOVER || topParty.isWinner;
+  const topWon =
+    topParty.status === MATCH_STATES.WALK_OVER ||
+    participantWalkedOver(topParty) ||
+    topParty.isWinner;
   const bottomWon =
-    bottomParty.status === MATCH_STATES.WALKOVER || bottomParty.isWinner;
+    bottomParty.status === MATCH_STATES.WALK_OVER ||
+    participantWalkedOver(bottomParty) ||
+    bottomParty.isWinner;
 
   const matchState = MATCH_STATES[match.state];
 
-  const teamNameFallback = matchState === MATCH_STATES.WALKOVER ? '' : 'TBD';
-  const resultFallback = participant =>
-    ({
-      [MATCH_STATES.WALKOVER]: computedStyles.wonBywalkOverText,
-      [MATCH_STATES.NO_SHOW]: computedStyles.lostByNoShowText,
-      [MATCH_STATES.NO_PARTY]: computedStyles.lostByNoShowText,
-    }[participant.status] ?? '');
+  const teamNameFallback =
+    {
+      [MATCH_STATES.WALK_OVER]: '',
+      [MATCH_STATES.NO_SHOW]: '',
+      [MATCH_STATES.DONE]: '',
+      [MATCH_STATES.SCORE_DONE]: '',
+      [MATCH_STATES.NO_PARTY]: '',
+    }[matchState] ?? 'TBD';
+
+  const resultFallback = participant => {
+    if (participant.status) {
+      return (
+        {
+          WALKOVER: computedStyles.wonBywalkOverText,
+          [MATCH_STATES.WALK_OVER]: computedStyles.wonBywalkOverText,
+          [MATCH_STATES.NO_SHOW]: computedStyles.lostByNoShowText,
+          [MATCH_STATES.NO_PARTY]: computedStyles.lostByNoShowText,
+        }[participant.status] ?? ''
+      );
+    }
+
+    if (participantWalkedOver(participant)) {
+      return computedStyles.wonBywalkOverText;
+    }
+    return '';
+  };
 
   const onMouseEnter = partyId => {
     dispatch({
@@ -73,7 +102,7 @@ function Match({
   bottomParty.resultText =
     bottomParty.resultText || resultFallback(bottomParty);
   topParty.name = topParty.name || teamNameFallback;
-  topParty.resultText = topParty.resultText || resultFallback(bottomParty);
+  topParty.resultText = topParty.resultText || resultFallback(topParty);
   return (
     <svg
       width={width}
@@ -102,7 +131,6 @@ function Match({
               connectorColor,
               computedStyles,
               teamNameFallback,
-              resultFallback,
             }}
           />
         )}

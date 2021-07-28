@@ -8,7 +8,7 @@ export class Participant {
 
   isWinner: boolean;
 
-  status: 'PLAYED' | 'NO_SHOW' | 'WALKOVER' | 'NO_PARTY';
+  status: 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY';
 
   name: string;
 }
@@ -26,7 +26,7 @@ export class Match {
 
   startTime: string;
 
-  state: 'PLAYED' | 'NO_SHOW' | 'WALKOVER' | 'NO_PARTY';
+  state: 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY';
 
   participants: Participant[];
 }

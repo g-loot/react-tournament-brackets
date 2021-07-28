@@ -27,7 +27,6 @@ function Match({
   topText,
   topWon,
   teamNameFallback,
-  resultFallback,
 }: MatchComponentProps) {
   return (
     <Wrapper>
@@ -48,9 +47,7 @@ function Match({
           onClick={() => onPartyClick?.(topParty, topWon)}
         >
           <Team>{topParty?.name ?? teamNameFallback}</Team>
-          <Score won={topWon}>
-            {topParty?.resultText ?? resultFallback(topParty)}
-          </Score>
+          <Score won={topWon}>{topParty?.resultText}</Score>
         </Side>
         <Line highlighted={topHovered || bottomHovered} />
         <Side
@@ -61,9 +58,7 @@ function Match({
           onClick={() => onPartyClick?.(bottomParty, bottomWon)}
         >
           <Team>{bottomParty?.name ?? teamNameFallback}</Team>
-          <Score won={bottomWon}>
-            {bottomParty?.resultText ?? resultFallback(bottomParty)}
-          </Score>
+          <Score won={bottomWon}>{bottomParty?.resultText}</Score>
         </Side>
       </StyledMatch>
       <BottomText>{bottomText ?? ' '}</BottomText>

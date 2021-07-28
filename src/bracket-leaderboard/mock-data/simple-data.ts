@@ -69,7 +69,7 @@ export const walkOverData = [
         id: '9ea9ce1a-4794-4553-856c-9a3620c0531b',
         resultText: null,
         isWinner: true,
-        status: 'WALKOVER',
+        status: 'WALK_OVER',
       },
     ],
   },

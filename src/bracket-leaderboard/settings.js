@@ -22,7 +22,7 @@ export const defaultStyle = {
   },
   horizontalOffset: 13,
   wonBywalkOverText: 'WO',
-  lostByNoShowText: '',
+  lostByNoShowText: 'NS',
 };
 
 export const getCalculatedStyles = style => {
