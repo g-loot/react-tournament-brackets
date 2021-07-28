@@ -2,6 +2,7 @@ import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 
 import useWindowSize from 'Hooks/use-window-size';
+import styled from 'styled-components';
 import BracketLeaderboard from './index';
 import SvgViewer from '../svg-viewer';
 import {
@@ -9,11 +10,20 @@ import {
   simpleBracket,
   simpleSmallBracket,
 } from './mock-data/simple-data';
+import { soloWalkover } from './mock-data/solo-walkover';
+import Match from './match/index';
 
 export default {
   title: 'Components/Bracket',
   component: BracketLeaderboard,
 };
+
+const StyledSvgViewer = styled(SvgViewer).attrs(props => {
+  return {
+    background: props.theme.canvasBackground,
+    SVGBackground: props.theme.canvasBackground,
+  };
+})``;
 
 const Template = ({ ...args }) => {
   const [width, height] = useWindowSize();
@@ -23,9 +33,9 @@ const Template = ({ ...args }) => {
     <BracketLeaderboard
       // currentRound={4}
       svgWrapper={({ children, ...props }) => (
-        <SvgViewer width={finalWidth} height={finalHeight} {...props}>
+        <StyledSvgViewer width={finalWidth} height={finalHeight} {...props}>
           {children}
-        </SvgViewer>
+        </StyledSvgViewer>
       )}
       {...args}
     />
@@ -35,15 +45,24 @@ const Template = ({ ...args }) => {
 export const Bracket = Template.bind({});
 Bracket.args = {
   matches: simpleBracket,
+  matchComponent: Match,
 };
 export const SmallBracket = Template.bind({});
 SmallBracket.args = {
   matches: simpleSmallBracket,
+  matchComponent: Match,
 };
 export const WalkOverBracket = Template.bind({});
 WalkOverBracket.args = {
   matches: walkOverData,
+  matchComponent: Match,
 };
+export const SoloWalkOverBracket = Template.bind({});
+SoloWalkOverBracket.args = {
+  matches: soloWalkover,
+  matchComponent: Match,
+};
+
 export const CustomMatchViewBracket = Template.bind({});
 CustomMatchViewBracket.args = {
   matches: simpleBracket,

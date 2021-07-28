@@ -8,7 +8,7 @@ export class Participant {
 
   isWinner: boolean;
 
-  status: 'PLAYED' | 'NO_SHOW' | 'WALKOVER' | 'NO_PARTY';
+  status: 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY';
 
   name: string;
 }
@@ -26,7 +26,7 @@ export class Match {
 
   startTime: string;
 
-  state: 'PLAYED' | 'NO_SHOW' | 'WALKOVER' | 'NO_PARTY';
+  state: 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY';
 
   participants: Participant[];
 }
@@ -53,6 +53,7 @@ export class Options {
     fontSize: number;
     fontColor: string;
     backgroundColor: string;
+    fontFamily: string;
   };
 
   roundSeparatorWidth: number;
@@ -91,32 +92,87 @@ export class SvgViewerProps {
   scaleFactor: number;
 }
 
+export class MatchComponentProps {
+  match: Match;
+
+  onMatchClick: (args: {
+    match: Match;
+    topWon: boolean;
+    bottomWon: boolean;
+  }) => void;
+
+  onPartyClick: (party: Participant, partyWon: boolean) => void;
+
+  onMouseEnter: (partyId: string | number) => void;
+
+  onMouseLeave: () => void;
+
+  topParty: Participant;
+
+  bottomParty: Participant;
+
+  topWon: boolean;
+
+  bottomWon: boolean;
+
+  topHovered: boolean;
+
+  bottomHovered: boolean;
+
+  topText: string;
+
+  bottomText: string;
+
+  connectorColor: string;
+
+  computedStyles: ComputedOptions;
+
+  teamNameFallback: string;
+
+  resultFallback: (participant: Participant) => string;
+}
+export class Theme {
+  fontFamily: string;
+
+  transitionTimingFunction: string;
+
+  disabledColor: string;
+
+  matchBackground: {
+    wonColor: string;
+    lostColor: string;
+  };
+
+  border: {
+    color: string;
+    highlightedColor: string;
+  };
+
+  textColor: {
+    highlighted: string;
+    main: string;
+    dark: string;
+    disabled: string;
+  };
+
+  score: {
+    text: {
+      highlightedWonColor: string;
+      highlightedLostColor: string;
+    };
+    background: {
+      wonColor: string;
+      lostColor: string;
+    };
+  };
+
+  canvasBackground: string;
+}
+
 export class BracketLeaderboardProps {
   matches: Match[];
 
-  matchComponent: (props: {
-    match: Match;
-    onMatchClick: (args: {
-      match: Match;
-      topWon: boolean;
-      bottomWon: boolean;
-    }) => void;
-    onPartyClick: (party: Participant, partyWon: boolean) => void;
-    onMouseEnter: (partyId: string) => void;
-    onMouseLeave: () => void;
-    topParty: Participant;
-    bottomParty: Participant;
-    topWon: boolean;
-    bottomWon: boolean;
-    topHovered: boolean;
-    bottomHovered: boolean;
-    topText: string;
-    bottomText: string;
-    connectorColor: string;
-    computedStyles: ComputedOptions;
-    teamNameFallback: string;
-    resultFallback: (participant: Participant) => string;
-  }) => JSX.Element;
+  matchComponent: (props: MatchComponentProps) => JSX.Element;
 
   currentRound: string;
 
@@ -134,6 +190,8 @@ export class BracketLeaderboardProps {
     startAt: number[];
     children: ReactElement;
   }) => React.ReactElement;
+
+  theme: Theme;
 
   options: { style: Options };
 }

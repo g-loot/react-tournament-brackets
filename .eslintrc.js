@@ -3,7 +3,7 @@ const aliases = require('./scripts/aliases.js');
 
 module.exports = {
   extends: ['airbnb', 'plugin:prettier/recommended', 'prettier/react'],
-  plugins: ['prettier', 'react-hooks'],
+  plugins: ['prettier', 'react-hooks', 'typescript'],
 
   env: {
     node: true,
@@ -27,6 +27,16 @@ module.exports = {
   },
 
   rules: {
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        jsx: 'never',
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
     'max-classes-per-file': ['off'],
     'react/jsx-filename-extension': [0],
     'array-callback-return': ['off'],
@@ -56,7 +66,7 @@ module.exports = {
           (arr, alias) => [...arr, [alias, `./src/${aliases[alias]}`]],
           []
         ),
-        extensions: ['.js', '.jsx'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
       },
     },
   },
