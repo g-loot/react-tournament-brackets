@@ -1,16 +1,16 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { sortAlphanumerically } from 'Utils/string';
-import { BracketLeaderboardProps } from '../types';
-import { defaultStyle, getCalculatedStyles } from './settings';
-import { calculatePositionOfMatch } from './utils';
+import { BracketLeaderboardProps } from '../../types';
+import { defaultStyle, getCalculatedStyles } from '../settings';
+import { calculatePositionOfMatch } from '../utils';
 
-import { MatchContextProvider } from './match-context';
-import MatchWrapper from './match-wrapper';
-import Connectors from './connectors';
-import defaultTheme from './themes';
+import { MatchContextProvider } from '../match-context';
+import MatchWrapper from '../match-wrapper';
+import Connectors from '../connectors';
+import defaultTheme from '../themes';
 
-import RoundHeader from './svg-components/round-header';
+import RoundHeader from '../svg-components/round-header';
 
 const BracketLeaderboard = ({
   matches,

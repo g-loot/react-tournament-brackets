@@ -1,6 +1,6 @@
 import React from 'react';
 import useWindowSize from 'Hooks/use-window-size';
-import BracketLeaderboard from './index';
+import BracketLeaderboard from './single-elim/single-elim-bracket';
 import SvgViewer from '../svg-viewer';
 import { simpleSmallBracket } from './mock-data/simple-data';
 import { createTheme } from './themes';

@@ -3,19 +3,19 @@ import React from 'react';
 
 import useWindowSize from 'Hooks/use-window-size';
 import styled from 'styled-components';
-import BracketLeaderboard from './index';
-import SvgViewer from '../svg-viewer';
+import SingleElimBracketLeaderboard from './single-elim-bracket';
+import SvgViewer from '../../svg-viewer';
 import {
   walkOverData,
   simpleBracket,
   simpleSmallBracket,
-} from './mock-data/simple-data';
-import { soloWalkover } from './mock-data/solo-walkover';
-import Match from './match/index';
+} from '../mock-data/simple-data';
+import { soloWalkover } from '../mock-data/solo-walkover';
+import Match from '../match/index';
 
 export default {
   title: 'Components/Bracket',
-  component: BracketLeaderboard,
+  component: SingleElimBracketLeaderboard,
 };
 
 const StyledSvgViewer = styled(SvgViewer).attrs(props => {
@@ -30,7 +30,7 @@ const Template = ({ ...args }) => {
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);
   return (
-    <BracketLeaderboard
+    <SingleElimBracketLeaderboard
       // currentRound={4}
       svgWrapper={({ children, ...props }) => (
         <StyledSvgViewer width={finalWidth} height={finalHeight} {...props}>
