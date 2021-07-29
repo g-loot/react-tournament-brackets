@@ -130,7 +130,6 @@ function Match({
               bottomText,
               connectorColor,
               computedStyles,
-              teamNameFallback,
             }}
           />
         )}
