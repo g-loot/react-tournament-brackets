@@ -21,7 +21,7 @@ export const calculateVerticalPositioning = ({
 export const calculatePositionOfMatch = (
   rowIndex,
   columnIndex,
-  { canvasPadding, rowHeight, columnWidth }
+  { canvasPadding, rowHeight, columnWidth, offsetX = 0, offsetY = 0 }
 ) => {
   const result = calculateVerticalPositioning({
     rowHeight,
@@ -31,7 +31,7 @@ export const calculatePositionOfMatch = (
   });
 
   return {
-    x: columnIndex * columnWidth + canvasPadding,
-    y: result + canvasPadding,
+    x: columnIndex * columnWidth + canvasPadding + offsetX,
+    y: result + canvasPadding + offsetY,
   };
 };

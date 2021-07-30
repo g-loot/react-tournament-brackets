@@ -1,13 +1,14 @@
 export function calculateSVGDimensions(
-  columns: any[],
+  numOfRows,
+  numOfColumns,
   rowHeight: any,
   columnWidth: any,
   canvasPadding: any,
   roundHeader: any,
-  currentRound: string
+  currentRound: string = ''
 ) {
-  const bracketHeight = columns[0].length * rowHeight;
-  const bracketWidth = columns.length * columnWidth;
+  const bracketHeight = numOfRows * rowHeight;
+  const bracketWidth = numOfColumns * columnWidth;
 
   const gameHeight =
     bracketHeight +

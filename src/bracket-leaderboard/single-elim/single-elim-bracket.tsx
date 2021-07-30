@@ -75,7 +75,8 @@ const BracketLeaderboard = ({
   // ]
   console.log(columns);
   const { gameWidth, gameHeight, startPosition } = calculateSVGDimensions(
-    columns,
+    columns[0].length,
+    columns.length,
     rowHeight,
     columnWidth,
     canvasPadding,

@@ -10,7 +10,7 @@ import { MatchContextProvider } from '../match-context';
 import defaultTheme from '../themes';
 
 import UpperBracket from './upper-bracket';
-// import LowerBracket from './lower-bracket';
+import LowerBracket from './lower-bracket';
 
 const BracketLeaderboard = ({
   matches,
@@ -67,6 +67,7 @@ const BracketLeaderboard = ({
         )
       : [];
   };
+
   const upperColumns = generate2DBracketArray(lastGame, matches.upper);
   const lowerColumns = generate2DBracketArray(lastGame, matches.lower);
   // [
@@ -78,14 +79,29 @@ const BracketLeaderboard = ({
   console.log('upperColumns: ', upperColumns);
   console.log('lowerColumns: ', lowerColumns);
 
-  const { gameWidth, gameHeight, startPosition } = calculateSVGDimensions(
-    upperColumns,
+  const upperBracketDimensions = calculateSVGDimensions(
+    upperColumns[0].length,
+    upperColumns.length,
     rowHeight,
     columnWidth,
     canvasPadding,
     roundHeader,
     currentRound
   );
+  const lowerBracketDimensions = calculateSVGDimensions(
+    lowerColumns[0].length,
+    lowerColumns.length,
+    rowHeight,
+    columnWidth,
+    canvasPadding,
+    roundHeader,
+    currentRound
+  );
+
+  const { gameWidth } = lowerBracketDimensions;
+  const gameHeight =
+    upperBracketDimensions.gameHeight + lowerBracketDimensions.gameHeight;
+  const { startPosition } = upperBracketDimensions;
 
   return (
     <ThemeProvider theme={theme}>
@@ -100,22 +116,41 @@ const BracketLeaderboard = ({
           viewBox={`0 0 ${gameWidth} ${gameHeight}`}
         >
           <MatchContextProvider>
-            <UpperBracket
-              {...{
-                columns: upperColumns,
-                canvasPadding,
-                columnWidth,
-                rowHeight,
-                roundHeader,
-                width,
-                gameHeight,
-                gameWidth,
-                style,
-                onMatchClick,
-                onPartyClick,
-                matchComponent,
-              }}
-            />
+            <g>
+              <UpperBracket
+                {...{
+                  columns: upperColumns,
+                  canvasPadding,
+                  columnWidth,
+                  rowHeight,
+                  roundHeader,
+                  width,
+                  gameHeight,
+                  gameWidth,
+                  style,
+                  onMatchClick,
+                  onPartyClick,
+                  matchComponent,
+                }}
+              />
+              <LowerBracket
+                {...{
+                  columns: lowerColumns,
+                  canvasPadding,
+                  columnWidth,
+                  rowHeight,
+                  roundHeader,
+                  width,
+                  gameHeight,
+                  gameWidth,
+                  style,
+                  onMatchClick,
+                  onPartyClick,
+                  matchComponent,
+                  upperBracketHeight: upperBracketDimensions.gameHeight,
+                }}
+              />
+            </g>
           </MatchContextProvider>
         </svg>
       </SvgWrapper>
