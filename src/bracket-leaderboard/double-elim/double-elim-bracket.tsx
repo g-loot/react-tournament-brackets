@@ -2,19 +2,15 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { sortAlphanumerically } from 'Utils/string';
 import { calculateSVGDimensions } from '../shared/calculate-svg-dimensions';
-import {
-  BracketLeaderboardProps,
-  DoubleElimLeaderboardProps,
-} from '../../types';
+import { DoubleElimLeaderboardProps } from '../../types';
 import { defaultStyle, getCalculatedStyles } from '../settings';
-import { calculatePositionOfMatch } from '../utils';
 
 import { MatchContextProvider } from '../match-context';
-import MatchWrapper from '../match-wrapper';
-import Connectors from '../connectors';
+
 import defaultTheme from '../themes';
 
-import RoundHeader from '../svg-components/round-header';
+import UpperBracket from './upper-bracket';
+// import LowerBracket from './lower-bracket';
 
 const BracketLeaderboard = ({
   matches,
@@ -83,7 +79,7 @@ const BracketLeaderboard = ({
   console.log('lowerColumns: ', lowerColumns);
 
   const { gameWidth, gameHeight, startPosition } = calculateSVGDimensions(
-    lowerColumns,
+    upperColumns,
     rowHeight,
     columnWidth,
     canvasPadding,
@@ -104,70 +100,22 @@ const BracketLeaderboard = ({
           viewBox={`0 0 ${gameWidth} ${gameHeight}`}
         >
           <MatchContextProvider>
-            <g>
-              {lowerColumns.map((matchesColumn, columnIndex) =>
-                matchesColumn.map((match, rowIndex) => {
-                  const { x, y } = calculatePositionOfMatch(
-                    rowIndex,
-                    columnIndex,
-                    {
-                      canvasPadding,
-                      columnWidth,
-                      rowHeight,
-                    }
-                  );
-
-                  return (
-                    <>
-                      {roundHeader.isShown && (
-                        <RoundHeader
-                          x={x}
-                          roundHeader={roundHeader}
-                          canvasPadding={canvasPadding}
-                          width={width}
-                          columns={lowerColumns}
-                          tournamentRoundText={match.tournamentRoundText}
-                          columnIndex={columnIndex}
-                        />
-                      )}
-                      {columnIndex !== 0 && (
-                        <Connectors
-                          {...{
-                            columns: lowerColumns,
-                            rowIndex,
-                            columnIndex,
-                            gameHeight,
-                            gameWidth,
-                            style,
-                          }}
-                        />
-                      )}
-                      <g>
-                        <MatchWrapper
-                          x={x}
-                          y={
-                            y +
-                            (roundHeader.isShown
-                              ? roundHeader.height + roundHeader.marginBottom
-                              : 0)
-                          }
-                          rowIndex={rowIndex}
-                          columnIndex={columnIndex}
-                          match={match}
-                          topText={match.startTime}
-                          bottomText={match.name}
-                          teams={match.participants}
-                          onMatchClick={onMatchClick}
-                          onPartyClick={onPartyClick}
-                          style={style}
-                          matchComponent={matchComponent}
-                        />
-                      </g>
-                    </>
-                  );
-                })
-              )}
-            </g>
+            <UpperBracket
+              {...{
+                columns: upperColumns,
+                canvasPadding,
+                columnWidth,
+                rowHeight,
+                roundHeader,
+                width,
+                gameHeight,
+                gameWidth,
+                style,
+                onMatchClick,
+                onPartyClick,
+                matchComponent,
+              }}
+            />
           </MatchContextProvider>
         </svg>
       </SvgWrapper>
