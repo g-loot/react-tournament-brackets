@@ -1,7 +1,11 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { sortAlphanumerically } from 'Utils/string';
-import { BracketLeaderboardProps } from '../../types';
+import { calculateSVGDimensions } from '../shared/calculate-svg-dimensions';
+import {
+  BracketLeaderboardProps,
+  SingleElimLeaderboardProps,
+} from '../../types';
 import { defaultStyle, getCalculatedStyles } from '../settings';
 import { calculatePositionOfMatch } from '../utils';
 
@@ -23,7 +27,7 @@ const BracketLeaderboard = ({
   options: { style: inputStyle } = {
     style: defaultStyle,
   },
-}: BracketLeaderboardProps) => {
+}: SingleElimLeaderboardProps) => {
   const style = {
     ...defaultStyle,
     ...inputStyle,
@@ -69,21 +73,15 @@ const BracketLeaderboard = ({
   //   [ 3rd column ]
   //   [ lastGame ]
   // ]
-
-  const bracketHeight = columns[0].length * rowHeight;
-  const bracketWidth = columns.length * columnWidth;
-
-  const gameHeight =
-    bracketHeight +
-    canvasPadding * 2 +
-    (roundHeader.isShown ? roundHeader.height + roundHeader.marginBottom : 0);
-  const gameWidth = bracketWidth + canvasPadding * 2;
-  const startPosition = [
+  console.log(columns);
+  const { gameWidth, gameHeight, startPosition } = calculateSVGDimensions(
+    columns,
+    rowHeight,
+    columnWidth,
+    canvasPadding,
+    roundHeader,
     currentRound
-      ? -(parseInt(currentRound, 10) * columnWidth - canvasPadding * 2)
-      : 0, // Go to the current round on mount
-    0,
-  ];
+  );
 
   return (
     <ThemeProvider theme={theme}>

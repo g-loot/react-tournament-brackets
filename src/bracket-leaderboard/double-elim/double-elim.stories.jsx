@@ -27,16 +27,7 @@ export const DoubleElimination = () => {
   return (
     <>
       <DoubleElimBracketLeaderboard
-        matches={simpleDouble.upper}
-        matchComponent={Match}
-        svgWrapper={({ children, ...props }) => (
-          <StyledSvgViewer width={finalWidth} height={finalHeight} {...props}>
-            {children}
-          </StyledSvgViewer>
-        )}
-      />
-      <DoubleElimBracketLeaderboard
-        matches={simpleDouble.lower}
+        matches={simpleDouble}
         matchComponent={Match}
         svgWrapper={({ children, ...props }) => (
           <StyledSvgViewer width={finalWidth} height={finalHeight} {...props}>
