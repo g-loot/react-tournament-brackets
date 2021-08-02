@@ -41,7 +41,7 @@ const BracketLeaderboard = ({
 
   const calculatedStyles = getCalculatedStyles(style);
 
-  const { roundHeader, columnWidth, canvasPadding, rowHeight, width } =
+  const { roundHeader, columnWidth, canvasPadding, rowHeight } =
     calculatedStyles;
   const lastGame = matches.upper.find(match => !match.nextMatchId);
 
@@ -161,8 +161,9 @@ const BracketLeaderboard = ({
                   columns: [
                     generatePreviousRound(
                       [lastGame],
-                      [matches.upper, ...matches.lower]
+                      [...matches.upper, ...matches.lower]
                     ),
+                    [lastGame],
                   ],
                   calculatedStyles,
                   columnIndex: lowerColumns.length,

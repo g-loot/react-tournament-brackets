@@ -1,7 +1,10 @@
 import React from 'react';
-import { calculatePositionOfMatch } from '../utils';
+import {
+  calculatePositionOfMatch,
+  calculatePositionOfMatchLowerBracket,
+} from './calculate-match-position';
 import MatchWrapper from '../match-wrapper';
-import Connectors from '../connectors';
+import Connectors from './connectors';
 
 const LowerBracket = ({
   columns,
@@ -17,12 +20,16 @@ const LowerBracket = ({
     calculatedStyles;
   return columns.map((matchesColumn, columnIndex) =>
     matchesColumn.map((match, rowIndex) => {
-      const { x, y } = calculatePositionOfMatch(rowIndex, columnIndex, {
-        canvasPadding,
-        columnWidth,
-        rowHeight,
-        offsetY: upperBracketHeight,
-      });
+      const { x, y } = calculatePositionOfMatchLowerBracket(
+        rowIndex,
+        columnIndex,
+        {
+          canvasPadding,
+          columnWidth,
+          rowHeight,
+          offsetY: upperBracketHeight,
+        }
+      );
 
       return (
         <>
@@ -35,6 +42,8 @@ const LowerBracket = ({
                 gameHeight,
                 gameWidth,
                 style: calculatedStyles,
+                offsetY: upperBracketHeight,
+                isLowerBracket: true,
               }}
             />
           )}

@@ -1,7 +1,7 @@
 import React from 'react';
-import { calculatePositionOfMatch } from '../utils';
+import { calculatePositionOfMatch } from './calculate-match-position';
 import MatchWrapper from '../match-wrapper';
-import Connectors from '../connectors';
+import Connectors from './connectors';
 
 const FinalGame = ({
   match,
@@ -22,9 +22,26 @@ const FinalGame = ({
     columnWidth,
     rowHeight,
   });
-
+  console.log(columns);
   return (
     <>
+      {columnIndex !== 0 && (
+        <Connectors
+          {...{
+            columns,
+            rowIndex,
+            columnIndex,
+            gameHeight,
+            gameWidth,
+            style: calculatedStyles,
+            bracketSnippet: {
+              previousTopMatch: columns[0][0],
+              previousBottomMatch: columns[0][1],
+              currentMatch: match,
+            },
+          }}
+        />
+      )}
       <g>
         <MatchWrapper
           x={x}

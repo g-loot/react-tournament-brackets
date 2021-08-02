@@ -1,9 +1,20 @@
 import React, { useContext } from 'react';
-import { matchContext } from './match-context';
-import { getCalculatedStyles } from './settings';
-import { calculatePositionOfMatch } from './utils';
+import { matchContext } from '../match-context';
+import { getCalculatedStyles } from '../settings';
+import {
+  calculatePositionOfMatch,
+  calculatePositionOfMatchLowerBracket,
+} from './calculate-match-position';
 
-const Connectors = ({ rowIndex, columnIndex, columns, style }) => {
+const Connectors = ({
+  rowIndex,
+  columnIndex,
+  columns,
+  style,
+  bracketSnippet = null,
+  offsetY = 0,
+  isLowerBracket = false,
+}) => {
   const {
     columnWidth,
     boxHeight,
@@ -17,28 +28,35 @@ const Connectors = ({ rowIndex, columnIndex, columns, style }) => {
     connectorColorHighlight,
   } = getCalculatedStyles(style);
 
-  const { x, y } = calculatePositionOfMatch(rowIndex, columnIndex, {
+  const isUpperSeedingRound = isLowerBracket && columnIndex % 2 !== 0;
+
+  const { x, y } = calculatePositionOfMatchLowerBracket(rowIndex, columnIndex, {
     canvasPadding,
     rowHeight,
     columnWidth,
+    offsetY,
   });
-  const previousBottomPosition = (rowIndex + 1) * 2 - 1;
-  const previousTopMatchPosition = calculatePositionOfMatch(
+  const previousBottomPosition = isUpperSeedingRound
+    ? rowIndex
+    : (rowIndex + 1) * 2 - 1;
+  const previousTopMatchPosition = calculatePositionOfMatchLowerBracket(
     previousBottomPosition - 1,
     columnIndex - 1,
     {
       canvasPadding,
       rowHeight,
       columnWidth,
+      offsetY,
     }
   );
-  const previousBottomMatchPosition = calculatePositionOfMatch(
+  const previousBottomMatchPosition = calculatePositionOfMatchLowerBracket(
     previousBottomPosition,
     columnIndex - 1,
     {
       canvasPadding,
       rowHeight,
       columnWidth,
+      offsetY,
     }
   );
 
@@ -72,9 +90,14 @@ const Connectors = ({ rowIndex, columnIndex, columns, style }) => {
   const {
     state: { hoveredPartyId },
   } = useContext(matchContext);
-  const previousTopMatch = columns[columnIndex - 1][previousBottomPosition - 1];
-  const previousBottomMatch = columns[columnIndex - 1][previousBottomPosition];
-  const currentMatch = columns[columnIndex][rowIndex];
+  const previousTopMatch =
+    bracketSnippet?.previousTopMatch ||
+    columns[columnIndex - 1][previousBottomPosition - 1];
+  const previousBottomMatch =
+    bracketSnippet?.previousBottomMatch ||
+    columns[columnIndex - 1][previousBottomPosition];
+  const currentMatch =
+    bracketSnippet?.currentMatch || columns[columnIndex][rowIndex];
 
   const topHighlighted =
     currentMatch.participants?.some(p => p.id === hoveredPartyId) &&
@@ -86,12 +109,15 @@ const Connectors = ({ rowIndex, columnIndex, columns, style }) => {
 
   return (
     <>
-      <path
-        d={pathInfo(-1).join(' ')}
-        id={`connector-${rowIndex}-${columnIndex}-${-1}`}
-        fill="transparent"
-        stroke={topHighlighted ? connectorColorHighlight : connectorColor}
-      />
+      {columnIndex % 2 !== 1 && (
+        <path
+          d={pathInfo(-1).join(' ')}
+          id={`connector-${rowIndex}-${columnIndex}-${-1}`}
+          fill="transparent"
+          stroke={topHighlighted ? connectorColorHighlight : connectorColor}
+        />
+      )}
+
       <path
         d={pathInfo(1).join(' ')}
         id={`connector-${rowIndex}-${columnIndex}-${1}`}

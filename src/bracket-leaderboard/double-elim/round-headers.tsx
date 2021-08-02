@@ -1,5 +1,5 @@
 import React from 'react';
-import { calculatePositionOfMatch } from '../utils';
+import { calculatePositionOfMatch } from './calculate-match-position';
 import RoundHeader from '../svg-components/round-header';
 
 const RoundHeaders = ({

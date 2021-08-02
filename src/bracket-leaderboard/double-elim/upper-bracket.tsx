@@ -1,8 +1,7 @@
 import React from 'react';
-import { calculatePositionOfMatch } from '../utils';
+import { calculatePositionOfMatch } from './calculate-match-position';
 import MatchWrapper from '../match-wrapper';
-import Connectors from '../connectors';
-import RoundHeader from '../svg-components/round-header';
+import Connectors from '../single-elim/connectors';
 
 const UpperBracket = ({
   columns,
@@ -13,7 +12,7 @@ const UpperBracket = ({
   onPartyClick,
   matchComponent,
 }) => {
-  const { canvasPadding, columnWidth, rowHeight, roundHeader, width } =
+  const { canvasPadding, columnWidth, rowHeight, roundHeader } =
     calculatedStyles;
   return columns.map((matchesColumn, columnIndex) =>
     matchesColumn.map((match, rowIndex) => {
