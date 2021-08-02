@@ -6,7 +6,7 @@ export default function RoundHeader({
   width,
   roundHeader,
   canvasPadding,
-  columns,
+  numOfRounds,
   tournamentRoundText,
   columnIndex,
 }) {
@@ -33,9 +33,9 @@ export default function RoundHeader({
         dominantBaseline="middle"
         textAnchor="middle"
       >
-        {columnIndex + 1 === columns.length && 'Final'}
-        {columnIndex + 1 === columns.length - 1 && 'Semi-final'}
-        {columnIndex + 1 < columns.length - 1 && `Round ${tournamentRoundText}`}
+        {columnIndex + 1 === numOfRounds && 'Final'}
+        {columnIndex + 1 === numOfRounds - 1 && 'Semi-final'}
+        {columnIndex + 1 < numOfRounds - 1 && `Round ${tournamentRoundText}`}
       </text>
     </g>
   );

@@ -118,7 +118,7 @@ const BracketLeaderboard = ({
                           roundHeader={roundHeader}
                           canvasPadding={canvasPadding}
                           width={width}
-                          columns={columns}
+                          numOfRounds={columns.length}
                           tournamentRoundText={match.tournamentRoundText}
                           columnIndex={columnIndex}
                         />

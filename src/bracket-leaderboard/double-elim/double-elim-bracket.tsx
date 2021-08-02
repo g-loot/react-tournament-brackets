@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { sortAlphanumerically } from 'Utils/string';
+import { generatePreviousRound } from '../shared/match-functions';
 import { calculateSVGDimensions } from '../shared/calculate-svg-dimensions';
 import { DoubleElimLeaderboardProps } from '../../types';
 import { defaultStyle, getCalculatedStyles } from '../settings';
@@ -11,6 +11,8 @@ import defaultTheme from '../themes';
 
 import UpperBracket from './upper-bracket';
 import LowerBracket from './lower-bracket';
+import RoundHeaders from './round-headers';
+import FinalGame from './final-game';
 
 const BracketLeaderboard = ({
   matches,
@@ -37,20 +39,17 @@ const BracketLeaderboard = ({
     },
   };
 
-  const { roundHeader, columnWidth, canvasPadding, rowHeight, width } =
-    getCalculatedStyles(style);
+  const calculatedStyles = getCalculatedStyles(style);
 
+  const { roundHeader, columnWidth, canvasPadding, rowHeight, width } =
+    calculatedStyles;
   const lastGame = matches.upper.find(match => !match.nextMatchId);
 
   const generateColumn = (matchesColumn, listOfMatches) => {
-    const previousMatchesColumn = matchesColumn.reduce((result, match) => {
-      return [
-        ...result,
-        ...listOfMatches
-          .filter(m => m.nextMatchId === match.id)
-          .sort((a, b) => sortAlphanumerically(a.name, b.name)),
-      ];
-    }, []);
+    const previousMatchesColumn = generatePreviousRound(
+      matchesColumn,
+      listOfMatches
+    );
 
     if (previousMatchesColumn.length > 0) {
       return [
@@ -62,7 +61,7 @@ const BracketLeaderboard = ({
   };
   const generate2DBracketArray = (final, listOfMatches) => {
     return final
-      ? [...generateColumn([final], listOfMatches), [final]].filter(
+      ? [...generateColumn([final], listOfMatches), []].filter(
           arr => arr.length > 0
         )
       : [];
@@ -97,8 +96,17 @@ const BracketLeaderboard = ({
     roundHeader,
     currentRound
   );
+  const fullBracketDimensions = calculateSVGDimensions(
+    lowerColumns[0].length,
+    lowerColumns.length + 1,
+    rowHeight,
+    columnWidth,
+    canvasPadding,
+    roundHeader,
+    currentRound
+  );
 
-  const { gameWidth } = lowerBracketDimensions;
+  const { gameWidth } = fullBracketDimensions;
   const gameHeight =
     upperBracketDimensions.gameHeight + lowerBracketDimensions.gameHeight;
   const { startPosition } = upperBracketDimensions;
@@ -117,17 +125,19 @@ const BracketLeaderboard = ({
         >
           <MatchContextProvider>
             <g>
+              <RoundHeaders
+                {...{
+                  numOfRounds: lowerColumns.length + 1,
+                  calculatedStyles,
+                }}
+              />
               <UpperBracket
                 {...{
                   columns: upperColumns,
-                  canvasPadding,
-                  columnWidth,
-                  rowHeight,
-                  roundHeader,
-                  width,
+                  calculatedStyles,
+
                   gameHeight,
                   gameWidth,
-                  style,
                   onMatchClick,
                   onPartyClick,
                   matchComponent,
@@ -136,18 +146,32 @@ const BracketLeaderboard = ({
               <LowerBracket
                 {...{
                   columns: lowerColumns,
-                  canvasPadding,
-                  columnWidth,
-                  rowHeight,
-                  roundHeader,
-                  width,
+                  calculatedStyles,
                   gameHeight,
                   gameWidth,
-                  style,
                   onMatchClick,
                   onPartyClick,
                   matchComponent,
                   upperBracketHeight: upperBracketDimensions.gameHeight,
+                }}
+              />
+              <FinalGame
+                {...{
+                  match: lastGame,
+                  columns: [
+                    generatePreviousRound(
+                      [lastGame],
+                      [matches.upper, ...matches.lower]
+                    ),
+                  ],
+                  calculatedStyles,
+                  columnIndex: lowerColumns.length,
+                  rowIndex: 0,
+                  gameHeight,
+                  gameWidth,
+                  matchComponent,
+                  onMatchClick,
+                  onPartyClick,
                 }}
               />
             </g>
