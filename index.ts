@@ -5,4 +5,4 @@ import {
 import { MATCH_STATES } from './src/bracket-leaderboard/match-states';
 import SVGViewer from './src/svg-viewer';
 
-export { BracketLeaderboard, DoulbeElimBracket, MATCH_STATES, SVGViewer };
+export { SingleElimBracket, DoulbeElimBracket, MATCH_STATES, SVGViewer };
