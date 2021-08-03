@@ -70,7 +70,7 @@ const BracketLeaderboard = ({
   //   [ 3rd column ]
   //   [ lastGame ]
   // ]
-  console.log(columns);
+
   const { gameWidth, gameHeight, startPosition } = calculateSVGDimensions(
     columns[0].length,
     columns.length,
