@@ -1,11 +1,10 @@
 import React from 'react';
-import { calculatePositionOfMatch } from './calculate-match-position';
+import { calculatePositionOfFinalGame } from './calculate-match-position';
 import MatchWrapper from '../match-wrapper';
-import Connectors from './connectors';
+import Connectors from './connector-final';
 
 const FinalGame = ({
   match,
-  columns,
   rowIndex,
   columnIndex,
   gameHeight,
@@ -14,25 +13,38 @@ const FinalGame = ({
   onMatchClick,
   onPartyClick,
   matchComponent,
+  columns,
+  numOfUpperRounds,
+  numOfLowerRounds,
+  upperBracketHeight,
+  lowerBracketHeight,
 }) => {
-  const { canvasPadding, columnWidth, rowHeight, roundHeader, width } =
+  const { canvasPadding, columnWidth, rowHeight, roundHeader } =
     calculatedStyles;
-  const { x, y } = calculatePositionOfMatch(rowIndex, columnIndex, {
+  const { x, y } = calculatePositionOfFinalGame(rowIndex, columnIndex, {
     canvasPadding,
     columnWidth,
     rowHeight,
+    gameHeight,
+    upperBracketHeight,
+    lowerBracketHeight,
   });
-  console.log(columns);
+
   return (
     <>
       {columnIndex !== 0 && (
         <Connectors
           {...{
+            numOfUpperRounds,
+            numOfLowerRounds,
             columns,
             rowIndex,
             columnIndex,
-            gameHeight,
             gameWidth,
+            gameHeight,
+            lowerBracketHeight,
+            upperBracketHeight,
+
             style: calculatedStyles,
             bracketSnippet: {
               previousTopMatch: columns[0][0],

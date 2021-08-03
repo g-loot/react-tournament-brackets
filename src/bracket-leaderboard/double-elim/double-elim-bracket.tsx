@@ -75,8 +75,6 @@ const BracketLeaderboard = ({
   //   [ 3rd column ]
   //   [ lastGame ]
   // ]
-  console.log('upperColumns: ', upperColumns);
-  console.log('lowerColumns: ', lowerColumns);
 
   const upperBracketDimensions = calculateSVGDimensions(
     upperColumns[0].length,
@@ -158,6 +156,8 @@ const BracketLeaderboard = ({
               <FinalGame
                 {...{
                   match: lastGame,
+                  numOfUpperRounds: upperColumns.length,
+                  numOfLowerRounds: lowerColumns.length,
                   columns: [
                     generatePreviousRound(
                       [lastGame],
@@ -165,6 +165,8 @@ const BracketLeaderboard = ({
                     ),
                     [lastGame],
                   ],
+                  upperBracketHeight: upperBracketDimensions.gameHeight,
+                  lowerBracketHeight: lowerBracketDimensions.gameHeight,
                   calculatedStyles,
                   columnIndex: lowerColumns.length,
                   rowIndex: 0,

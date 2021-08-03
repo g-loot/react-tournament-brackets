@@ -1,7 +1,7 @@
 import React from 'react';
-import { calculatePositionOfMatch } from './calculate-match-position';
+import { calculatePositionOfMatchUpperBracket } from './calculate-match-position';
 import MatchWrapper from '../match-wrapper';
-import Connectors from '../single-elim/connectors';
+import Connectors from './connectors';
 
 const UpperBracket = ({
   columns,
@@ -16,11 +16,15 @@ const UpperBracket = ({
     calculatedStyles;
   return columns.map((matchesColumn, columnIndex) =>
     matchesColumn.map((match, rowIndex) => {
-      const { x, y } = calculatePositionOfMatch(rowIndex, columnIndex, {
-        canvasPadding,
-        columnWidth,
-        rowHeight,
-      });
+      const { x, y } = calculatePositionOfMatchUpperBracket(
+        rowIndex,
+        columnIndex,
+        {
+          canvasPadding,
+          columnWidth,
+          rowHeight,
+        }
+      );
 
       return (
         <>

@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  calculatePositionOfMatch,
-  calculatePositionOfMatchLowerBracket,
-} from './calculate-match-position';
+import { calculatePositionOfMatchLowerBracket } from './calculate-match-position';
 import MatchWrapper from '../match-wrapper';
 import Connectors from './connectors';
 

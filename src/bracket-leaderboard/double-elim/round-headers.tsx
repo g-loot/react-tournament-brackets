@@ -1,5 +1,5 @@
 import React from 'react';
-import { calculatePositionOfMatch } from './calculate-match-position';
+import { calculatePositionOfMatchLowerBracket } from './calculate-match-position';
 import RoundHeader from '../svg-components/round-header';
 
 const RoundHeaders = ({
@@ -15,7 +15,7 @@ const RoundHeaders = ({
   return (
     <>
       {[...new Array(numOfRounds)].map((matchesColumn, columnIndex) => {
-        const { x } = calculatePositionOfMatch(0, columnIndex, {
+        const { x } = calculatePositionOfMatchLowerBracket(0, columnIndex, {
           canvasPadding,
           columnWidth,
           rowHeight,

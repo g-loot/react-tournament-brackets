@@ -4,16 +4,21 @@ import { getCalculatedStyles } from '../settings';
 import {
   calculatePositionOfMatchUpperBracket,
   calculatePositionOfMatchLowerBracket,
+  calculatePositionOfFinalGame,
 } from './calculate-match-position';
 
-const Connectors = ({
+const FinalConnectors = ({
   rowIndex,
   columnIndex,
   columns,
   style,
   bracketSnippet = null,
   offsetY = 0,
-  isLowerBracket = false,
+  numOfUpperRounds,
+  numOfLowerRounds,
+  lowerBracketHeight,
+  upperBracketHeight,
+  gameHeight,
 }) => {
   const {
     columnWidth,
@@ -29,22 +34,18 @@ const Connectors = ({
     width,
   } = getCalculatedStyles(style);
 
-  const isUpperSeedingRound = isLowerBracket && columnIndex % 2 !== 0;
-  const positioningFunction = isLowerBracket
-    ? calculatePositionOfMatchLowerBracket
-    : calculatePositionOfMatchUpperBracket;
-  const { x, y } = positioningFunction(rowIndex, columnIndex, {
+  const { x, y } = calculatePositionOfFinalGame(rowIndex, columnIndex, {
     canvasPadding,
     rowHeight,
     columnWidth,
     offsetY,
+    lowerBracketHeight,
+    upperBracketHeight,
+    gameHeight,
   });
-  const previousBottomPosition = isUpperSeedingRound
-    ? rowIndex
-    : (rowIndex + 1) * 2 - 1;
-  const previousTopMatchPosition = positioningFunction(
-    previousBottomPosition - 1,
-    columnIndex - 1,
+  const previousTopMatchPosition = calculatePositionOfMatchUpperBracket(
+    0,
+    numOfUpperRounds - 1, // numOfRounds is higher than index by 1 and we need 2nd to last index
     {
       canvasPadding,
       rowHeight,
@@ -52,14 +53,15 @@ const Connectors = ({
       offsetY,
     }
   );
-  const previousBottomMatchPosition = positioningFunction(
-    previousBottomPosition,
-    columnIndex - 1,
+
+  const previousBottomMatchPosition = calculatePositionOfMatchLowerBracket(
+    0,
+    numOfLowerRounds - 1, // numOfRounds is higher than index by 1 and we need 2nd to last index
     {
       canvasPadding,
       rowHeight,
       columnWidth,
-      offsetY,
+      offsetY: upperBracketHeight + offsetY,
     }
   );
 
@@ -87,7 +89,7 @@ const Connectors = ({
       `H${horizontalWidthRight}`,
     ];
   };
-
+  const previousBottomPosition = (rowIndex + 1) * 2 - 1;
   const {
     state: { hoveredPartyId },
   } = useContext(matchContext);
@@ -110,14 +112,12 @@ const Connectors = ({
 
   return (
     <>
-      {(!isLowerBracket || columnIndex % 2 !== 1) && (
-        <path
-          d={pathInfo(-1).join(' ')}
-          id={`connector-${rowIndex}-${columnIndex}-${-1}`}
-          fill="transparent"
-          stroke={topHighlighted ? connectorColorHighlight : connectorColor}
-        />
-      )}
+      <path
+        d={pathInfo(-1).join(' ')}
+        id={`connector-${rowIndex}-${columnIndex}-${-1}`}
+        fill="transparent"
+        stroke={topHighlighted ? connectorColorHighlight : connectorColor}
+      />
 
       <path
         d={pathInfo(1).join(' ')}
@@ -136,4 +136,4 @@ const Connectors = ({
   );
 };
 
-export default Connectors;
+export default FinalConnectors;

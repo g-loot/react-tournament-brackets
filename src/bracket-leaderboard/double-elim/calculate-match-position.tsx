@@ -1,5 +1,3 @@
-import { returnEven, returnOdd } from '../utils';
-
 export const calculateVerticalStartingPoint = (columnIndex, height) =>
   2 ** columnIndex * (height / 2) - height / 2;
 
@@ -20,20 +18,50 @@ export const calculateVerticalPositioning = ({
   );
 };
 
-export const calculatePositionOfMatch = (
+export const calculatePositionOfFinalGame = (
+  rowIndex,
+  columnIndex,
+  {
+    canvasPadding,
+    rowHeight,
+    columnWidth,
+    gameHeight,
+    upperBracketHeight,
+    lowerBracketHeight,
+
+    offsetX = 0,
+    offsetY = 0,
+  }
+) => {
+  const yResult = gameHeight * (lowerBracketHeight / upperBracketHeight);
+
+  return {
+    x: columnIndex * columnWidth + canvasPadding + offsetX,
+    y: yResult + canvasPadding + offsetY,
+  };
+};
+
+export const calculatePositionOfMatchUpperBracket = (
   rowIndex,
   columnIndex,
   { canvasPadding, rowHeight, columnWidth, offsetX = 0, offsetY = 0 }
 ) => {
-  const result = calculateVerticalPositioning({
+  const yResult = calculateVerticalPositioning({
     rowHeight,
     rowIndex,
     columnIndex,
   });
 
+  const skipStep = index => Math.floor((index + 1) * 2) - 3;
+
+  const xResult =
+    columnIndex === 0 || columnIndex === 1
+      ? columnIndex * columnWidth
+      : skipStep(columnIndex) * columnWidth;
+
   return {
-    x: columnIndex * columnWidth + canvasPadding + offsetX,
-    y: result + canvasPadding + offsetY,
+    x: xResult + canvasPadding + offsetX,
+    y: yResult + canvasPadding + offsetY,
   };
 };
 
