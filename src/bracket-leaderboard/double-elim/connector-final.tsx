@@ -10,7 +10,7 @@ import {
 const FinalConnectors = ({
   rowIndex,
   columnIndex,
-  columns,
+
   style,
   bracketSnippet = null,
   offsetY = 0,
@@ -89,18 +89,15 @@ const FinalConnectors = ({
       `H${horizontalWidthRight}`,
     ];
   };
-  const previousBottomPosition = (rowIndex + 1) * 2 - 1;
+
   const {
     state: { hoveredPartyId },
   } = useContext(matchContext);
-  const previousTopMatch =
-    bracketSnippet?.previousTopMatch ||
-    columns[columnIndex - 1][previousBottomPosition - 1];
-  const previousBottomMatch =
-    bracketSnippet?.previousBottomMatch ||
-    columns[columnIndex - 1][previousBottomPosition];
-  const currentMatch =
-    bracketSnippet?.currentMatch || columns[columnIndex][rowIndex];
+  const previousTopMatch = bracketSnippet?.previousTopMatch;
+
+  const previousBottomMatch = bracketSnippet?.previousBottomMatch;
+
+  const currentMatch = bracketSnippet?.currentMatch;
 
   const topHighlighted =
     currentMatch.participants?.some(p => p.id === hoveredPartyId) &&

@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import DoubleElimBracketLeaderboard from './double-elim-bracket';
 import SvgViewer from '../../svg-viewer';
 import Match from '../match/index';
+import { simpleDoubleFull } from '../mock-data/simple-double-full';
 import { simpleDouble } from '../mock-data/simple-data-double';
 
 export default {
@@ -21,6 +22,25 @@ const StyledSvgViewer = styled(SvgViewer).attrs(props => {
 })``;
 
 export const DoubleElimination = () => {
+  const [width, height] = useWindowSize();
+  const finalWidth = Math.max(width - 50, 500);
+  const finalHeight = Math.max(height - 100, 500);
+  return (
+    <>
+      <DoubleElimBracketLeaderboard
+        matches={simpleDoubleFull}
+        matchComponent={Match}
+        svgWrapper={({ children, ...props }) => (
+          <StyledSvgViewer width={finalWidth} height={finalHeight} {...props}>
+            {children}
+          </StyledSvgViewer>
+        )}
+      />
+    </>
+  );
+};
+
+export const DoubleEliminationBig = () => {
   const [width, height] = useWindowSize();
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);

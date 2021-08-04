@@ -100,13 +100,14 @@ const Connectors = ({
   const currentMatch =
     bracketSnippet?.currentMatch || columns[columnIndex][rowIndex];
 
+  console.log(currentMatch.participants);
   const topHighlighted =
-    currentMatch.participants?.some(p => p.id === hoveredPartyId) &&
-    previousTopMatch.participants?.some(p => p.id === hoveredPartyId);
+    currentMatch?.participants?.some(p => p.id === hoveredPartyId) &&
+    previousTopMatch?.participants?.some(p => p.id === hoveredPartyId);
 
   const bottomHighlighted =
-    currentMatch.participants?.some(p => p.id === hoveredPartyId) &&
-    previousBottomMatch.participants?.some(p => p.id === hoveredPartyId);
+    currentMatch?.participants?.some(p => p.id === hoveredPartyId) &&
+    previousBottomMatch?.participants?.some(p => p.id === hoveredPartyId);
 
   return (
     <>

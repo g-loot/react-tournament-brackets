@@ -5,7 +5,7 @@ export const walkOverData = [
     nextMatchId: null,
     nextLooserMatchId: null,
     tournamentRoundText: '4',
-    startTime: '2021-05-28T09:45:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCHEDULED',
     participants: [
       {
@@ -30,7 +30,7 @@ export const walkOverData = [
     nextMatchId: 260005,
     nextLooserMatchId: null,
     tournamentRoundText: '3',
-    startTime: '2021-05-28T09:30:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -55,7 +55,7 @@ export const walkOverData = [
     nextMatchId: 260005,
     nextLooserMatchId: null,
     tournamentRoundText: '3',
-    startTime: '2021-05-28T09:30:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -79,7 +79,7 @@ export const walkOverData = [
     nextMatchId: 260006,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-28T09:15:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -103,7 +103,7 @@ export const walkOverData = [
     nextMatchId: 260006,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-28T09:15:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -127,7 +127,7 @@ export const walkOverData = [
     nextMatchId: 260013,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-28T09:15:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -151,7 +151,7 @@ export const walkOverData = [
     nextMatchId: 260013,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-28T09:15:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -209,7 +209,7 @@ export const walkOverData = [
     nextMatchId: 260007,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-28T09:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -320,7 +320,7 @@ export const simpleSmallBracket = [
     id: 19753,
     nextMatchId: null,
     tournamentRoundText: '3',
-    startTime: '2021-03-02T23:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCHEDULED',
     participants: [],
   },
@@ -328,7 +328,7 @@ export const simpleSmallBracket = [
     id: 19754,
     nextMatchId: 19753,
     tournamentRoundText: '2',
-    startTime: '2021-03-01T23:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCHEDULED',
     participants: [
       {
@@ -345,7 +345,7 @@ export const simpleSmallBracket = [
     id: 19755,
     nextMatchId: 19754,
     tournamentRoundText: '1',
-    startTime: '2021-02-28T23:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -370,7 +370,7 @@ export const simpleSmallBracket = [
     id: 19756,
     nextMatchId: 19754,
     tournamentRoundText: '1',
-    startTime: '2021-03-01T00:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'RUNNING',
     participants: [
       {
@@ -387,7 +387,7 @@ export const simpleSmallBracket = [
     id: 19757,
     nextMatchId: 19753,
     tournamentRoundText: '2',
-    startTime: '2021-03-02T00:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCHEDULED',
     participants: [],
   },
@@ -395,7 +395,7 @@ export const simpleSmallBracket = [
     id: 19758,
     nextMatchId: 19757,
     tournamentRoundText: '1',
-    startTime: '2021-03-01T00:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCHEDULED',
     participants: [
       {
@@ -412,7 +412,7 @@ export const simpleSmallBracket = [
     id: 19759,
     nextMatchId: 19757,
     tournamentRoundText: '1',
-    startTime: '2021-03-01T01:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCHEDULED',
     participants: [
       {
@@ -442,7 +442,7 @@ export const simpleBracket = [
     nextMatchId: null,
     nextLooserMatchId: null,
     tournamentRoundText: '6',
-    startTime: '2021-05-29T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'DONE',
     participants: [
       {
@@ -461,7 +461,7 @@ export const simpleBracket = [
     nextMatchId: 19874,
     nextLooserMatchId: null,
     tournamentRoundText: '5',
-    startTime: '2021-05-28T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCHEDULED',
     participants: [
       {
@@ -480,7 +480,7 @@ export const simpleBracket = [
     nextMatchId: 19874,
     nextLooserMatchId: null,
     tournamentRoundText: '5',
-    startTime: '2021-05-28T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -507,7 +507,7 @@ export const simpleBracket = [
     nextMatchId: 19875,
     nextLooserMatchId: null,
     tournamentRoundText: '4',
-    startTime: '2021-05-27T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'DONE',
     participants: [
       {
@@ -526,7 +526,7 @@ export const simpleBracket = [
     nextMatchId: 19875,
     nextLooserMatchId: null,
     tournamentRoundText: '4',
-    startTime: '2021-05-27T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -553,7 +553,7 @@ export const simpleBracket = [
     nextMatchId: 19906,
     nextLooserMatchId: null,
     tournamentRoundText: '4',
-    startTime: '2021-05-27T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -580,7 +580,7 @@ export const simpleBracket = [
     nextMatchId: 19906,
     nextLooserMatchId: null,
     tournamentRoundText: '4',
-    startTime: '2021-05-27T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -607,7 +607,7 @@ export const simpleBracket = [
     nextMatchId: 19876,
     nextLooserMatchId: null,
     tournamentRoundText: '3',
-    startTime: '2021-05-26T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'DONE',
     participants: [
       {
@@ -626,7 +626,7 @@ export const simpleBracket = [
     nextMatchId: 19876,
     nextLooserMatchId: null,
     tournamentRoundText: '3',
-    startTime: '2021-05-26T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -653,7 +653,7 @@ export const simpleBracket = [
     nextMatchId: 19891,
     nextLooserMatchId: null,
     tournamentRoundText: '3',
-    startTime: '2021-05-26T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -680,7 +680,7 @@ export const simpleBracket = [
     nextMatchId: 19891,
     nextLooserMatchId: null,
     tournamentRoundText: '3',
-    startTime: '2021-05-26T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -707,7 +707,7 @@ export const simpleBracket = [
     nextMatchId: 19907,
     nextLooserMatchId: null,
     tournamentRoundText: '3',
-    startTime: '2021-05-26T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -734,7 +734,7 @@ export const simpleBracket = [
     nextMatchId: 19907,
     nextLooserMatchId: null,
     tournamentRoundText: '3',
-    startTime: '2021-05-26T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -761,7 +761,7 @@ export const simpleBracket = [
     nextMatchId: 19922,
     nextLooserMatchId: null,
     tournamentRoundText: '3',
-    startTime: '2021-05-26T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -788,7 +788,7 @@ export const simpleBracket = [
     nextMatchId: 19922,
     nextLooserMatchId: null,
     tournamentRoundText: '3',
-    startTime: '2021-05-26T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -815,7 +815,7 @@ export const simpleBracket = [
     nextMatchId: 19877,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-25T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'DONE',
     participants: [
       {
@@ -842,7 +842,7 @@ export const simpleBracket = [
     nextMatchId: 19877,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-25T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -869,7 +869,7 @@ export const simpleBracket = [
     nextMatchId: 19884,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-25T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -896,7 +896,7 @@ export const simpleBracket = [
     nextMatchId: 19884,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-25T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -923,7 +923,7 @@ export const simpleBracket = [
     nextMatchId: 19892,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-25T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -950,7 +950,7 @@ export const simpleBracket = [
     nextMatchId: 19892,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-25T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -977,7 +977,7 @@ export const simpleBracket = [
     nextMatchId: 19899,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-25T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1004,7 +1004,7 @@ export const simpleBracket = [
     nextMatchId: 19899,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-25T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1031,7 +1031,7 @@ export const simpleBracket = [
     nextMatchId: 19908,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-25T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1058,7 +1058,7 @@ export const simpleBracket = [
     nextMatchId: 19908,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-25T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1085,7 +1085,7 @@ export const simpleBracket = [
     nextMatchId: 19915,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-25T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1112,7 +1112,7 @@ export const simpleBracket = [
     nextMatchId: 19915,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-25T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1139,7 +1139,7 @@ export const simpleBracket = [
     nextMatchId: 19923,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-25T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1166,7 +1166,7 @@ export const simpleBracket = [
     nextMatchId: 19923,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-25T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1193,7 +1193,7 @@ export const simpleBracket = [
     nextMatchId: 19930,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-25T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1220,7 +1220,7 @@ export const simpleBracket = [
     nextMatchId: 19930,
     nextLooserMatchId: null,
     tournamentRoundText: '2',
-    startTime: '2021-05-25T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1247,7 +1247,7 @@ export const simpleBracket = [
     nextMatchId: 19878,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1274,7 +1274,7 @@ export const simpleBracket = [
     nextMatchId: 19878,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1301,7 +1301,7 @@ export const simpleBracket = [
     nextMatchId: 19881,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1328,7 +1328,7 @@ export const simpleBracket = [
     nextMatchId: 19881,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1355,7 +1355,7 @@ export const simpleBracket = [
     nextMatchId: 19885,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1382,7 +1382,7 @@ export const simpleBracket = [
     nextMatchId: 19885,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1409,7 +1409,7 @@ export const simpleBracket = [
     nextMatchId: 19888,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1436,7 +1436,7 @@ export const simpleBracket = [
     nextMatchId: 19888,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1463,7 +1463,7 @@ export const simpleBracket = [
     nextMatchId: 19893,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1490,7 +1490,7 @@ export const simpleBracket = [
     nextMatchId: 19893,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1517,7 +1517,7 @@ export const simpleBracket = [
     nextMatchId: 19896,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1544,7 +1544,7 @@ export const simpleBracket = [
     nextMatchId: 19896,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1571,7 +1571,7 @@ export const simpleBracket = [
     nextMatchId: 19900,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1598,7 +1598,7 @@ export const simpleBracket = [
     nextMatchId: 19900,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1625,7 +1625,7 @@ export const simpleBracket = [
     nextMatchId: 19903,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1652,7 +1652,7 @@ export const simpleBracket = [
     nextMatchId: 19903,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1679,7 +1679,7 @@ export const simpleBracket = [
     nextMatchId: 19909,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1706,7 +1706,7 @@ export const simpleBracket = [
     nextMatchId: 19909,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1733,7 +1733,7 @@ export const simpleBracket = [
     nextMatchId: 19912,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1760,7 +1760,7 @@ export const simpleBracket = [
     nextMatchId: 19912,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1787,7 +1787,7 @@ export const simpleBracket = [
     nextMatchId: 19916,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1814,7 +1814,7 @@ export const simpleBracket = [
     nextMatchId: 19916,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1841,7 +1841,7 @@ export const simpleBracket = [
     nextMatchId: 19919,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1868,7 +1868,7 @@ export const simpleBracket = [
     nextMatchId: 19919,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1895,7 +1895,7 @@ export const simpleBracket = [
     nextMatchId: 19924,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1922,7 +1922,7 @@ export const simpleBracket = [
     nextMatchId: 19924,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'DONE',
     participants: [
       {
@@ -1949,7 +1949,7 @@ export const simpleBracket = [
     nextMatchId: 19927,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -1976,7 +1976,7 @@ export const simpleBracket = [
     nextMatchId: 19927,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -2003,7 +2003,7 @@ export const simpleBracket = [
     nextMatchId: 19931,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -2030,7 +2030,7 @@ export const simpleBracket = [
     nextMatchId: 19931,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -2057,7 +2057,7 @@ export const simpleBracket = [
     nextMatchId: 19934,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {
@@ -2084,7 +2084,7 @@ export const simpleBracket = [
     nextMatchId: 19934,
     nextLooserMatchId: null,
     tournamentRoundText: '1',
-    startTime: '2021-05-24T22:00:00.000+0000',
+    startTime: '2021-05-30',
     state: 'SCORE_DONE',
     participants: [
       {

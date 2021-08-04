@@ -1,4 +1,4 @@
-import SingleElimBracket from './single-elim/single-elim-bracket.tsx';
-import DoulbeElimBracket from './double-elim/double-elim-bracket.tsx';
+import SingleEliminationBracket from './single-elim/single-elim-bracket.tsx';
+import DoulbeEliminationBracket from './double-elim/double-elim-bracket.tsx';
 
-export { SingleElimBracket, DoulbeElimBracket };
+export { SingleEliminationBracket, DoulbeEliminationBracket };

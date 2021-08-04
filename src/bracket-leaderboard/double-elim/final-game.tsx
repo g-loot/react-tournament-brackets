@@ -13,7 +13,8 @@ const FinalGame = ({
   onMatchClick,
   onPartyClick,
   matchComponent,
-  columns,
+
+  bracketSnippet,
   numOfUpperRounds,
   numOfLowerRounds,
   upperBracketHeight,
@@ -37,20 +38,14 @@ const FinalGame = ({
           {...{
             numOfUpperRounds,
             numOfLowerRounds,
-            columns,
             rowIndex,
             columnIndex,
             gameWidth,
             gameHeight,
             lowerBracketHeight,
             upperBracketHeight,
-
             style: calculatedStyles,
-            bracketSnippet: {
-              previousTopMatch: columns[0][0],
-              previousBottomMatch: columns[0][1],
-              currentMatch: match,
-            },
+            bracketSnippet,
           }}
         />
       )}

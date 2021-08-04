@@ -14,7 +14,7 @@ import LowerBracket from './lower-bracket';
 import RoundHeaders from './round-headers';
 import FinalGame from './final-game';
 
-const BracketLeaderboard = ({
+const DoubleEliminationBracket = ({
   matches,
   matchComponent,
   currentRound,
@@ -158,13 +158,12 @@ const BracketLeaderboard = ({
                   match: lastGame,
                   numOfUpperRounds: upperColumns.length,
                   numOfLowerRounds: lowerColumns.length,
-                  columns: [
-                    generatePreviousRound(
-                      [lastGame],
-                      [...matches.upper, ...matches.lower]
-                    ),
-                    [lastGame],
-                  ],
+                  bracketSnippet: {
+                    previousTopMatch: upperColumns[upperColumns.length - 1][0],
+                    previousBottomMatch:
+                      lowerColumns[lowerColumns.length - 1][0],
+                    currentMatch: lastGame,
+                  },
                   upperBracketHeight: upperBracketDimensions.gameHeight,
                   lowerBracketHeight: lowerBracketDimensions.gameHeight,
                   calculatedStyles,
@@ -185,4 +184,4 @@ const BracketLeaderboard = ({
   );
 };
 
-export default BracketLeaderboard;
+export default DoubleEliminationBracket;

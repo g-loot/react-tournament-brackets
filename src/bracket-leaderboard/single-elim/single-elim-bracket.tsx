@@ -13,7 +13,7 @@ import defaultTheme from '../themes';
 
 import RoundHeader from '../svg-components/round-header';
 
-const BracketLeaderboard = ({
+const SingleEliminationBracket = ({
   matches,
   matchComponent,
   currentRound,
@@ -165,4 +165,4 @@ const BracketLeaderboard = ({
   );
 };
 
-export default BracketLeaderboard;
+export default SingleEliminationBracket;
