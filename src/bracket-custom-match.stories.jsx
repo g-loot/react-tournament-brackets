@@ -1,10 +1,8 @@
 import React from 'react';
 import useWindowSize from 'Hooks/use-window-size';
-import BracketLeaderboard from './index';
-import SvgViewer from '../svg-viewer';
+import BracketLeaderboard from './bracket-single/single-elim-bracket';
+import SvgViewer from './svg-viewer';
 import { simpleSmallBracket } from './mock-data/simple-data';
-import { createTheme } from './themes/themes';
-import Match from './match/index';
 
 export default {
   title: 'Components/Custom',
