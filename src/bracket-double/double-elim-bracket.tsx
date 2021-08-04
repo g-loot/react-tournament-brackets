@@ -7,7 +7,7 @@ import { MatchContextProvider } from 'Core/match-context';
 import { DoubleElimLeaderboardProps } from '../types';
 import { defaultStyle, getCalculatedStyles } from '../settings';
 
-import defaultTheme from '../themes';
+import defaultTheme from '../themes/themes';
 
 import UpperBracket from './upper-bracket';
 import LowerBracket from './lower-bracket';
