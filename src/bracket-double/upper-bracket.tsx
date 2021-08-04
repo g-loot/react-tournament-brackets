@@ -1,9 +1,9 @@
 import React from 'react';
-import { calculatePositionOfMatchLowerBracket } from './calculate-match-position';
-import MatchWrapper from '../match-wrapper';
+import MatchWrapper from 'Core/match-wrapper';
+import { calculatePositionOfMatchUpperBracket } from './calculate-match-position';
 import Connectors from './connectors';
 
-const LowerBracket = ({
+const UpperBracket = ({
   columns,
   calculatedStyles,
   gameHeight,
@@ -11,20 +11,18 @@ const LowerBracket = ({
   onMatchClick,
   onPartyClick,
   matchComponent,
-  upperBracketHeight,
 }) => {
   const { canvasPadding, columnWidth, rowHeight, roundHeader } =
     calculatedStyles;
   return columns.map((matchesColumn, columnIndex) =>
     matchesColumn.map((match, rowIndex) => {
-      const { x, y } = calculatePositionOfMatchLowerBracket(
+      const { x, y } = calculatePositionOfMatchUpperBracket(
         rowIndex,
         columnIndex,
         {
           canvasPadding,
           columnWidth,
           rowHeight,
-          offsetY: upperBracketHeight,
         }
       );
 
@@ -39,8 +37,6 @@ const LowerBracket = ({
                 gameHeight,
                 gameWidth,
                 style: calculatedStyles,
-                offsetY: upperBracketHeight,
-                isLowerBracket: true,
               }}
             />
           )}
@@ -70,4 +66,4 @@ const LowerBracket = ({
     })
   );
 };
-export default LowerBracket;
+export default UpperBracket;

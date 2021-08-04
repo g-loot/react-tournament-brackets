@@ -1,17 +1,16 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { sortAlphanumerically } from 'Utils/string';
-import { calculateSVGDimensions } from '../shared/calculate-svg-dimensions';
-import { SingleElimLeaderboardProps } from '../../types';
+import { calculateSVGDimensions } from 'Core/calculate-svg-dimensions';
+import { MatchContextProvider } from 'Core/match-context';
+import MatchWrapper from 'Core/match-wrapper';
+import RoundHeader from 'Components/round-header';
+import { SingleElimLeaderboardProps } from '../types';
 import { defaultStyle, getCalculatedStyles } from '../settings';
 import { calculatePositionOfMatch } from './calculate-match-position';
 
-import { MatchContextProvider } from '../match-context';
-import MatchWrapper from '../match-wrapper';
 import Connectors from './connectors';
 import defaultTheme from '../themes';
-
-import RoundHeader from '../svg-components/round-header';
 
 const SingleEliminationBracket = ({
   matches,

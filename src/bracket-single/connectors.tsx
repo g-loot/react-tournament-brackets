@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { matchContext } from '../match-context';
+import { matchContext } from 'Core/match-context';
 import { getCalculatedStyles } from '../settings';
 import { calculatePositionOfMatch } from './calculate-match-position';
 

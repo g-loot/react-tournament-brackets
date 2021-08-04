@@ -1,11 +1,11 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { generatePreviousRound } from '../shared/match-functions';
-import { calculateSVGDimensions } from '../shared/calculate-svg-dimensions';
-import { DoubleElimLeaderboardProps } from '../../types';
-import { defaultStyle, getCalculatedStyles } from '../settings';
+import { generatePreviousRound } from 'Core/match-functions';
+import { calculateSVGDimensions } from 'Core/calculate-svg-dimensions';
+import { MatchContextProvider } from 'Core/match-context';
 
-import { MatchContextProvider } from '../match-context';
+import { DoubleElimLeaderboardProps } from '../types';
+import { defaultStyle, getCalculatedStyles } from '../settings';
 
 import defaultTheme from '../themes';
 
