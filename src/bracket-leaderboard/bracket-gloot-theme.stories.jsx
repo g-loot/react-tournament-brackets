@@ -4,14 +4,14 @@ import BracketLeaderboard from './index';
 import SvgViewer from '../svg-viewer';
 import { simpleSmallBracket } from './mock-data/simple-data';
 import Match from './match/index';
-import WhiteTheme from './themes/white-theme';
+import GlootTheme from './themes/gloot-theme';
 
 export default {
   title: 'Components/Themes',
   component: BracketLeaderboard,
 };
 
-export const WhiteThemeBracket = () => {
+export const GlootThemeBracket = () => {
   const [width, height] = useWindowSize();
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);
@@ -20,21 +20,21 @@ export const WhiteThemeBracket = () => {
     <BracketLeaderboard
       matches={simpleSmallBracket}
       matchComponent={Match}
-      theme={WhiteTheme}
+      theme={GlootTheme}
       options={{
         style: {
           roundHeader: {
-            backgroundColor: WhiteTheme.roundHeader.backgroundColor,
-            fontColor: WhiteTheme.roundHeader.fontColor,
+            backgroundColor: GlootTheme.roundHeader.backgroundColor,
+            fontColor: GlootTheme.roundHeader.fontColor,
           },
-          connectorColor: WhiteTheme.connectorColor,
-          connectorColorHighlight: WhiteTheme.connectorColorHighlight,
+          connectorColor: GlootTheme.connectorColor,
+          connectorColorHighlight: GlootTheme.connectorColorHighlight,
         },
       }}
       svgWrapper={({ children, ...props }) => (
         <SvgViewer
-          background={WhiteTheme.svgBackground}
-          SVGBackground={WhiteTheme.svgBackground}
+          background={GlootTheme.svgBackground}
+          SVGBackground={GlootTheme.svgBackground}
           width={finalWidth}
           height={finalHeight}
           {...props}

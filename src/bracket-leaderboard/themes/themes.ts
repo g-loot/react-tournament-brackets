@@ -1,5 +1,5 @@
 import merge from 'deepmerge';
-import { Theme } from '../types';
+import { Theme } from '../../types';
 
 const defaultTheme: Theme = {
   fontFamily: '"Roboto", "Arial", "Helvetica", "sans-serif"',
