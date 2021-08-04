@@ -8,8 +8,7 @@ import { calculatePositionOfMatch } from './utils';
 import { MatchContextProvider } from './match-context';
 import MatchWrapper from './match-wrapper';
 import Connectors from './connectors';
-import defaultTheme from './themes';
-
+import defaultTheme from './themes/themes';
 import RoundHeader from './svg-components/round-header';
 
 const BracketLeaderboard = ({
