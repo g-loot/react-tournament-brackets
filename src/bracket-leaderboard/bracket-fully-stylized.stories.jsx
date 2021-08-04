@@ -1,6 +1,6 @@
 import React from 'react';
 import useWindowSize from 'Hooks/use-window-size';
-import BracketLeaderboard from './index';
+import SingleEliminationBracket from './single-elim/single-elim-bracket';
 import SvgViewer from '../svg-viewer';
 import { simpleSmallBracket } from './mock-data/simple-data';
 import Match from './match/index';
@@ -8,7 +8,7 @@ import WhiteTheme from './themes/white-theme';
 
 export default {
   title: 'Components/Themes',
-  component: BracketLeaderboard,
+  component: SingleEliminationBracket,
 };
 
 export const WhiteThemeBracket = () => {
@@ -17,7 +17,7 @@ export const WhiteThemeBracket = () => {
   const finalHeight = Math.max(height - 100, 500);
 
   return (
-    <BracketLeaderboard
+    <SingleEliminationBracket
       matches={simpleSmallBracket}
       matchComponent={Match}
       theme={WhiteTheme}

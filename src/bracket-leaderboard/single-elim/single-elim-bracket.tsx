@@ -1,17 +1,18 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { sortAlphanumerically } from 'Utils/string';
-import { BracketLeaderboardProps } from '../types';
-import { defaultStyle, getCalculatedStyles } from './settings';
-import { calculatePositionOfMatch } from './utils';
+import { calculateSVGDimensions } from '../shared/calculate-svg-dimensions';
+import { SingleElimLeaderboardProps } from '../../types';
+import { defaultStyle, getCalculatedStyles } from '../settings';
+import { calculatePositionOfMatch } from './calculate-match-position';
 
-import { MatchContextProvider } from './match-context';
-import MatchWrapper from './match-wrapper';
+import { MatchContextProvider } from '../match-context';
+import MatchWrapper from '../match-wrapper';
 import Connectors from './connectors';
-import defaultTheme from './themes/themes';
-import RoundHeader from './svg-components/round-header';
+import defaultTheme from '../themes/themes';
+import RoundHeader from '../svg-components/round-header';
 
-const BracketLeaderboard = ({
+const SingleEliminationBracket = ({
   matches,
   matchComponent,
   currentRound,
@@ -22,7 +23,7 @@ const BracketLeaderboard = ({
   options: { style: inputStyle } = {
     style: defaultStyle,
   },
-}: BracketLeaderboardProps) => {
+}: SingleElimLeaderboardProps) => {
   const style = {
     ...defaultStyle,
     ...inputStyle,
@@ -69,20 +70,15 @@ const BracketLeaderboard = ({
   //   [ lastGame ]
   // ]
 
-  const bracketHeight = columns[0].length * rowHeight;
-  const bracketWidth = columns.length * columnWidth;
-
-  const gameHeight =
-    bracketHeight +
-    canvasPadding * 2 +
-    (roundHeader.isShown ? roundHeader.height + roundHeader.marginBottom : 0);
-  const gameWidth = bracketWidth + canvasPadding * 2;
-  const startPosition = [
+  const { gameWidth, gameHeight, startPosition } = calculateSVGDimensions(
+    columns[0].length,
+    columns.length,
+    rowHeight,
+    columnWidth,
+    canvasPadding,
+    roundHeader,
     currentRound
-      ? -(parseInt(currentRound, 10) * columnWidth - canvasPadding * 2)
-      : 0, // Go to the current round on mount
-    0,
-  ];
+  );
 
   return (
     <ThemeProvider theme={theme}>
@@ -118,7 +114,7 @@ const BracketLeaderboard = ({
                           roundHeader={roundHeader}
                           canvasPadding={canvasPadding}
                           width={width}
-                          columns={columns}
+                          numOfRounds={columns.length}
                           tournamentRoundText={match.tournamentRoundText}
                           columnIndex={columnIndex}
                         />
@@ -168,4 +164,4 @@ const BracketLeaderboard = ({
   );
 };
 
-export default BracketLeaderboard;
+export default SingleEliminationBracket;

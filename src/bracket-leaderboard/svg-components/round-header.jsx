@@ -1,33 +1,41 @@
 import React from 'react';
 
-export default function RoundHeader(props) {
+export default function RoundHeader({
+  x,
+  y = 0,
+  width,
+  roundHeader,
+  canvasPadding,
+  numOfRounds,
+  tournamentRoundText,
+  columnIndex,
+}) {
   return (
     <g>
       <rect
-        x={props.x}
-        y={props.canvasPadding}
-        width={props.width}
-        height={props.roundHeader.height}
-        fill={props.roundHeader.backgroundColor}
+        x={x}
+        y={y + canvasPadding}
+        width={width}
+        height={roundHeader.height}
+        fill={roundHeader.backgroundColor}
         rx="3"
         ry="3"
       />
       <text
-        fontFamily={props.roundHeader.fontFamily}
-        x={props.x + props.width / 2}
-        y={props.canvasPadding + props.roundHeader.height / 2}
+        fontFamily={roundHeader.fontFamily}
+        x={x + width / 2}
+        y={y + canvasPadding + roundHeader.height / 2}
         style={{
-          fontSize: `${props.roundHeader.fontSize}px`,
-          color: props.roundHeader.fontColor,
+          fontSize: `${roundHeader.fontSize}px`,
+          color: roundHeader.fontColor,
         }}
         fill="currentColor"
         dominantBaseline="middle"
         textAnchor="middle"
       >
-        {props.columnIndex + 1 === props.columns.length && 'Final'}
-        {props.columnIndex + 1 === props.columns.length - 1 && 'Semi-final'}
-        {props.columnIndex + 1 < props.columns.length - 1 &&
-          `Round ${props.tournamentRoundText}`}
+        {columnIndex + 1 === numOfRounds && 'Final'}
+        {columnIndex + 1 === numOfRounds - 1 && 'Semi-final'}
+        {columnIndex + 1 < numOfRounds - 1 && `Round ${tournamentRoundText}`}
       </text>
     </g>
   );

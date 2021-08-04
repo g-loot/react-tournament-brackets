@@ -170,8 +170,6 @@ export class Theme {
 }
 
 export class BracketLeaderboardProps {
-  matches: Match[];
-
   matchComponent: (props: MatchComponentProps) => JSX.Element;
 
   currentRound: string;
@@ -194,4 +192,11 @@ export class BracketLeaderboardProps {
   theme: Theme;
 
   options: { style: Options };
+}
+
+export class SingleElimLeaderboardProps extends BracketLeaderboardProps {
+  matches: Match[];
+}
+export class DoubleElimLeaderboardProps extends BracketLeaderboardProps {
+  matches: { upper: Match[]; lower: Match[] };
 }

@@ -1,9 +1,20 @@
 import React, { useContext } from 'react';
-import { matchContext } from './match-context';
-import { getCalculatedStyles } from './settings';
-import { calculatePositionOfMatch } from './utils';
+import { matchContext } from '../match-context';
+import { getCalculatedStyles } from '../settings';
+import {
+  calculatePositionOfMatchUpperBracket,
+  calculatePositionOfMatchLowerBracket,
+} from './calculate-match-position';
 
-const Connectors = ({ rowIndex, columnIndex, columns, style }) => {
+const Connectors = ({
+  rowIndex,
+  columnIndex,
+  columns,
+  style,
+  bracketSnippet = null,
+  offsetY = 0,
+  isLowerBracket = false,
+}) => {
   const {
     columnWidth,
     boxHeight,
@@ -15,30 +26,40 @@ const Connectors = ({ rowIndex, columnIndex, columns, style }) => {
     lineInfo,
     horizontalOffset,
     connectorColorHighlight,
+    width,
   } = getCalculatedStyles(style);
 
-  const { x, y } = calculatePositionOfMatch(rowIndex, columnIndex, {
+  const isUpperSeedingRound = isLowerBracket && columnIndex % 2 !== 0;
+  const positioningFunction = isLowerBracket
+    ? calculatePositionOfMatchLowerBracket
+    : calculatePositionOfMatchUpperBracket;
+  const { x, y } = positioningFunction(rowIndex, columnIndex, {
     canvasPadding,
     rowHeight,
     columnWidth,
+    offsetY,
   });
-  const previousBottomPosition = (rowIndex + 1) * 2 - 1;
-  const previousTopMatchPosition = calculatePositionOfMatch(
+  const previousBottomPosition = isUpperSeedingRound
+    ? rowIndex
+    : (rowIndex + 1) * 2 - 1;
+  const previousTopMatchPosition = positioningFunction(
     previousBottomPosition - 1,
     columnIndex - 1,
     {
       canvasPadding,
       rowHeight,
       columnWidth,
+      offsetY,
     }
   );
-  const previousBottomMatchPosition = calculatePositionOfMatch(
+  const previousBottomMatchPosition = positioningFunction(
     previousBottomPosition,
     columnIndex - 1,
     {
       canvasPadding,
       rowHeight,
       columnWidth,
+      offsetY,
     }
   );
 
@@ -58,9 +79,7 @@ const Connectors = ({ rowIndex, columnIndex, columns, style }) => {
       previousMatch.y +
       middlePointOfMatchComponent +
       (roundHeader.isShown ? roundHeader.height + roundHeader.marginBottom : 0);
-    const horizontalWidthRight =
-      x - roundSeparatorWidth + lineInfo.separation - horizontalOffset;
-
+    const horizontalWidthRight = previousMatch.x + width;
     return [
       `M${startPoint}`,
       `H${horizontalWidthLeft}`,
@@ -72,26 +91,35 @@ const Connectors = ({ rowIndex, columnIndex, columns, style }) => {
   const {
     state: { hoveredPartyId },
   } = useContext(matchContext);
-  const previousTopMatch = columns[columnIndex - 1][previousBottomPosition - 1];
-  const previousBottomMatch = columns[columnIndex - 1][previousBottomPosition];
-  const currentMatch = columns[columnIndex][rowIndex];
+  const previousTopMatch =
+    bracketSnippet?.previousTopMatch ||
+    columns[columnIndex - 1][previousBottomPosition - 1];
+  const previousBottomMatch =
+    bracketSnippet?.previousBottomMatch ||
+    columns[columnIndex - 1][previousBottomPosition];
+  const currentMatch =
+    bracketSnippet?.currentMatch || columns[columnIndex][rowIndex];
 
+  console.log(currentMatch.participants);
   const topHighlighted =
-    currentMatch.participants?.some(p => p.id === hoveredPartyId) &&
-    previousTopMatch.participants?.some(p => p.id === hoveredPartyId);
+    currentMatch?.participants?.some(p => p.id === hoveredPartyId) &&
+    previousTopMatch?.participants?.some(p => p.id === hoveredPartyId);
 
   const bottomHighlighted =
-    currentMatch.participants?.some(p => p.id === hoveredPartyId) &&
-    previousBottomMatch.participants?.some(p => p.id === hoveredPartyId);
+    currentMatch?.participants?.some(p => p.id === hoveredPartyId) &&
+    previousBottomMatch?.participants?.some(p => p.id === hoveredPartyId);
 
   return (
     <>
-      <path
-        d={pathInfo(-1).join(' ')}
-        id={`connector-${rowIndex}-${columnIndex}-${-1}`}
-        fill="transparent"
-        stroke={topHighlighted ? connectorColorHighlight : connectorColor}
-      />
+      {(!isLowerBracket || columnIndex % 2 !== 1) && (
+        <path
+          d={pathInfo(-1).join(' ')}
+          id={`connector-${rowIndex}-${columnIndex}-${-1}`}
+          fill="transparent"
+          stroke={topHighlighted ? connectorColorHighlight : connectorColor}
+        />
+      )}
+
       <path
         d={pathInfo(1).join(' ')}
         id={`connector-${rowIndex}-${columnIndex}-${1}`}
