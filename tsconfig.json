@@ -25,6 +25,7 @@
       "Hooks/*": ["./hooks/*"],
       "Services/*": ["./services/*"],
       "Stories/*": ["./stories/*"],
+      "Themes/*": ["./themes/*"],
       "Styles/*": ["./styles/*"],
       "Utils/*": ["./utils/*"]
     }

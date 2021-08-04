@@ -10,7 +10,7 @@ import { defaultStyle, getCalculatedStyles } from '../settings';
 import { calculatePositionOfMatch } from './calculate-match-position';
 
 import Connectors from './connectors';
-import defaultTheme from '../themes';
+import defaultTheme from '../themes/themes';
 
 const SingleEliminationBracket = ({
   matches,
