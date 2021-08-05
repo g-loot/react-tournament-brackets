@@ -439,4 +439,4 @@ Contributions are what make the open source community such an amazing place to b
 [issues-shield]: https://img.shields.io/github/issues/g-loot/react-tournament-brackets.svg?style=for-the-badge
 [issues-url]: https://github.com/g-loot/react-tournament-brackets/issues
 [product-screenshot]: images/screenshot.png
-[demo-url]: https://sleepy-kare-d8538d.netlify.app/
+[demo-url]: https://sleepy-kare-d8538d.netlify.app/?path=/story/components-bracket--bracket
