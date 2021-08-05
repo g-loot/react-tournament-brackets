@@ -9,8 +9,8 @@ import { defaultStyle, getCalculatedStyles } from '../settings';
 
 import defaultTheme from '../themes/themes';
 
-import UpperBracket from './bracket-upper';
-import LowerBracket from './bracket-lower';
+import UpperBracket from './upper-bracket';
+import LowerBracket from './lower-bracket';
 import RoundHeaders from './round-headers';
 import FinalGame from './final-game';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import MatchWrapper from 'Core/match-wrapper';
 import { calculatePositionOfFinalGame } from './calculate-match-position';
-import Connectors from './connector-final';
+import Connectors from './final-connectors';
 
 const FinalGame = ({
   match,
