@@ -1,5 +1,5 @@
 import React from 'react';
-import Connector from 'Components/connector';
+import Connectors from 'Components/connector';
 
 import { getCalculatedStyles } from '../settings';
 import {
@@ -7,7 +7,7 @@ import {
   calculatePositionOfMatchLowerBracket,
 } from './calculate-match-position';
 
-const Connectors = ({
+const ConnectorsUpper = ({
   bracketSnippet,
   rowIndex,
   columnIndex,
@@ -50,7 +50,7 @@ const Connectors = ({
   );
 
   return (
-    <Connector
+    <Connectors
       bracketSnippet={bracketSnippet}
       previousBottomMatchPosition={previousBottomMatchPosition}
       previousTopMatchPosition={previousTopMatchPosition}
@@ -60,4 +60,4 @@ const Connectors = ({
   );
 };
 
-export default Connectors;
+export default ConnectorsUpper;

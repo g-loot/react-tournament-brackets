@@ -5,6 +5,7 @@ import { calculateSVGDimensions } from 'Core/calculate-svg-dimensions';
 import { MatchContextProvider } from 'Core/match-context';
 import MatchWrapper from 'Core/match-wrapper';
 import RoundHeader from 'Components/round-header';
+import { getPreviousMatches } from 'Core/match-functions';
 import { SingleElimLeaderboardProps } from '../types';
 import { defaultStyle, getCalculatedStyles } from '../settings';
 import { calculatePositionOfMatch } from './calculate-match-position';
@@ -107,12 +108,12 @@ const SingleEliminationBracket = ({
                   );
                   const previousBottomPosition = (rowIndex + 1) * 2 - 1;
 
-                  const previousTopMatch =
-                    columnIndex !== 0 &&
-                    columns[columnIndex - 1][previousBottomPosition - 1];
-                  const previousBottomMatch =
-                    columnIndex !== 0 &&
-                    columns[columnIndex - 1][previousBottomPosition];
+                  const { previousTopMatch, previousBottomMatch } =
+                    getPreviousMatches(
+                      columnIndex,
+                      columns,
+                      previousBottomPosition
+                    );
                   return (
                     <>
                       {roundHeader.isShown && (

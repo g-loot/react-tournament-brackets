@@ -1,7 +1,8 @@
 import React from 'react';
 import MatchWrapper from 'Core/match-wrapper';
+import { getPreviousMatches } from 'Core/match-functions';
 import { calculatePositionOfMatchLowerBracket } from './calculate-match-position';
-import Connectors from './connectors';
+import ConnectorsLower from './connectors-lower';
 
 const LowerBracket = ({
   columns,
@@ -32,20 +33,19 @@ const LowerBracket = ({
       const previousBottomPosition = isUpperSeedingRound
         ? rowIndex
         : (rowIndex + 1) * 2 - 1;
-      const previousTopMatch =
-        columnIndex !== 0 &&
-        columns[columnIndex - 1][previousBottomPosition - 1];
-      const previousBottomMatch =
-        columnIndex !== 0 && columns[columnIndex - 1][previousBottomPosition];
-
+      const { previousTopMatch, previousBottomMatch } = getPreviousMatches(
+        columnIndex,
+        columns,
+        previousBottomPosition
+      );
       return (
         <>
           {columnIndex !== 0 && (
-            <Connectors
+            <ConnectorsLower
               {...{
                 bracketSnippet: {
                   currentMatch: match,
-                  previousTopMatch,
+                  previousTopMatch: !isUpperSeedingRound && previousTopMatch,
                   previousBottomMatch,
                 },
                 rowIndex,
@@ -54,7 +54,6 @@ const LowerBracket = ({
                 gameWidth,
                 style: calculatedStyles,
                 offsetY: upperBracketHeight,
-                isLowerBracket: true,
               }}
             />
           )}

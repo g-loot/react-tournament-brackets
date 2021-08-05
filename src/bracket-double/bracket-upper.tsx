@@ -1,7 +1,8 @@
 import React from 'react';
 import MatchWrapper from 'Core/match-wrapper';
+import { getPreviousMatches } from 'Core/match-functions';
 import { calculatePositionOfMatchUpperBracket } from './calculate-match-position';
-import Connectors from './connectors';
+import ConnectorsUpper from './connectors-upper';
 
 const UpperBracket = ({
   columns,
@@ -26,15 +27,15 @@ const UpperBracket = ({
         }
       );
       const previousBottomPosition = (rowIndex + 1) * 2 - 1;
-      const previousTopMatch =
-        columnIndex !== 0 &&
-        columns[columnIndex - 1][previousBottomPosition - 1];
-      const previousBottomMatch =
-        columnIndex !== 0 && columns[columnIndex - 1][previousBottomPosition];
+      const { previousTopMatch, previousBottomMatch } = getPreviousMatches(
+        columnIndex,
+        columns,
+        previousBottomPosition
+      );
       return (
         <>
           {columnIndex !== 0 && (
-            <Connectors
+            <ConnectorsUpper
               {...{
                 bracketSnippet: {
                   currentMatch: match,
