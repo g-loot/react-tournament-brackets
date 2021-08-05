@@ -105,7 +105,14 @@ const SingleEliminationBracket = ({
                       rowHeight,
                     }
                   );
+                  const previousBottomPosition = (rowIndex + 1) * 2 - 1;
 
+                  const previousTopMatch =
+                    columnIndex !== 0 &&
+                    columns[columnIndex - 1][previousBottomPosition - 1];
+                  const previousBottomMatch =
+                    columnIndex !== 0 &&
+                    columns[columnIndex - 1][previousBottomPosition];
                   return (
                     <>
                       {roundHeader.isShown && (
@@ -122,7 +129,11 @@ const SingleEliminationBracket = ({
                       {columnIndex !== 0 && (
                         <Connectors
                           {...{
-                            columns,
+                            bracketSnippet: {
+                              currentMatch: match,
+                              previousTopMatch,
+                              previousBottomMatch,
+                            },
                             rowIndex,
                             columnIndex,
                             gameHeight,

@@ -33,7 +33,8 @@ export const calculatePositionOfFinalGame = (
     offsetY = 0,
   }
 ) => {
-  const yResult = gameHeight * (lowerBracketHeight / upperBracketHeight);
+  const yResult =
+    gameHeight * (lowerBracketHeight / upperBracketHeight) - rowHeight;
 
   return {
     x: columnIndex * columnWidth + canvasPadding + offsetX,
