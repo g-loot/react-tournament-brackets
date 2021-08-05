@@ -1,10 +1,8 @@
-import {
-  SingleEliminationBracket,
-  DoulbeEliminationBracket,
-} from './src/bracket-leaderboard/index';
-import { MATCH_STATES } from './src/bracket-leaderboard/match-states';
-import SVGViewer from './src/svg-viewer';
+import SingleEliminationBracket from './src/bracket-single/single-elim-bracket';
+import DoulbeEliminationBracket from './src/bracket-double/double-elim-bracket';
 import Match from './src/components/match';
+import { MATCH_STATES } from './src/core/match-states';
+import SVGViewer from './src/svg-viewer';
 
 export {
   SingleEliminationBracket,
