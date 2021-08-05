@@ -25,10 +25,10 @@
   <p align="center">
     A straightforward implementation of single eliminations and double eliminations brackets in react
     <br />
-    <a href="[demo-url]"><strong>Explore the storybook »</strong></a>
+    <a href="https://sleepy-kare-d8538d.netlify.app/?path=/story/components-bracket--bracket"><strong>Explore the storybook »</strong></a>
     <br />
     <br />
-    <a href="[demo-url]">View Live Demo</a>
+    <a href="https://sleepy-kare-d8538d.netlify.app/?path=/story/components-bracket--bracket">View Live Demo</a>
     ·
     <a href="https://github.com/g-loot/react-tournament-brackets/issues">Report Bug</a>
     ·
