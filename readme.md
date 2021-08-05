@@ -54,7 +54,7 @@
         <li><a href="#installation">Installation</a></li>
         <li><a href="#basic-usage">Basic Usage</a></li>
         <li><a href="#data-structures">Data structures</a></li>
-        <li><a href="#themeing-and-styling">Themeing and styling</a></li>
+        <li><a href="#theming-and-styling">Theming and styling</a></li>
       </ul>
     </li>
     <li><a href="#contributing">Contributing</a></li>
@@ -91,9 +91,9 @@ You only need to have react installed in your project to use this project.
 | ------------- |:-------------|
 | SingleEliminationBracket | Component for displaying single elimination bracket |
 | DoulbeEliminationBracket | Component for displaying double elimination bracket |
-| Match                    | Default component for rendering matches that can be overriden |
+| Match                    | Default component for rendering matches that can be overridden |
 | MATCH_STATES             | Constant containing enum for Match states and Participants statuses |
-| SVGViewer                | Optional component for displayin the bracket in a fixed size window with panning and zooming functionality |
+| SVGViewer                | Optional component for displaying the bracket in a fixed size window with panning and zooming functionality |
 
 ### Using the components
 This component generates an SVG of all your bracket matches, you can use the supplied optional component `<SVGViewer />` like in the following example to wrap the SVG in a fixed size window with panning and zooming functionality, Note that you're also free to come up with your own solution for allowing the user to navigate giant brackets with ease.
