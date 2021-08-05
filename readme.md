@@ -53,6 +53,7 @@
       <ul>
         <li><a href="#installation">Installation</a></li>
         <li><a href="#basic-usage">Basic Usage</a></li>
+        <li><a href="#data-structures">Data structures</a></li>
         <li><a href="#themeing-and-styling">Themeing and styling</a></li>
       </ul>
     </li>
@@ -87,10 +88,73 @@ You only need to have react installed in your project to use this project.
 ## Basic Usage
 
 ### Basics of the library
- ```js
- import { SingleEliminationBracket, DoulbeEliminationBracket, Match, MATCH_STATES, SVGViewer } from '@g-loot/react-tournament-brackets';
+`import { SingleEliminationBracket, DoulbeEliminationBracket, Match, MATCH_STATES, SVGViewer } from '@g-loot/react-tournament-brackets';`
+| Component     | Description   |
+| ------------- |:-------------|
+| SingleEliminationBracket | Component for displaying single elimination bracket |
+| DoulbeEliminationBracket | Component for displaying double elimination bracket |
+| Match                    | Default component for rendering matches that can be overriden |
+| MATCH_STATES             | Constant containing enum for Match states and Participants statuses |
+| SVGViewer                | Optional component for displayin the bracket in a fixed size window with panning and zooming functionality |
+
+### Using the components
+This component generates an SVG of all your bracket matches, you can use the supplied optional component `<SVGViewer />` like in the following example to wrap the SVG in a fixed size window with panning and zooming functionality, Note that you're also free to come up with your own solution for allowing the user to navigate giant brackets with ease.
+```js
+import { SingleEliminationBracket, DoulbeEliminationBracket, Match, SVGViewer } from '@g-loot/react-tournament-brackets';
+export const DoubleElimination = () => (
+  <>
+    <DoubleElimBracketLeaderboard
+      matches={matches}
+      matchComponent={Match}
+      svgWrapper={({ children, ...props }) => (
+        <SVGViewer width={500} height={500} {...props}>
+          {children}
+        </SVGViewer>
+      )}
+    />
+  </>
+);
+export const SingleElimination = () => (
+  <>
+    <SingleEliminationBracket
+      matches={matches}
+      matchComponent={Match}
+      svgWrapper={({ children, ...props }) => (
+        <SVGViewer width={500} height={500} {...props}>
+          {children}
+        </SVGViewer>
+      )}
+    />
+  </>
+);
 ```
-### Accepted Data structure for matches list
+
+- If you want the `SVGViewer` to fit it's container you will need some sort of hook to achieve that, like [useWindowSize()](https://usehooks.com/useWindowSize/), [useComponentSize](https://github.com/rehooks/component-size) or your own custom solution
+```js
+import { DoulbeEliminationBracket, Match, SVGViewer } from '@g-loot/react-tournament-brackets';
+
+export const DoubleElimination = () => {
+  const [width, height] = useWindowSize();
+  const finalWidth = Math.max(width - 50, 500);
+  const finalHeight = Math.max(height - 100, 500);
+  return (
+    <>
+      <DoubleElimBracketLeaderboard
+        matches={matches}
+        matchComponent={Match}
+        svgWrapper={({ children, ...props }) => (
+          <SVGViewer width={finalWidth} height={finalHeight} {...props}>
+            {children}
+          </SVGViewer>
+        )}
+      />
+    </>
+  );
+};
+```
+_For more examples, please refer to the [Storybook][demo-url]_
+
+### Data structures
 - Single Eliminations `matches` prop structure
 ```json
 [
@@ -202,62 +266,6 @@ console.log(MATCH_STATES);
 
 _For more examples of accepted data, check out the [mock data folder](https://github.com/g-loot/react-tournament-brackets/tree/master/src/mock-data)_
 
-### Using the components
-This component generates an SVG of all your bracket matches, you can use the supplied optional component `<SVGViewer />` like in the following example to wrap the SVG in a fixed size window with panning and zooming functionality, Note that you're also free to come up with your own solution for allowing the user to navigate giant brackets with ease.
-```js
-import { SingleEliminationBracket, DoulbeEliminationBracket, Match, SVGViewer } from '@g-loot/react-tournament-brackets';
-export const DoubleElimination = () => (
-  <>
-    <DoubleElimBracketLeaderboard
-      matches={matches}
-      matchComponent={Match}
-      svgWrapper={({ children, ...props }) => (
-        <SVGViewer width={500} height={500} {...props}>
-          {children}
-        </SVGViewer>
-      )}
-    />
-  </>
-);
-export const SingleElimination = () => (
-  <>
-    <SingleEliminationBracket
-      matches={matches}
-      matchComponent={Match}
-      svgWrapper={({ children, ...props }) => (
-        <SVGViewer width={500} height={500} {...props}>
-          {children}
-        </SVGViewer>
-      )}
-    />
-  </>
-);
-```
-
-- If you want the `SVGViewer` to fit it's container you will need some sort of hook to achieve that, like [useWindowSize()](https://usehooks.com/useWindowSize/), [useComponentSize](https://github.com/rehooks/component-size) or your own custom solution
-```js
-import { DoulbeEliminationBracket, Match, SVGViewer } from '@g-loot/react-tournament-brackets';
-
-export const DoubleElimination = () => {
-  const [width, height] = useWindowSize();
-  const finalWidth = Math.max(width - 50, 500);
-  const finalHeight = Math.max(height - 100, 500);
-  return (
-    <>
-      <DoubleElimBracketLeaderboard
-        matches={matches}
-        matchComponent={Match}
-        svgWrapper={({ children, ...props }) => (
-          <SVGViewer width={finalWidth} height={finalHeight} {...props}>
-            {children}
-          </SVGViewer>
-        )}
-      />
-    </>
-  );
-};
-```
-_For more examples, please refer to the [Storybook][demo-url]_
 
 ## Theming and Styling
 This component's default theme is the dark theme in the screenshot, you can use the function `createTheme` which is exported from the library to create a theme and then pass it to either single or double bracket on the `theme` prop
