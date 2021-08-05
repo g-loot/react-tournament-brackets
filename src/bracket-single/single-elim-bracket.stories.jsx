@@ -3,15 +3,15 @@ import React from 'react';
 
 import useWindowSize from 'Hooks/use-window-size';
 import styled from 'styled-components';
+import Match from 'Components/match';
 import SingleElimBracketLeaderboard from './single-elim-bracket';
-import SvgViewer from '../../svg-viewer';
+import SvgViewer from '../svg-viewer';
 import {
   walkOverData,
   simpleBracket,
   simpleSmallBracket,
 } from '../mock-data/simple-data';
 import { soloWalkover } from '../mock-data/solo-walkover';
-import Match from '../match/index';
 
 export default {
   title: 'Components/Bracket',

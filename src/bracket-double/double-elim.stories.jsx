@@ -3,9 +3,9 @@ import React from 'react';
 
 import useWindowSize from 'Hooks/use-window-size';
 import styled from 'styled-components';
+import Match from 'Components/match';
 import DoubleElimBracketLeaderboard from './double-elim-bracket';
-import SvgViewer from '../../svg-viewer';
-import Match from '../match/index';
+import SvgViewer from '../svg-viewer';
 import { simpleDoubleFull } from '../mock-data/simple-double-full';
 import { simpleDouble } from '../mock-data/simple-data-double';
 

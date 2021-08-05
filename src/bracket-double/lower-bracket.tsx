@@ -1,9 +1,10 @@
 import React from 'react';
-import { calculatePositionOfMatchUpperBracket } from './calculate-match-position';
-import MatchWrapper from '../match-wrapper';
-import Connectors from './connectors';
+import MatchWrapper from 'Core/match-wrapper';
+import { getPreviousMatches } from 'Core/match-functions';
+import { calculatePositionOfMatchLowerBracket } from './calculate-match-position';
+import ConnectorsLower from './lower-connectors';
 
-const UpperBracket = ({
+const LowerBracket = ({
   columns,
   calculatedStyles,
   gameHeight,
@@ -11,32 +12,48 @@ const UpperBracket = ({
   onMatchClick,
   onPartyClick,
   matchComponent,
+  upperBracketHeight,
 }) => {
   const { canvasPadding, columnWidth, rowHeight, roundHeader } =
     calculatedStyles;
   return columns.map((matchesColumn, columnIndex) =>
     matchesColumn.map((match, rowIndex) => {
-      const { x, y } = calculatePositionOfMatchUpperBracket(
+      const { x, y } = calculatePositionOfMatchLowerBracket(
         rowIndex,
         columnIndex,
         {
           canvasPadding,
           columnWidth,
           rowHeight,
+          offsetY: upperBracketHeight,
         }
       );
+      const isUpperSeedingRound = columnIndex % 2 !== 0;
 
+      const previousBottomPosition = isUpperSeedingRound
+        ? rowIndex
+        : (rowIndex + 1) * 2 - 1;
+      const { previousTopMatch, previousBottomMatch } = getPreviousMatches(
+        columnIndex,
+        columns,
+        previousBottomPosition
+      );
       return (
         <>
           {columnIndex !== 0 && (
-            <Connectors
+            <ConnectorsLower
               {...{
-                columns,
+                bracketSnippet: {
+                  currentMatch: match,
+                  previousTopMatch: !isUpperSeedingRound && previousTopMatch,
+                  previousBottomMatch,
+                },
                 rowIndex,
                 columnIndex,
                 gameHeight,
                 gameWidth,
                 style: calculatedStyles,
+                offsetY: upperBracketHeight,
               }}
             />
           )}
@@ -66,4 +83,4 @@ const UpperBracket = ({
     })
   );
 };
-export default UpperBracket;
+export default LowerBracket;

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { matchContext } from './match-context';
 import { MATCH_STATES } from './match-states';
-import { defaultStyle, getCalculatedStyles } from './settings';
+import { defaultStyle, getCalculatedStyles } from '../settings';
 
 function Match({
   rowIndex,

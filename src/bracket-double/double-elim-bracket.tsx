@@ -1,13 +1,13 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { generatePreviousRound } from '../shared/match-functions';
-import { calculateSVGDimensions } from '../shared/calculate-svg-dimensions';
-import { DoubleElimLeaderboardProps } from '../../types';
+import { generatePreviousRound } from 'Core/match-functions';
+import { calculateSVGDimensions } from 'Core/calculate-svg-dimensions';
+import { MatchContextProvider } from 'Core/match-context';
+
+import { DoubleElimLeaderboardProps } from '../types';
 import { defaultStyle, getCalculatedStyles } from '../settings';
 
-import { MatchContextProvider } from '../match-context';
-
-import defaultTheme from '../themes';
+import defaultTheme from '../themes/themes';
 
 import UpperBracket from './upper-bracket';
 import LowerBracket from './lower-bracket';

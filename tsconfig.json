@@ -21,13 +21,11 @@
     "paths": {
       "Atoms/*": ["./atoms/*"],
       "Components/*": ["./components/*"],
-      "Elements/*": ["./elements/*"],
-      "Form/*": ["./form/*"],
+      "Core/*": ["./core/*"],
       "Hooks/*": ["./hooks/*"],
-      "Layout/*": ["./layout/*"],
-      "Misc/*": ["./misc/*"],
       "Services/*": ["./services/*"],
       "Stories/*": ["./stories/*"],
+      "Themes/*": ["./themes/*"],
       "Styles/*": ["./styles/*"],
       "Utils/*": ["./utils/*"]
     }

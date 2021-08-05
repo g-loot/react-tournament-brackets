@@ -1,6 +1,6 @@
 import React from 'react';
+import RoundHeader from 'Components/round-header';
 import { calculatePositionOfMatchLowerBracket } from './calculate-match-position';
-import RoundHeader from '../svg-components/round-header';
 
 const RoundHeaders = ({
   numOfRounds,

@@ -1,9 +1,10 @@
 import React from 'react';
-import { calculatePositionOfMatchLowerBracket } from './calculate-match-position';
-import MatchWrapper from '../match-wrapper';
-import Connectors from './connectors';
+import MatchWrapper from 'Core/match-wrapper';
+import { getPreviousMatches } from 'Core/match-functions';
+import { calculatePositionOfMatchUpperBracket } from './calculate-match-position';
+import ConnectorsUpper from './upper-connectors';
 
-const LowerBracket = ({
+const UpperBracket = ({
   columns,
   calculatedStyles,
   gameHeight,
@@ -11,36 +12,41 @@ const LowerBracket = ({
   onMatchClick,
   onPartyClick,
   matchComponent,
-  upperBracketHeight,
 }) => {
   const { canvasPadding, columnWidth, rowHeight, roundHeader } =
     calculatedStyles;
   return columns.map((matchesColumn, columnIndex) =>
     matchesColumn.map((match, rowIndex) => {
-      const { x, y } = calculatePositionOfMatchLowerBracket(
+      const { x, y } = calculatePositionOfMatchUpperBracket(
         rowIndex,
         columnIndex,
         {
           canvasPadding,
           columnWidth,
           rowHeight,
-          offsetY: upperBracketHeight,
         }
       );
-
+      const previousBottomPosition = (rowIndex + 1) * 2 - 1;
+      const { previousTopMatch, previousBottomMatch } = getPreviousMatches(
+        columnIndex,
+        columns,
+        previousBottomPosition
+      );
       return (
         <>
           {columnIndex !== 0 && (
-            <Connectors
+            <ConnectorsUpper
               {...{
-                columns,
+                bracketSnippet: {
+                  currentMatch: match,
+                  previousTopMatch,
+                  previousBottomMatch,
+                },
                 rowIndex,
                 columnIndex,
                 gameHeight,
                 gameWidth,
                 style: calculatedStyles,
-                offsetY: upperBracketHeight,
-                isLowerBracket: true,
               }}
             />
           )}
@@ -70,4 +76,4 @@ const LowerBracket = ({
     })
   );
 };
-export default LowerBracket;
+export default UpperBracket;

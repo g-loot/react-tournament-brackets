@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { INITIAL_VALUE, ReactSVGPanZoom, TOOL_AUTO } from 'react-svg-pan-zoom';
-import styled from 'styled-components';
 import { precisionRound } from 'Utils/numbers';
 
 const SvgViewer = ({
