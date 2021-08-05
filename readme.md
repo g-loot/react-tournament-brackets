@@ -16,19 +16,19 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/g-loot/react-tournament-brackets">
+  <!-- <a href="https://github.com/g-loot/react-tournament-brackets">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+  </a> -->
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">React Tournament Brackets</h3>
 
   <p align="center">
     A straightforward implementation of single eliminations and double eliminations brackets in react
     <br />
-    <a href="https://github.com/g-loot/react-tournament-brackets"><strong>Explore the docs »</strong></a>
+    <a href="[demo-url]"><strong>Explore the storybook »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/g-loot/react-tournament-brackets">View Demo</a>
+    <a href="[demo-url]">View Live Demo</a>
     ·
     <a href="https://github.com/g-loot/react-tournament-brackets/issues">Report Bug</a>
     ·
@@ -51,12 +51,11 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#basic-usage">Basic Usage</a></li>
+        <li><a href="#themeing-and-styling">Themeing and styling</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -69,72 +68,342 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]][demo-url]
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
-
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
-
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
-
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
-
+I was scouring the world wide web for a good component library for visualizing single elimination brackets or double elimination brackets but most of them had complicated data structures or didn't allow for easy styling, and so I had to build my own, and decided to share it with the world.
 ### Built With
 
 You only need to have react installed in your project to use this project.
 * [React](https://reactjs.org/)
 * [Styled Components](https://styled-components.com/)
-
-
-
-<!-- GETTING STARTED -->
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
-
+  ```sh
+  npm install @g-loot/react-tournament-brackets
+  ```
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Basic Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+### Basics of the library
+ ```js
+ import { SingleEliminationBracket, DoulbeEliminationBracket, Match, MATCH_STATES, SVGViewer } from '@g-loot/react-tournament-brackets';
+```
+### Accepted Data structure for matches list
+- Single Eliminations `matches` prop structure
+```json
+[
+  ...,
+  {
+    id: 260005,
+    name: 'Final - Match',
+    nextMatchId: null, // Id for the nextMatch in the bracket, if it's final match it must be null OR undefined
+    tournamentRoundText: '4', // Text for Round Header
+    startTime: '2021-05-30',
+    state: 'DONE', // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+    participants: [
+      {
+        id: 'c016cb2a-fdd9-4c40-a81f-0cc6bdf4b9cc', // Unique identifier of any kind
+        resultText: 'WON', // Any string works
+        isWinner: false,
+        status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+        name: 'giacomo123',
+      },
+      {
+        id: '9ea9ce1a-4794-4553-856c-9a3620c0531b',
+        resultText: null,
+        isWinner: true,
+        status: null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+        name: 'Ant',
+      },
+    ],
+  },
+  ...
+]
+```
+- Double Eliminations `matches` prop structure
+```json
+{
+  "upper": [
+    ...,
+    {
+      "id": 260006, // Unique identifier of any kind
+      "name": "Semi Final - Match",
+      "nextMatchId": null,  // Id for the next match in upper bracket, if it's final match it must be null OR undefined
+      "nextLooserMatchId": null,  // Id for the next match in lower bracket, if it's final match or a lower bracket match it must be null OR undefined
+      "startTime": "2021-05-30",
+      "state": "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+      "participants": [
+        {
+          "id": "c016cb2a-fdd9-4c40-a81f-0cc6bdf4b9cc", // Unique identifier of any kind
+          "resultText": "WON", // Any string works
+          "isWinner": false,
+          "status": null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+          "name": "giacomo123"
+        },
+        {
+          "id": "9ea9ce1a-4794-4553-856c-9a3620c0531b",
+          "resultText": "LOST", // Any string works
+          "isWinner": true,
+          "status": null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+          "name": "Ant"
+        }
+      ]
+    }
+    ...
+  ],
+  "lower": [
+    ...,
+    {
+      "id": 260005,
+      "name": "Semi Final - Match",
+      "nextMatchId": 260006,
+      "nextLooserMatchId": null,
+      "tournamentRoundText": "4",
+      "startTime": "2021-05-30",
+      "state": "DONE", // 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | 'DONE' | 'SCORE_DONE' Only needed to decide walkovers and if teamNames are TBD (to be decided)
+      "participants": [
+        {
+          "id": "c016cb2a-fdd9-4c40-a81f-0cc6bdf4b9cc", // Unique identifier of any kind
+          "resultText": "WON", // Any string works
+          "isWinner": false,
+          "status": null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | null
+          "name": "giacomo123"
+        },
+        {
+          "id": "9ea9ce1a-4794-4553-856c-9a3620c0531b",
+          "resultText": null,
+          "isWinner": true,
+          "status": null, // 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY'
+          "name": "Ant"
+        }
+      ]
+    }
+    ...
+  ]
+}
+```
+- Match / Participant States are defined in the exported constant `MATCH_STATES`
+```js
+import { MATCH_STATES } from '@g-loot/react-tournament-brackets';
+console.log(MATCH_STATES);
+// {
+//   PLAYED: 'PLAYED',
+//   NO_SHOW: 'NO_SHOW',
+//   WALK_OVER: 'WALK_OVER',
+//   NO_PARTY: 'NO_PARTY',
+//   DONE: 'DONE',
+//   SCORE_DONE: 'SCORE_DONE',
+// };
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+```
+
+_For more examples of accepted data, check out the [mock data folder](https://github.com/g-loot/react-tournament-brackets/tree/master/src/mock-data)_
+
+### Using the components
+This component generates an SVG of all your bracket matches, you can use the supplied optional component `<SVGViewer />` like in the following example to wrap the SVG in a fixed size window with panning and zooming functionality, Note that you're also free to come up with your own solution for allowing the user to navigate giant brackets with ease.
+```js
+import { SingleEliminationBracket, DoulbeEliminationBracket, Match, SVGViewer } from '@g-loot/react-tournament-brackets';
+export const DoubleElimination = () => (
+  <>
+    <DoubleElimBracketLeaderboard
+      matches={matches}
+      matchComponent={Match}
+      svgWrapper={({ children, ...props }) => (
+        <SVGViewer width={500} height={500} {...props}>
+          {children}
+        </SVGViewer>
+      )}
+    />
+  </>
+);
+export const SingleElimination = () => (
+  <>
+    <SingleEliminationBracket
+      matches={matches}
+      matchComponent={Match}
+      svgWrapper={({ children, ...props }) => (
+        <SVGViewer width={500} height={500} {...props}>
+          {children}
+        </SVGViewer>
+      )}
+    />
+  </>
+);
+```
+
+- If you want the `SVGViewer` to fit it's container you will need some sort of hook to achieve that, like [useWindowSize()](https://usehooks.com/useWindowSize/), [useComponentSize](https://github.com/rehooks/component-size) or your own custom solution
+```js
+import { DoulbeEliminationBracket, Match, SVGViewer } from '@g-loot/react-tournament-brackets';
+
+export const DoubleElimination = () => {
+  const [width, height] = useWindowSize();
+  const finalWidth = Math.max(width - 50, 500);
+  const finalHeight = Math.max(height - 100, 500);
+  return (
+    <>
+      <DoubleElimBracketLeaderboard
+        matches={matches}
+        matchComponent={Match}
+        svgWrapper={({ children, ...props }) => (
+          <SVGViewer width={finalWidth} height={finalHeight} {...props}>
+            {children}
+          </SVGViewer>
+        )}
+      />
+    </>
+  );
+};
+```
+_For more examples, please refer to the [Storybook][demo-url]_
+
+## Theming and Styling
+This component's default theme is the dark theme in the screenshot, you can use the function `createTheme` which is exported from the library to create a theme and then pass it to either single or double bracket on the `theme` prop
+A few notes: 
+- Some colors like the roundHeaders, and connectors aren't tied to the theme yet, you'll need to style those through the `options` prop manually for now, In the very near future they will be tied to the theme as well!
+#### Full Example of custom theming:
+```js
+import { SingleEliminationBracket, Match, SVGViewer, createTheme } from '@g-loot/react-tournament-brackets';
+
+const WhiteTheme = createTheme({
+  textColor: { main: '#000000', highlighted: '#07090D', dark: '#3E414D' },
+  matchBackground: { wonColor: '#daebf9', lostColor: '#96c6da' },
+  score: {
+    background: { wonColor: '#87b2c4', lostColor: '#87b2c4' },
+    text: { highlightedWonColor: '#7BF59D', highlightedLostColor: '#FB7E94' },
+  },
+  border: {
+    color: '#CED1F2',
+    highlightedColor: '#da96c6',
+  },
+  roundHeader: { backgroundColor: '#da96c6', fontColor: '#000' },
+  connectorColor: '#CED1F2',
+  connectorColorHighlight: '#da96c6',
+  svgBackground: '#FAFAFA',
+});
+
+export const WhiteThemeBracket = () => {
+  const [width, height] = useWindowSize();
+  const finalWidth = Math.max(width - 50, 500);
+  const finalHeight = Math.max(height - 100, 500);
+
+  return (
+    <SingleEliminationBracket
+      matches={simpleSmallBracket}
+      matchComponent={Match}
+      theme={WhiteTheme}
+      options={{
+        style: {
+          roundHeader: {
+            backgroundColor: WhiteTheme.roundHeader.backgroundColor,
+            fontColor: WhiteTheme.roundHeader.fontColor,
+          },
+          connectorColor: WhiteTheme.connectorColor,
+          connectorColorHighlight: WhiteTheme.connectorColorHighlight,
+        },
+      }}
+      svgWrapper={({ children, ...props }) => (
+        <SvgViewer
+          background={WhiteTheme.svgBackground}
+          SVGBackground={WhiteTheme.svgBackground}
+          width={finalWidth}
+          height={finalHeight}
+          {...props}
+        >
+          {children}
+        </SvgViewer>
+      )}
+    />
+  );
+};
+```
+### If themes aren't enough for you you can always supply your own Match view component and use the props passed to it to override the match view rendering, Again you'll need to style the round headers and connector lines using `options` prop
+
+#### Basic example of custom match component
+```js
+import { SingleEliminationBracket, SVGViewer } from '@g-loot/react-tournament-brackets';
+
+export const CustomMatchBracket = () => {
+  const [width, height] = useWindowSize();
+  const finalWidth = Math.max(width - 50, 500);
+  const finalHeight = Math.max(height - 100, 500);
+  return (
+    <SingleEliminationBracket
+      matches={simpleSmallBracket}
+      options={{
+        style: {
+          roundHeader: { backgroundColor: '#AAA' },
+          connectorColor: '#FF8C00',
+          connectorColorHighlight: '#000',
+        },
+      }}
+      svgWrapper={({ children, ...props }) => (
+        <SvgViewer
+          background="#FFF"
+          SVGBackground="#FFF"
+          width={finalWidth}
+          height={finalHeight}
+          {...props}
+        >
+          {children}
+        </SvgViewer>
+      )}
+      matchComponent={({
+        match,
+        onMatchClick,
+        onPartyClick,
+        onMouseEnter,
+        onMouseLeave,
+        topParty,
+        bottomParty,
+        topWon,
+        bottomWon,
+        topHovered,
+        bottomHovered,
+        topText,
+        bottomText,
+        connectorColor,
+        computedStyles,
+        teamNameFallback,
+        resultFallback,
+      }) => (
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-around',
+            color: '#000',
+            width: '100%',
+            height: '100%',
+          }}
+        >
+          <div
+            onMouseEnter={() => onMouseEnter(topParty.id)}
+            style={{ display: 'flex' }}
+          >
+            <div>{topParty.name || teamNameFallback}</div>
+            <div>{topParty.resultText ?? resultFallback(topParty)}</div>
+          </div>
+          <div
+            style={{ height: '1px', width: '100%', background: '#FF8C00' }}
+          />
+          <div
+            onMouseEnter={() => onMouseEnter(bottomParty.id)}
+            style={{ display: 'flex' }}
+          >
+            <div>{bottomParty.name || teamNameFallback}</div>
+            <div>{bottomParty.resultText ?? resultFallback(topParty)}</div>
+          </div>
+        </div>
+      )}
+    />
+  );
+};
+```
 
 
-
-<!-- ROADMAP -->
-<!-- ## Roadmap
-
-See the [open issues](https://github.com/g-loot/react-tournament-brackets/issues) for a list of proposed features (and known issues). -->
+_For more examples, checkout the [live storybook][demo-url]_
 
 
 
@@ -170,3 +439,4 @@ Contributions are what make the open source community such an amazing place to b
 [issues-shield]: https://img.shields.io/github/issues/g-loot/react-tournament-brackets.svg?style=for-the-badge
 [issues-url]: https://github.com/g-loot/react-tournament-brackets/issues
 [product-screenshot]: images/screenshot.png
+[demo-url]: https://sleepy-kare-d8538d.netlify.app/
