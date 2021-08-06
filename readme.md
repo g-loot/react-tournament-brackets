@@ -86,11 +86,11 @@ You only need to have react installed in your project to use this project.
 ## Basic Usage
 
 ### Basics of the library
-`import { SingleEliminationBracket, DoulbeEliminationBracket, Match, MATCH_STATES, SVGViewer } from '@g-loot/react-tournament-brackets';`
+`import { SingleEliminationBracket, DoubleEliminationBracket, Match, MATCH_STATES, SVGViewer } from '@g-loot/react-tournament-brackets';`
 | Component     | Description   |
 | ------------- |:-------------|
 | SingleEliminationBracket | Component for displaying single elimination bracket |
-| DoulbeEliminationBracket | Component for displaying double elimination bracket |
+| DoubleEliminationBracket | Component for displaying double elimination bracket |
 | Match                    | Default component for rendering matches that can be overridden |
 | MATCH_STATES             | Constant containing enum for Match states and Participants statuses |
 | SVGViewer                | Optional component for displaying the bracket in a fixed size window with panning and zooming functionality |
@@ -98,7 +98,7 @@ You only need to have react installed in your project to use this project.
 ### Using the components
 This component generates an SVG of all your bracket matches, you can use the supplied optional component `<SVGViewer />` like in the following example to wrap the SVG in a fixed size window with panning and zooming functionality, Note that you're also free to come up with your own solution for allowing the user to navigate giant brackets with ease.
 ```js
-import { SingleEliminationBracket, DoulbeEliminationBracket, Match, SVGViewer } from '@g-loot/react-tournament-brackets';
+import { SingleEliminationBracket, DoubleEliminationBracket, Match, SVGViewer } from '@g-loot/react-tournament-brackets';
 export const DoubleElimination = () => (
   <>
     <DoubleElimBracketLeaderboard
@@ -129,7 +129,7 @@ export const SingleElimination = () => (
 
 - If you want the `SVGViewer` to fit it's container you will need some sort of hook to achieve that, like [useWindowSize()](https://usehooks.com/useWindowSize/), [useComponentSize](https://github.com/rehooks/component-size) or your own custom solution
 ```js
-import { DoulbeEliminationBracket, Match, SVGViewer } from '@g-loot/react-tournament-brackets';
+import { DoubleEliminationBracket, Match, SVGViewer } from '@g-loot/react-tournament-brackets';
 
 export const DoubleElimination = () => {
   const [width, height] = useWindowSize();
