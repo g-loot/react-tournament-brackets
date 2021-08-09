@@ -101,7 +101,7 @@ This component generates an SVG of all your bracket matches, you can use the sup
 import { SingleEliminationBracket, DoubleEliminationBracket, Match, SVGViewer } from '@g-loot/react-tournament-brackets';
 export const DoubleElimination = () => (
   <>
-    <DoubleElimBracketLeaderboard
+    <DoubleEliminationBracket
       matches={matches}
       matchComponent={Match}
       svgWrapper={({ children, ...props }) => (
@@ -137,7 +137,7 @@ export const DoubleElimination = () => {
   const finalHeight = Math.max(height - 100, 500);
   return (
     <>
-      <DoubleElimBracketLeaderboard
+      <DoubleEliminationBracket
         matches={matches}
         matchComponent={Match}
         svgWrapper={({ children, ...props }) => (
