@@ -72,7 +72,7 @@ function Match({
           WALKOVER: computedStyles.wonBywalkOverText,
           [MATCH_STATES.WALK_OVER]: computedStyles.wonBywalkOverText,
           [MATCH_STATES.NO_SHOW]: computedStyles.lostByNoShowText,
-          [MATCH_STATES.NO_PARTY]: computedStyles.lostByNoShowText,
+          [MATCH_STATES.NO_PARTY]: '',
         }[participant.status] ?? ''
       );
     }
