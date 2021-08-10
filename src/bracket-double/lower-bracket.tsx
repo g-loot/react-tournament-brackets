@@ -69,6 +69,7 @@ const LowerBracket = ({
               rowIndex={rowIndex}
               columnIndex={columnIndex}
               match={match}
+              previousBottomMatch={previousBottomMatch}
               topText={match.startTime}
               bottomText={match.name}
               teams={match.participants}

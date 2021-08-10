@@ -2,11 +2,14 @@ import React, { useContext } from 'react';
 import { matchContext } from './match-context';
 import { MATCH_STATES } from './match-states';
 import { defaultStyle, getCalculatedStyles } from '../settings';
+import { sortTeamsSeedOrder } from './match-functions';
 
 function Match({
   rowIndex,
   columnIndex,
   match,
+
+  previousBottomMatch = null,
   teams,
   topText,
   bottomText,
@@ -22,13 +25,10 @@ function Match({
   } = useContext(matchContext);
   const computedStyles = getCalculatedStyles(style);
   const { width = 300, boxHeight = 70, connectorColor } = computedStyles;
+  const sortedTeams = teams.sort(sortTeamsSeedOrder(previousBottomMatch));
 
-  const topParty = teams?.[0]
-    ? { ...teams[0], name: teams[0].name, resultText: teams[0].resultText }
-    : {};
-  const bottomParty = teams?.[1]
-    ? { ...teams[1], name: teams[1].name, resultText: teams[1].resultText }
-    : {};
+  const topParty = sortedTeams?.[0] ? sortedTeams[0] : {};
+  const bottomParty = sortedTeams?.[1] ? sortedTeams[1] : {};
 
   const topHovered =
     !Number.isNaN(hoveredPartyId) &&

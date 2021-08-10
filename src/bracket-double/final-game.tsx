@@ -61,6 +61,7 @@ const FinalGame = ({
           rowIndex={rowIndex}
           columnIndex={columnIndex}
           match={match}
+          previousBottomMatch={bracketSnippet.previousBottomMatch}
           topText={match.startTime}
           bottomText={match.name}
           teams={match.participants}
