@@ -55,6 +55,7 @@ const SvgViewer = ({
       onChangeValue={setValue}
       onZoom={lockToBoundaries}
       onPan={lockToBoundaries}
+      miniatureProps={{ position: 'right' }}
       customToolbar={() => <></>}
       {...rest}
     >

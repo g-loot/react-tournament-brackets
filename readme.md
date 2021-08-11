@@ -66,8 +66,10 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]][demo-url]
+- Screenshot Of single elimination bracket out of the box
+[![Single elimination screenshot][single-bracket-screenshot]][single-demo-url]
+- Screenshot Of double elimination bracket out of the box
+[![Double elimination screenshot][double-bracket-screenshot]][double-demo-url]
 
 I was scouring the world wide web for a good component library for visualizing single elimination brackets or double elimination brackets but most of them had complicated data structures or didn't allow for easy styling, and so I had to build my own, and decided to share it with the world.
 ### Built With
@@ -445,5 +447,7 @@ Contributions are what make the open source community such an amazing place to b
 [stars-url]: https://github.com/g-loot/react-tournament-brackets/stargazers
 [issues-shield]: https://img.shields.io/github/issues/g-loot/react-tournament-brackets.svg?style=for-the-badge
 [issues-url]: https://github.com/g-loot/react-tournament-brackets/issues
-[product-screenshot]: images/screenshot.png
-[demo-url]: https://sleepy-kare-d8538d.netlify.app/?path=/story/components-bracket--bracket
+[single-bracket-screenshot]: images/screenshot_single.png
+[double-bracket-screenshot]: images/screenshot_double.png
+[single-demo-url]: https://sleepy-kare-d8538d.netlify.app/?path=/story/components-bracket--bracket
+[double-demo-url]: https://sleepy-kare-d8538d.netlify.app/?path=/story/components-doubleelim--double-elimination
