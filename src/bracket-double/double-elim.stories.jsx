@@ -4,13 +4,13 @@ import React from 'react';
 import useWindowSize from 'Hooks/use-window-size';
 import styled from 'styled-components';
 import Match from 'Components/match';
-import { mockData as noPartyMockData } from '../mock-data/data-double-no-show';
-import { mockData as lastGameInLowerMockData } from '../mock-data/data-double-last-game-lower';
-import { mockData as lastGameInUpperMockData } from '../mock-data/data-double-last-game-upper-double-playoffs';
+import noPartyMockData from '../mock-data/data-double-no-show';
+import lastGameInLowerMockData from '../mock-data/data-double-last-game-lower';
+import lastGameInUpperMockData from '../mock-data/data-double-last-game-upper-double-playoffs';
 import DoubleElimBracketLeaderboard from './double-elim-bracket';
 import SvgViewer from '../svg-viewer';
-import { simpleDoubleFull } from '../mock-data/simple-double-full';
-import { simpleDouble } from '../mock-data/simple-data-double';
+import simpleDoubleFull from '../mock-data/simple-double-full';
+import simpleDouble from '../mock-data/simple-data-double';
 
 export default {
   title: 'Components/DoubleElim',

@@ -1,4 +1,4 @@
-export const mockData = {
+export default {
   upper: [
     {
       id: 'WB R1 M1',

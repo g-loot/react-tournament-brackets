@@ -1,11 +1,11 @@
 import React from 'react';
 import useWindowSize from 'Hooks/use-window-size';
 import Match from 'Components/match';
+import WhiteTheme from 'Themes/white-theme';
 import SingleEliminationBracket from './bracket-single/single-elim-bracket';
 import SvgViewer from './svg-viewer';
 import { simpleSmallBracket } from './mock-data/simple-data';
 import GlootTheme from './themes/gloot-theme';
-import WhiteTheme from 'Themes/white-theme';
 
 export default {
   title: 'Components/Themes',

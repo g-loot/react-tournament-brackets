@@ -1,4 +1,4 @@
-export const soloWalkover = [
+export default [
   {
     id: 20464,
     name: 'Semi Final - Match 1',
