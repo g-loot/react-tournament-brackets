@@ -79,7 +79,7 @@ You only need to have react installed in your project to use this project.
 * [Styled Components](https://styled-components.com/)
 ## Getting Started
 ### Installation
-
+  This project is hosted on the public npm registry, here's the [link to the npm page](https://www.npmjs.com/package/@g-loot/react-tournament-brackets)
   ```sh
   npm install @g-loot/react-tournament-brackets
   ```
@@ -248,6 +248,45 @@ _For more examples, please refer to the [Storybook][demo-url]_
     ...
   ]
 }
+```
+- Double Eliminations `matches` prop structure with double finals, Keep the same structure and add a nextMatchId + nextLooserMatchId pointing to a new match in the same bracket (the finals can be in upper or in lower bracket) _For more examples of valid double finals data, check out the [mock data folder](https://github.com/g-loot/react-tournament-brackets/tree/master/src/mock-data) specifically  [data-double-last-game-lower.ts](https://github.com/g-loot/react-tournament-brackets/tree/master/src/mock-data/data-double-last-game-lower.ts) and [data-double-last-game-upper-double-playoffs.ts](https://github.com/g-loot/react-tournament-brackets/tree/master/src/mock-data/data-double-last-game-upper-double-playoffs.ts) _
+```json
+{
+  [upper|lower]: [
+    ...,
+    {
+      "id": "WB R5 M1",
+      "name": "WB R5 M1",
+      "nextMatchId": "WB R6 M1",
+      "nextLooserMatchId": "WB R6 M1",
+      "startTime": null,
+      "tournamentRound": "R5",
+      "state": "SCORE_DONE",
+      "participants": [
+        {
+          "id": "ddfee063-adde-4192-95d2-203eb2ebb8f7",
+          "resultText": "",
+          "isWinner": false,
+          "status": "PLAYED",
+          "name": "#1"
+        }
+      ]
+    },
+    {
+      "id": "WB R6 M1",
+      "name": "WB R6 M1",
+      "nextMatchId": null,
+      "nextLooserMatchId": null,
+      "startTime": null,
+      "tournamentRound": "R6",
+      "state": "SCORE_DONE",
+      "participants": []
+    }
+    ...,
+  ]
+}
+
+
 ```
 - Match / Participant States are defined in the exported constant `MATCH_STATES`
 ```js
