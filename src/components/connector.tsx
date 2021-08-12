@@ -34,12 +34,19 @@ const Connector = ({
     }`;
     const horizontalWidthLeft =
       currentMatchPosition.x - roundSeparatorWidth / 2 - horizontalOffset;
+    const isPreviousMatchOnSameYLevel =
+      Math.abs(currentMatchPosition.y - previousMatch.y) < 1;
 
     const verticalHeight =
       previousMatch.y +
       middlePointOfMatchComponent +
       (roundHeader.isShown ? roundHeader.height + roundHeader.marginBottom : 0);
     const horizontalWidthRight = previousMatch.x + width;
+
+    if (isPreviousMatchOnSameYLevel) {
+      return [`M${startPoint}`, `H${horizontalWidthRight}`];
+    }
+
     return [
       `M${startPoint}`,
       `H${horizontalWidthLeft}`,
