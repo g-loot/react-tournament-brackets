@@ -11,7 +11,7 @@ import {
   simpleBracket,
   simpleSmallBracket,
 } from '../mock-data/simple-data';
-import { soloWalkover } from '../mock-data/solo-walkover';
+import soloWalkover from '../mock-data/solo-walkover';
 
 export default {
   title: 'Components/Bracket',

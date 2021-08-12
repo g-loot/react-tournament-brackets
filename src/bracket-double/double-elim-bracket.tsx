@@ -13,7 +13,47 @@ import UpperBracket from './upper-bracket';
 import LowerBracket from './lower-bracket';
 import RoundHeaders from './round-headers';
 import FinalGame from './final-game';
+import ExtraFinal from './extra-final';
 
+function findTheFinals(matches) {
+  const isFinalInUpper = matches.upper.some(match => !match.nextMatchId);
+  const isFinalInLower = matches.lower.some(match => !match.nextMatchId);
+  let convergingMatch;
+  let finalsArray;
+
+  if (isFinalInLower) {
+    const lastUpper = matches.upper.find(match => {
+      const hasNextMatchInUpper = matches.upper.some(
+        m => m.id === match.nextMatchId
+      );
+      return !hasNextMatchInUpper;
+    });
+    convergingMatch = matches.lower.find(
+      match => match.id === lastUpper.nextMatchId
+    );
+    finalsArray = [
+      convergingMatch,
+      matches.lower.find(m => m.id === convergingMatch.nextMatchId),
+    ].filter(m => m?.id);
+  }
+  if (isFinalInUpper) {
+    const lastLower = matches.lower.find(match => {
+      const hasNextMatchInLower = matches.lower.some(
+        m => m.id === match.nextMatchId
+      );
+      return !hasNextMatchInLower;
+    });
+    convergingMatch = matches.upper.find(
+      match => match.id === lastLower.nextMatchId
+    );
+    finalsArray = [
+      convergingMatch,
+      matches.upper.find(m => m.id === convergingMatch.nextMatchId),
+    ].filter(m => m?.id);
+  }
+
+  return { convergingMatch, finalsArray };
+}
 const DoubleEliminationBracket = ({
   matches,
   matchComponent,
@@ -43,7 +83,9 @@ const DoubleEliminationBracket = ({
 
   const { roundHeader, columnWidth, canvasPadding, rowHeight } =
     calculatedStyles;
-  const lastGame = matches.upper.find(match => !match.nextMatchId);
+  const { convergingMatch, finalsArray } = findTheFinals(matches);
+
+  const hasMultipleFinals = finalsArray?.length > 1;
 
   const generateColumn = (matchesColumn, listOfMatches) => {
     const previousMatchesColumn = generatePreviousRound(
@@ -67,8 +109,8 @@ const DoubleEliminationBracket = ({
       : [];
   };
 
-  const upperColumns = generate2DBracketArray(lastGame, matches.upper);
-  const lowerColumns = generate2DBracketArray(lastGame, matches.lower);
+  const upperColumns = generate2DBracketArray(convergingMatch, matches.upper);
+  const lowerColumns = generate2DBracketArray(convergingMatch, matches.lower);
   // [
   //   [ First column ]
   //   [ 2nd column ]
@@ -76,6 +118,8 @@ const DoubleEliminationBracket = ({
   //   [ lastGame ]
   // ]
 
+  const totalNumOfRounds =
+    lowerColumns.length + 1 + (hasMultipleFinals && finalsArray.length - 1);
   const upperBracketDimensions = calculateSVGDimensions(
     upperColumns[0].length,
     upperColumns.length,
@@ -96,7 +140,7 @@ const DoubleEliminationBracket = ({
   );
   const fullBracketDimensions = calculateSVGDimensions(
     lowerColumns[0].length,
-    lowerColumns.length + 1,
+    totalNumOfRounds,
     rowHeight,
     columnWidth,
     canvasPadding,
@@ -125,7 +169,7 @@ const DoubleEliminationBracket = ({
             <g>
               <RoundHeaders
                 {...{
-                  numOfRounds: lowerColumns.length + 1,
+                  numOfRounds: totalNumOfRounds,
                   calculatedStyles,
                 }}
               />
@@ -155,14 +199,14 @@ const DoubleEliminationBracket = ({
               />
               <FinalGame
                 {...{
-                  match: lastGame,
+                  match: convergingMatch,
                   numOfUpperRounds: upperColumns.length,
                   numOfLowerRounds: lowerColumns.length,
                   bracketSnippet: {
                     previousTopMatch: upperColumns[upperColumns.length - 1][0],
                     previousBottomMatch:
                       lowerColumns[lowerColumns.length - 1][0],
-                    currentMatch: lastGame,
+                    currentMatch: convergingMatch,
                   },
                   upperBracketHeight: upperBracketDimensions.gameHeight,
                   lowerBracketHeight: lowerBracketDimensions.gameHeight,
@@ -176,6 +220,29 @@ const DoubleEliminationBracket = ({
                   onPartyClick,
                 }}
               />
+              {finalsArray?.length > 1 && (
+                <ExtraFinal
+                  {...{
+                    match: finalsArray[1],
+                    numOfUpperRounds: upperColumns.length,
+                    numOfLowerRounds: lowerColumns.length,
+                    bracketSnippet: {
+                      previousBottomMatch: finalsArray[0],
+                      currentMatch: finalsArray[1],
+                    },
+                    upperBracketHeight: upperBracketDimensions.gameHeight,
+                    lowerBracketHeight: lowerBracketDimensions.gameHeight,
+                    calculatedStyles,
+                    columnIndex: lowerColumns.length + 1,
+                    rowIndex: 0,
+                    gameHeight,
+                    gameWidth,
+                    matchComponent,
+                    onMatchClick,
+                    onPartyClick,
+                  }}
+                />
+              )}
             </g>
           </MatchContextProvider>
         </svg>

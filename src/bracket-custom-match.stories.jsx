@@ -2,7 +2,7 @@ import React from 'react';
 import useWindowSize from 'Hooks/use-window-size';
 import BracketLeaderboard from './bracket-single/single-elim-bracket';
 import SvgViewer from './svg-viewer';
-import { simpleSmallBracket } from './mock-data/simple-data';
+import simpleSmallBracket from './mock-data/simple-data';
 
 export default {
   title: 'Components/Custom',

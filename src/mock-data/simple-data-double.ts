@@ -1,4 +1,4 @@
-export const simpleDouble = {
+export default {
   upper: [
     {
       id: 20231,

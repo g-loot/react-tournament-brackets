@@ -4,8 +4,8 @@ import { getCalculatedStyles } from '../settings';
 
 const Connector = ({
   bracketSnippet,
-  previousBottomMatchPosition,
-  previousTopMatchPosition,
+  previousBottomMatchPosition = null,
+  previousTopMatchPosition = null,
   currentMatchPosition,
   style,
 }) => {
