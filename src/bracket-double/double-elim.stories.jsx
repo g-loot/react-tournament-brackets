@@ -29,17 +29,15 @@ export const DoubleElimination = () => {
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);
   return (
-    <>
-      <DoubleElimBracketLeaderboard
-        matches={simpleDoubleFull}
-        matchComponent={Match}
-        svgWrapper={({ children, ...props }) => (
-          <StyledSvgViewer width={finalWidth} height={finalHeight} {...props}>
-            {children}
-          </StyledSvgViewer>
-        )}
-      />
-    </>
+    <DoubleElimBracketLeaderboard
+      matches={simpleDoubleFull}
+      matchComponent={Match}
+      svgWrapper={({ children, ...props }) => (
+        <StyledSvgViewer width={finalWidth} height={finalHeight} {...props}>
+          {children}
+        </StyledSvgViewer>
+      )}
+    />
   );
 };
 
@@ -48,17 +46,15 @@ export const DoubleEliminationBig = () => {
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);
   return (
-    <>
-      <DoubleElimBracketLeaderboard
-        matches={simpleDouble}
-        matchComponent={Match}
-        svgWrapper={({ children, ...props }) => (
-          <StyledSvgViewer width={finalWidth} height={finalHeight} {...props}>
-            {children}
-          </StyledSvgViewer>
-        )}
-      />
-    </>
+    <DoubleElimBracketLeaderboard
+      matches={simpleDouble}
+      matchComponent={Match}
+      svgWrapper={({ children, ...props }) => (
+        <StyledSvgViewer width={finalWidth} height={finalHeight} {...props}>
+          {children}
+        </StyledSvgViewer>
+      )}
+    />
   );
 };
 
@@ -67,17 +63,15 @@ export const DoubleEliminationNoParty = () => {
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);
   return (
-    <>
-      <DoubleElimBracketLeaderboard
-        matches={noPartyMockData}
-        matchComponent={Match}
-        svgWrapper={({ children, ...props }) => (
-          <StyledSvgViewer width={finalWidth} height={finalHeight} {...props}>
-            {children}
-          </StyledSvgViewer>
-        )}
-      />
-    </>
+    <DoubleElimBracketLeaderboard
+      matches={noPartyMockData}
+      matchComponent={Match}
+      svgWrapper={({ children, ...props }) => (
+        <StyledSvgViewer width={finalWidth} height={finalHeight} {...props}>
+          {children}
+        </StyledSvgViewer>
+      )}
+    />
   );
 };
 
@@ -86,17 +80,15 @@ export const DoubleEliminationDoubleFinalsLastGamesInLower = () => {
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);
   return (
-    <>
-      <DoubleElimBracketLeaderboard
-        matches={lastGameInLowerMockData}
-        matchComponent={Match}
-        svgWrapper={({ children, ...props }) => (
-          <StyledSvgViewer width={finalWidth} height={finalHeight} {...props}>
-            {children}
-          </StyledSvgViewer>
-        )}
-      />
-    </>
+    <DoubleElimBracketLeaderboard
+      matches={lastGameInLowerMockData}
+      matchComponent={Match}
+      svgWrapper={({ children, ...props }) => (
+        <StyledSvgViewer width={finalWidth} height={finalHeight} {...props}>
+          {children}
+        </StyledSvgViewer>
+      )}
+    />
   );
 };
 export const DoubleEliminationDoubleFinalsLastGamesInUpper = () => {
@@ -104,16 +96,14 @@ export const DoubleEliminationDoubleFinalsLastGamesInUpper = () => {
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);
   return (
-    <>
-      <DoubleElimBracketLeaderboard
-        matches={lastGameInUpperMockData}
-        matchComponent={Match}
-        svgWrapper={({ children, ...props }) => (
-          <StyledSvgViewer width={finalWidth} height={finalHeight} {...props}>
-            {children}
-          </StyledSvgViewer>
-        )}
-      />
-    </>
+    <DoubleElimBracketLeaderboard
+      matches={lastGameInUpperMockData}
+      matchComponent={Match}
+      svgWrapper={({ children, ...props }) => (
+        <StyledSvgViewer width={finalWidth} height={finalHeight} {...props}>
+          {children}
+        </StyledSvgViewer>
+      )}
+    />
   );
 };

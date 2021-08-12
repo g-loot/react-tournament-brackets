@@ -102,30 +102,26 @@ This component generates an SVG of all your bracket matches, you can use the sup
 ```js
 import { SingleEliminationBracket, DoubleEliminationBracket, Match, SVGViewer } from '@g-loot/react-tournament-brackets';
 export const DoubleElimination = () => (
-  <>
-    <DoubleEliminationBracket
-      matches={matches}
-      matchComponent={Match}
-      svgWrapper={({ children, ...props }) => (
-        <SVGViewer width={500} height={500} {...props}>
-          {children}
-        </SVGViewer>
-      )}
-    />
-  </>
+  <DoubleEliminationBracket
+    matches={matches}
+    matchComponent={Match}
+    svgWrapper={({ children, ...props }) => (
+      <SVGViewer width={500} height={500} {...props}>
+        {children}
+      </SVGViewer>
+    )}
+  />
 );
 export const SingleElimination = () => (
-  <>
-    <SingleEliminationBracket
-      matches={matches}
-      matchComponent={Match}
-      svgWrapper={({ children, ...props }) => (
-        <SVGViewer width={500} height={500} {...props}>
-          {children}
-        </SVGViewer>
-      )}
-    />
-  </>
+  <SingleEliminationBracket
+    matches={matches}
+    matchComponent={Match}
+    svgWrapper={({ children, ...props }) => (
+      <SVGViewer width={500} height={500} {...props}>
+        {children}
+      </SVGViewer>
+    )}
+  />
 );
 ```
 
@@ -138,17 +134,15 @@ export const DoubleElimination = () => {
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);
   return (
-    <>
-      <DoubleEliminationBracket
-        matches={matches}
-        matchComponent={Match}
-        svgWrapper={({ children, ...props }) => (
-          <SVGViewer width={finalWidth} height={finalHeight} {...props}>
-            {children}
-          </SVGViewer>
-        )}
-      />
-    </>
+    <DoubleEliminationBracket
+      matches={matches}
+      matchComponent={Match}
+      svgWrapper={({ children, ...props }) => (
+        <SVGViewer width={finalWidth} height={finalHeight} {...props}>
+          {children}
+        </SVGViewer>
+      )}
+    />
   );
 };
 ```
