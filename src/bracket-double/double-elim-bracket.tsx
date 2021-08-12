@@ -43,7 +43,9 @@ const DoubleEliminationBracket = ({
 
   const { roundHeader, columnWidth, canvasPadding, rowHeight } =
     calculatedStyles;
-  const lastGame = matches.upper.find(match => !match.nextMatchId);
+  const lastGame =
+    matches.upper.find(match => !match.nextMatchId) ||
+    matches.lower.find(match => !match.nextMatchId);
 
   const generateColumn = (matchesColumn, listOfMatches) => {
     const previousMatchesColumn = generatePreviousRound(
