@@ -449,6 +449,13 @@ _For more examples, checkout the [live storybook][demo-url]_
 
 
 
+<!-- LICENSE -->
+## License
+
+Distributed under the GNU LGPL v2.1 License. See `LICENSE` for more information.
+
+
+
 <!-- CONTRIBUTING -->
 ## Contributing
 
