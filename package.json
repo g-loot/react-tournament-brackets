@@ -74,5 +74,8 @@
   "bugs": {
     "url": "https://github.com/g-loot/react-tournament-brackets/issues"
   },
-  "homepage": "https://github.com/g-loot/react-tournament-brackets#readme"
+  "homepage": "https://github.com/g-loot/react-tournament-brackets#readme",
+  "dependencies": {
+    "tods-competition-factory": "^0.25.2"
+  }
 }

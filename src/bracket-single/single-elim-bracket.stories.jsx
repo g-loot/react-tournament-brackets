@@ -13,6 +13,8 @@ import {
 } from '../mock-data/simple-data';
 import soloWalkover from '../mock-data/solo-walkover';
 
+import { bracketGenerator } from '../mock-data/bracketGenerator';
+
 export default {
   title: 'Components/Bracket',
   component: SingleElimBracketLeaderboard,
@@ -42,6 +44,11 @@ const Template = ({ ...args }) => {
   );
 };
 
+export const CompetitionFactoryBracket = Template.bind({});
+CompetitionFactoryBracket.args = {
+  matches: bracketGenerator({ drawSize: 64 }),
+  matchComponent: Match,
+};
 export const Bracket = Template.bind({});
 Bracket.args = {
   matches: simpleBracket,
