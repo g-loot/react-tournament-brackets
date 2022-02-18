@@ -36,48 +36,48 @@ export type Match = {
 };
 
 export type Options = {
-  width: number;
+  width?: number;
 
-  boxHeight: number;
+  boxHeight?: number;
 
-  canvasPadding: number;
+  canvasPadding?: number;
 
-  spaceBetweenColumns: number;
+  spaceBetweenColumns?: number;
 
-  spaceBetweenRows: number;
+  spaceBetweenRows?: number;
 
-  connectorColor: string;
+  connectorColor?: string;
 
-  connectorColorHighlight: string;
+  connectorColorHighlight?: string;
 
-  roundHeader: {
-    isShown: boolean;
-    height: number;
-    marginBottom: number;
-    fontSize: number;
-    fontColor: string;
-    backgroundColor: string;
-    fontFamily: string;
+  roundHeader?: {
+    isShown?: boolean;
+    height?: number;
+    marginBottom?: number;
+    fontSize?: number;
+    fontColor?: string;
+    backgroundColor?: string;
+    fontFamily?: string;
   };
 
-  roundSeparatorWidth: number;
+  roundSeparatorWidth?: number;
 
-  lineInfo: {
-    separation: number;
-    homeVisitorSpread: number;
+  lineInfo?: {
+    separation?: number;
+    homeVisitorSpread?: number;
   };
 
-  horizontalOffset: number;
+  horizontalOffset?: number;
 
-  wonBywalkOverText: string;
+  wonBywalkOverText?: string;
 
-  lostByNoShowText: string;
+  lostByNoShowText?: string;
 };
 
 export type ComputedOptions = Options & {
-  rowHeight: number;
+  rowHeight?: number;
 
-  columnWidth: number;
+  columnWidth?: number;
 };
 
 export type SvgViewerProps = {
@@ -127,9 +127,9 @@ export type MatchComponentProps = {
 
   bottomText: string;
 
-  connectorColor: string;
+  connectorColor?: string;
 
-  computedStyles: ComputedOptions;
+  computedStyles?: ComputedOptions;
 
   teamNameFallback: string;
 
