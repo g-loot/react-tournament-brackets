@@ -4,13 +4,13 @@ import React, { ReactElement } from 'react';
 export type Participant = {
   id: string | number;
 
-  resultText: string | null;
-
   isWinner: boolean;
 
-  status: 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | string | null;
+  name?: string;
 
-  name: string;
+  status?: 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | string | null;
+
+  resultText?: string | null;
 
   [key: string]: any;
 };
@@ -18,11 +18,11 @@ export type Participant = {
 export type Match = {
   id: number | string;
 
-  name: string;
+  name?: string;
 
   nextMatchId: number | null;
 
-  nextLooserMatchId: number;
+  nextLooserMatchId?: number;
 
   tournamentRoundText: string;
 
@@ -176,26 +176,26 @@ export type Theme = {
 export type BracketLeaderboardProps = {
   matchComponent: (props: MatchComponentProps) => JSX.Element;
 
-  currentRound: string;
-
-  onMatchClick: (args: {
-    match: Match;
-    topWon: boolean;
-    bottomWon: boolean;
-  }) => void;
-
-  onPartyClick: (party: Participant, partyWon: boolean) => void;
-
-  svgWrapper: (props: {
+  svgWrapper?: (props: {
     bracketWidth: number;
     bracketHeight: number;
     startAt: number[];
     children: ReactElement;
   }) => React.ReactElement;
 
-  theme: Theme;
+  currentRound?: string;
 
-  options: { style: Options };
+  onMatchClick?: (args: {
+    match: Match;
+    topWon: boolean;
+    bottomWon: boolean;
+  }) => void;
+
+  onPartyClick?: (party: Participant, partyWon: boolean) => void;
+
+  theme?: Theme;
+
+  options?: { style: Options };
 };
 
 export type SingleElimLeaderboardProps = BracketLeaderboardProps & {
