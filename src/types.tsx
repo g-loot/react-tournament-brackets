@@ -1,24 +1,26 @@
 import React, { ReactElement } from 'react';
 // import { Props as SVGPanZoomProps } from 'react-svg-pan-zoom';
 
-export class Participant {
+export type Participant = {
   id: string | number;
 
-  resultText: string;
+  resultText: string | null;
 
   isWinner: boolean;
 
-  status: 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY';
+  status: 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | string | null;
 
   name: string;
-}
 
-export class Match {
+  [key: string]: any;
+};
+
+export type Match = {
   id: number | string;
 
   name: string;
 
-  nextMatchId: number;
+  nextMatchId: number | null;
 
   nextLooserMatchId: number;
 
@@ -26,12 +28,14 @@ export class Match {
 
   startTime: string;
 
-  state: 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY';
+  state: 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | string;
 
   participants: Participant[];
-}
 
-export class Options {
+  [key: string]: any;
+};
+
+export type Options = {
   width: number;
 
   boxHeight: number;
@@ -68,15 +72,15 @@ export class Options {
   wonBywalkOverText: string;
 
   lostByNoShowText: string;
-}
+};
 
-export class ComputedOptions extends Options {
+export type ComputedOptions = Options & {
   rowHeight: number;
 
   columnWidth: number;
-}
+};
 
-export class SvgViewerProps {
+export type SvgViewerProps = {
   height: number;
 
   width: number;
@@ -90,9 +94,9 @@ export class SvgViewerProps {
   startAt: number[];
 
   scaleFactor: number;
-}
+};
 
-export class MatchComponentProps {
+export type MatchComponentProps = {
   match: Match;
 
   onMatchClick: (args: {
@@ -130,8 +134,8 @@ export class MatchComponentProps {
   teamNameFallback: string;
 
   resultFallback: (participant: Participant) => string;
-}
-export class Theme {
+};
+export type Theme = {
   fontFamily: string;
 
   transitionTimingFunction: string;
@@ -167,9 +171,9 @@ export class Theme {
   };
 
   canvasBackground: string;
-}
+};
 
-export class BracketLeaderboardProps {
+export type BracketLeaderboardProps = {
   matchComponent: (props: MatchComponentProps) => JSX.Element;
 
   currentRound: string;
@@ -192,11 +196,12 @@ export class BracketLeaderboardProps {
   theme: Theme;
 
   options: { style: Options };
-}
+};
 
-export class SingleElimLeaderboardProps extends BracketLeaderboardProps {
+export type SingleElimLeaderboardProps = BracketLeaderboardProps & {
   matches: Match[];
-}
-export class DoubleElimLeaderboardProps extends BracketLeaderboardProps {
+};
+
+export type DoubleElimLeaderboardProps = BracketLeaderboardProps & {
   matches: { upper: Match[]; lower: Match[] };
-}
+};
