@@ -1,82 +1,86 @@
 import React, { ReactElement } from 'react';
 // import { Props as SVGPanZoomProps } from 'react-svg-pan-zoom';
 
-export class Participant {
+export type Participant = {
   id: string | number;
-
-  resultText: string;
 
   isWinner: boolean;
 
-  status: 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY';
+  name?: string;
 
-  name: string;
-}
+  status?: 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | string | null;
 
-export class Match {
+  resultText?: string | null;
+
+  [key: string]: any;
+};
+
+export type Match = {
   id: number | string;
 
-  name: string;
+  name?: string;
 
-  nextMatchId: number;
+  nextMatchId: number | null;
 
-  nextLooserMatchId: number;
+  nextLooserMatchId?: number;
 
   tournamentRoundText: string;
 
   startTime: string;
 
-  state: 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY';
+  state: 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | string;
 
   participants: Participant[];
-}
 
-export class Options {
-  width: number;
+  [key: string]: any;
+};
 
-  boxHeight: number;
+export type Options = {
+  width?: number;
 
-  canvasPadding: number;
+  boxHeight?: number;
 
-  spaceBetweenColumns: number;
+  canvasPadding?: number;
 
-  spaceBetweenRows: number;
+  spaceBetweenColumns?: number;
 
-  connectorColor: string;
+  spaceBetweenRows?: number;
 
-  connectorColorHighlight: string;
+  connectorColor?: string;
 
-  roundHeader: {
-    isShown: boolean;
-    height: number;
-    marginBottom: number;
-    fontSize: number;
-    fontColor: string;
-    backgroundColor: string;
-    fontFamily: string;
+  connectorColorHighlight?: string;
+
+  roundHeader?: {
+    isShown?: boolean;
+    height?: number;
+    marginBottom?: number;
+    fontSize?: number;
+    fontColor?: string;
+    backgroundColor?: string;
+    fontFamily?: string;
   };
 
-  roundSeparatorWidth: number;
+  roundSeparatorWidth?: number;
 
-  lineInfo: {
-    separation: number;
-    homeVisitorSpread: number;
+  lineInfo?: {
+    separation?: number;
+    homeVisitorSpread?: number;
   };
 
-  horizontalOffset: number;
+  horizontalOffset?: number;
 
-  wonBywalkOverText: string;
+  wonBywalkOverText?: string;
 
-  lostByNoShowText: string;
-}
+  lostByNoShowText?: string;
+};
 
-export class ComputedOptions extends Options {
-  rowHeight: number;
+export type ComputedOptions = Options & {
+  rowHeight?: number;
 
-  columnWidth: number;
-}
+  columnWidth?: number;
+};
 
-export class SvgViewerProps {
+export type SvgViewerProps = {
   height: number;
 
   width: number;
@@ -90,9 +94,9 @@ export class SvgViewerProps {
   startAt: number[];
 
   scaleFactor: number;
-}
+};
 
-export class MatchComponentProps {
+export type MatchComponentProps = {
   match: Match;
 
   onMatchClick: (args: {
@@ -123,15 +127,15 @@ export class MatchComponentProps {
 
   bottomText: string;
 
-  connectorColor: string;
+  connectorColor?: string;
 
-  computedStyles: ComputedOptions;
+  computedStyles?: ComputedOptions;
 
   teamNameFallback: string;
 
   resultFallback: (participant: Participant) => string;
-}
-export class Theme {
+};
+export type Theme = {
   fontFamily: string;
 
   transitionTimingFunction: string;
@@ -167,36 +171,37 @@ export class Theme {
   };
 
   canvasBackground: string;
-}
+};
 
-export class BracketLeaderboardProps {
+export type BracketLeaderboardProps = {
   matchComponent: (props: MatchComponentProps) => JSX.Element;
 
-  currentRound: string;
-
-  onMatchClick: (args: {
-    match: Match;
-    topWon: boolean;
-    bottomWon: boolean;
-  }) => void;
-
-  onPartyClick: (party: Participant, partyWon: boolean) => void;
-
-  svgWrapper: (props: {
+  svgWrapper?: (props: {
     bracketWidth: number;
     bracketHeight: number;
     startAt: number[];
     children: ReactElement;
   }) => React.ReactElement;
 
-  theme: Theme;
+  currentRound?: string;
 
-  options: { style: Options };
-}
+  onMatchClick?: (args: {
+    match: Match;
+    topWon: boolean;
+    bottomWon: boolean;
+  }) => void;
 
-export class SingleElimLeaderboardProps extends BracketLeaderboardProps {
+  onPartyClick?: (party: Participant, partyWon: boolean) => void;
+
+  theme?: Theme;
+
+  options?: { style: Options };
+};
+
+export type SingleElimLeaderboardProps = BracketLeaderboardProps & {
   matches: Match[];
-}
-export class DoubleElimLeaderboardProps extends BracketLeaderboardProps {
+};
+
+export type DoubleElimLeaderboardProps = BracketLeaderboardProps & {
   matches: { upper: Match[]; lower: Match[] };
-}
+};
