@@ -1,16 +1,20 @@
 const prettier = require('./prettier.config.js');
+
 const aliases = require('./scripts/aliases.js');
 
 module.exports = {
-  extends: ['airbnb', 'plugin:prettier/recommended', 'prettier/react'],
+  extends: [
+    'airbnb',
+    'plugin:prettier/recommended',
+    'prettier/react',
+    'plugin:storybook/recommended',
+  ],
   plugins: ['prettier', 'react-hooks', 'typescript'],
-
   env: {
     node: true,
     es6: true,
     browser: true,
   },
-
   parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 8,
@@ -20,12 +24,10 @@ module.exports = {
     },
     sourceType: 'module',
   },
-
   globals: {
     JSX: true,
     localStorage: true,
   },
-
   rules: {
     'import/extensions': [
       'error',
@@ -42,9 +44,18 @@ module.exports = {
     'array-callback-return': ['off'],
     'no-use-before-define': [
       'error',
-      { functions: false, classes: true, variables: true },
+      {
+        functions: false,
+        classes: true,
+        variables: true,
+      },
     ],
-    'no-console': ['error', { allow: ['warn', 'error', 'info', 'table'] }],
+    'no-console': [
+      'error',
+      {
+        allow: ['warn', 'error', 'info', 'table'],
+      },
+    ],
     'prettier/prettier': ['error', prettier],
     'react/prop-types': ['off'],
     'react/state-in-constructor': ['off'],
