@@ -49,8 +49,8 @@ const Connectors = ({
   return (
     <Connector
       bracketSnippet={bracketSnippet}
-      previousBottomMatchPosition={previousBottomMatchPosition}
-      previousTopMatchPosition={previousTopMatchPosition}
+      previousBottomMatchPosition={!bracketSnippet.previousBottomMatch ? null : previousBottomMatchPosition}
+      previousTopMatchPosition={!bracketSnippet.previousTopMatch ? null : previousTopMatchPosition}
       currentMatchPosition={currentMatchPosition}
       style={style}
     />
