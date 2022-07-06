@@ -20,7 +20,7 @@ export type Match = {
 
   name?: string;
 
-  nextMatchId: number | null;
+  nextMatchId: string | number | null;
 
   nextLooserMatchId?: number;
 
