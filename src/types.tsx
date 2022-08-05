@@ -107,7 +107,7 @@ export type MatchComponentProps = {
     match: Match;
     topWon: boolean;
     bottomWon: boolean;
-    event: React.MouseEvent<HTMLAnchorElement,MouseEvent>;
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>;
   }) => void;
 
   onPartyClick: (party: Participant, partyWon: boolean) => void;
