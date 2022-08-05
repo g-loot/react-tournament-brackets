@@ -18,6 +18,10 @@ export type Participant = {
 export type Match = {
   id: number | string;
 
+  /** Link to this match. While onClick() can be used, providing an href
+      better supports opening a new tab, or copying a link. **/
+  href?: string;
+
   name?: string;
 
   nextMatchId: number | null;
@@ -103,6 +107,7 @@ export type MatchComponentProps = {
     match: Match;
     topWon: boolean;
     bottomWon: boolean;
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>;
   }) => void;
 
   onPartyClick: (party: Participant, partyWon: boolean) => void;
