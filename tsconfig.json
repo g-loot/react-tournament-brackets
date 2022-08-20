@@ -16,7 +16,7 @@
     "jsx": "react-jsx",
     "declaration": true,
     "esModuleInterop": true,
-    "types": ["node"],
+    "types": ["node", "jest"],
     "rootDirs": ["./src"],
     "paths": {
       "Atoms/*": ["./atoms/*"],

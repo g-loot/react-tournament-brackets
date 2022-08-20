@@ -8,12 +8,21 @@ module.exports = {
     'plugin:prettier/recommended',
     'prettier/react',
     'plugin:storybook/recommended',
+    'plugin:testing-library/dom',
   ],
   plugins: ['prettier', 'react-hooks', 'typescript'],
+  overrides: [
+    {
+      // 3) Now we enable eslint-plugin-testing-library rules or preset only for matching testing files!
+      files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+      extends: ['plugin:testing-library/react'],
+    },
+  ],
   env: {
     node: true,
     es6: true,
     browser: true,
+    jest: true,
   },
   parser: 'babel-eslint',
   parserOptions: {
@@ -69,6 +78,21 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': ['off'],
     'jsx-a11y/control-has-associated-label': ['off'],
     'jsx-a11y/label-has-associated-control': ['off'],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: [
+          '**/*.spec.js',
+          '**/*.spec.jsx',
+          '**/*.spec.ts',
+          '**/*.spec.tsx',
+          '**/*.test.js',
+          '**/*.test.jsx',
+          '**/*.test.ts',
+          '**/*.test.tsx',
+        ],
+      },
+    ],
   },
   settings: {
     'import/resolver': {
