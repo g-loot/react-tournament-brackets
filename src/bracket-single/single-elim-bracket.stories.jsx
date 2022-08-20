@@ -68,24 +68,33 @@ CustomMatchViewBracket.args = {
   matches: simpleBracket,
   matchComponent: ({
     match,
-    onMatchClick,
-    onPartyClick,
-    onMouseEnter,
-    onMouseLeave,
+    // onMatchClick,
+    // onPartyClick,
+    // onMouseEnter,
+    // onMouseLeave,
     topParty,
     bottomParty,
     topWon,
     bottomWon,
-    topHovered,
-    bottomHovered,
-    topText,
-    bottomText,
-    connectorColor,
-    computedStyles,
+    // topHovered,
+    // bottomHovered,
+    // topText,
+    // bottomText,
+    // connectorColor,
+    // computedStyles,
   }) => (
     <div>
-      <div />
-      <div />
+      <div>
+        <span>Match name: {match.name}</span>
+      </div>
+      <div>
+        <span>{topParty?.name}</span>
+        <span won={topWon}>{topParty?.resultText}</span>
+      </div>
+      <div>
+        <span>{bottomParty?.name}</span>
+        <span won={bottomWon}>{bottomParty?.resultText}</span>
+      </div>
     </div>
   ),
 };
