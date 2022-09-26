@@ -1,4 +1,6 @@
-export default {
+import { Match } from '../types';
+
+const dataDoublePlayoffs: { upper: Match[]; lower: Match[] } = {
   upper: [
     {
       id: 'WB R1 M1',
@@ -315,3 +317,4 @@ export default {
     },
   ],
 };
+export default dataDoublePlayoffs;

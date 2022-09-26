@@ -1,4 +1,6 @@
-export default {
+import { Match } from '../types';
+
+const dataDoubleNoShow: { upper: Match[]; lower: Match[] } = {
   upper: [
     {
       id: 261255,
@@ -13,14 +15,14 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: '50488418-0722-4d1a-98a4-3de4787c6a3b',
+          id: '50488418-0722-4d1a-98a4-3de4787c6a3b',
           type: null,
           advancedFrom: null,
         },
         {
           result: null,
           placement: null,
-          partyId: '2d6f7b5b-35e0-452d-a921-ca4727bfd9cd',
+          id: '2d6f7b5b-35e0-452d-a921-ca4727bfd9cd',
           type: null,
           advancedFrom: null,
         },
@@ -43,14 +45,14 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: '257888e4-8a96-4804-bd83-99a667b57801',
+          id: '257888e4-8a96-4804-bd83-99a667b57801',
           type: null,
           advancedFrom: null,
         },
         {
           result: null,
           placement: null,
-          partyId: '6bbd96c1-8078-425a-bfca-fa476391e553',
+          id: '6bbd96c1-8078-425a-bfca-fa476391e553',
           type: null,
           advancedFrom: null,
         },
@@ -73,7 +75,7 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: 'd1ac7467-1285-4143-9e7b-858c683f6171',
+          id: 'd1ac7467-1285-4143-9e7b-858c683f6171',
           type: null,
           advancedFrom: null,
         },
@@ -105,7 +107,7 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: '50488418-0722-4d1a-98a4-3de4787c6a3b',
+          id: '50488418-0722-4d1a-98a4-3de4787c6a3b',
           type: null,
           advancedFrom: null,
         },
@@ -149,7 +151,7 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: 'ccbc591c-40f4-40a2-8e19-98c8d8791be5',
+          id: 'ccbc591c-40f4-40a2-8e19-98c8d8791be5',
           type: null,
           advancedFrom: null,
         },
@@ -169,14 +171,14 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: 'ccbc591c-40f4-40a2-8e19-98c8d8791be5',
+          id: 'ccbc591c-40f4-40a2-8e19-98c8d8791be5',
           type: null,
           advancedFrom: null,
         },
         {
           result: null,
           placement: null,
-          partyId: 'a88ef4ad-5179-41b6-ac64-6079fa425872',
+          id: 'a88ef4ad-5179-41b6-ac64-6079fa425872',
           type: null,
           advancedFrom: null,
         },
@@ -199,7 +201,7 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: '2d6f7b5b-35e0-452d-a921-ca4727bfd9cd',
+          id: '2d6f7b5b-35e0-452d-a921-ca4727bfd9cd',
           type: null,
           advancedFrom: null,
         },
@@ -231,7 +233,7 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: '257888e4-8a96-4804-bd83-99a667b57801',
+          id: '257888e4-8a96-4804-bd83-99a667b57801',
           type: null,
           advancedFrom: null,
         },
@@ -251,7 +253,7 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: 'ae753478-970e-4702-8890-1016d5f5f30e',
+          id: 'ae753478-970e-4702-8890-1016d5f5f30e',
           type: null,
           advancedFrom: null,
         },
@@ -271,7 +273,7 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: 'a88ef4ad-5179-41b6-ac64-6079fa425872',
+          id: 'a88ef4ad-5179-41b6-ac64-6079fa425872',
           type: null,
           advancedFrom: null,
         },
@@ -291,7 +293,7 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: 'd1ac7467-1285-4143-9e7b-858c683f6171',
+          id: 'd1ac7467-1285-4143-9e7b-858c683f6171',
           type: null,
           advancedFrom: null,
         },
@@ -311,7 +313,7 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: '6bbd96c1-8078-425a-bfca-fa476391e553',
+          id: '6bbd96c1-8078-425a-bfca-fa476391e553',
           type: null,
           advancedFrom: null,
         },
@@ -331,7 +333,7 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: '68e4f381-2023-4837-90a5-0bbd869a2e8a',
+          id: '68e4f381-2023-4837-90a5-0bbd869a2e8a',
           type: null,
           advancedFrom: null,
         },
@@ -363,14 +365,14 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: '07770dc4-41a1-461d-8761-498ae098442a',
+          id: '07770dc4-41a1-461d-8761-498ae098442a',
           type: null,
           advancedFrom: null,
         },
         {
           result: null,
           placement: null,
-          partyId: 'b2f688ac-967f-4ec7-bed7-cf29b0e997e5',
+          id: 'b2f688ac-967f-4ec7-bed7-cf29b0e997e5',
           type: null,
           advancedFrom: null,
         },
@@ -393,14 +395,14 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: '48afba44-afde-4a5c-9b79-016a22a141f8',
+          id: '48afba44-afde-4a5c-9b79-016a22a141f8',
           type: null,
           advancedFrom: null,
         },
         {
           result: null,
           placement: null,
-          partyId: '8bf3589b-646a-4146-9054-fad5cb96a6f3',
+          id: '8bf3589b-646a-4146-9054-fad5cb96a6f3',
           type: null,
           advancedFrom: null,
         },
@@ -435,14 +437,14 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: 'c653bf83-5f10-4581-8a8e-5babf2aaf9d0',
+          id: 'c653bf83-5f10-4581-8a8e-5babf2aaf9d0',
           type: null,
           advancedFrom: null,
         },
         {
           result: null,
           placement: null,
-          partyId: '5eaa34ab-3415-4124-bbd9-a8e435d36bc2',
+          id: '5eaa34ab-3415-4124-bbd9-a8e435d36bc2',
           type: null,
           advancedFrom: null,
         },
@@ -477,14 +479,14 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: '7347a8bc-8982-40b7-897d-90e5b134d804',
+          id: '7347a8bc-8982-40b7-897d-90e5b134d804',
           type: null,
           advancedFrom: null,
         },
         {
           result: null,
           placement: null,
-          partyId: 'a009fc2d-a26d-4101-8208-a842838507eb',
+          id: 'a009fc2d-a26d-4101-8208-a842838507eb',
           type: null,
           advancedFrom: null,
         },
@@ -507,14 +509,14 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: '26c8a27f-e638-46f2-b8a9-2387513fa65b',
+          id: '26c8a27f-e638-46f2-b8a9-2387513fa65b',
           type: null,
           advancedFrom: null,
         },
         {
           result: null,
           placement: null,
-          partyId: 'ad052502-d85e-4036-b4f6-13bf4c02fdec',
+          id: 'ad052502-d85e-4036-b4f6-13bf4c02fdec',
           type: null,
           advancedFrom: null,
         },
@@ -549,14 +551,14 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: '67fcdf23-3b7b-445e-8710-db96ad1a756c',
+          id: '67fcdf23-3b7b-445e-8710-db96ad1a756c',
           type: null,
           advancedFrom: null,
         },
         {
           result: null,
           placement: null,
-          partyId: 'd5f24060-7bb5-4500-99dd-cc3fedecc73e',
+          id: 'd5f24060-7bb5-4500-99dd-cc3fedecc73e',
           type: null,
           advancedFrom: null,
         },
@@ -579,14 +581,14 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: '67f17f91-86e8-4df3-805a-0604ad893616',
+          id: '67f17f91-86e8-4df3-805a-0604ad893616',
           type: null,
           advancedFrom: null,
         },
         {
           result: null,
           placement: null,
-          partyId: 'ce775b4d-833f-4bfa-81d2-97fb5c0d1103',
+          id: 'ce775b4d-833f-4bfa-81d2-97fb5c0d1103',
           type: null,
           advancedFrom: null,
         },
@@ -609,7 +611,7 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: '68e4f381-2023-4837-90a5-0bbd869a2e8a',
+          id: '68e4f381-2023-4837-90a5-0bbd869a2e8a',
           type: null,
           advancedFrom: null,
         },
@@ -641,7 +643,7 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: 'ae753478-970e-4702-8890-1016d5f5f30e',
+          id: 'ae753478-970e-4702-8890-1016d5f5f30e',
           type: null,
           advancedFrom: null,
         },
@@ -687,7 +689,7 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: null,
+          id: null,
           type: 'NO_PARTY',
           advancedFrom: 261087,
         },
@@ -707,7 +709,7 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: null,
+          id: null,
           type: 'NO_PARTY',
           advancedFrom: 261085,
         },
@@ -775,7 +777,7 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: null,
+          id: null,
           type: 'NO_PARTY',
           advancedFrom: 261253,
         },
@@ -819,14 +821,14 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: null,
+          id: null,
           type: 'NO_PARTY',
           advancedFrom: 261263,
         },
         {
           result: null,
           placement: null,
-          partyId: null,
+          id: null,
           type: 'NO_PARTY',
           advancedFrom: 261265,
         },
@@ -846,14 +848,14 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: null,
+          id: null,
           type: 'NO_PARTY',
           advancedFrom: 261258,
         },
         {
           result: null,
           placement: null,
-          partyId: null,
+          id: null,
           type: 'NO_PARTY',
           advancedFrom: 261261,
         },
@@ -873,14 +875,14 @@ export default {
         {
           result: null,
           placement: null,
-          partyId: null,
+          id: null,
           type: 'NO_PARTY',
           advancedFrom: 261267,
         },
         {
           result: null,
           placement: null,
-          partyId: null,
+          id: null,
           type: 'NO_PARTY',
           advancedFrom: 261269,
         },
@@ -1093,3 +1095,4 @@ export default {
     },
   ],
 };
+export default dataDoubleNoShow;

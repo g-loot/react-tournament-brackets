@@ -34,7 +34,7 @@
     "@storybook/addon-storysource": "^6.5.9",
     "@storybook/react": "^6.5.9",
     "@testing-library/react": "^13.3.0",
-    "@types/jest": "^28.1.7",
+    "@types/jest": "^29.0.2",
     "@types/styled-components": "^5.1.10",
     "@typescript-eslint/parser": "^4.28.1",
     "babel-eslint": "^10.1.0",

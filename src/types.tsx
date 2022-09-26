@@ -4,7 +4,7 @@ import React, { ReactElement } from 'react';
 export type Participant = {
   id: string | number;
 
-  isWinner: boolean;
+  isWinner?: boolean;
 
   name?: string;
 
@@ -19,16 +19,16 @@ export type Match = {
   id: number | string;
 
   /** Link to this match. While onClick() can be used, providing an href
-      better supports opening a new tab, or copying a link. **/
+      better supports opening a new tab, or copying a link. * */
   href?: string;
 
   name?: string;
 
-  nextMatchId: number | null;
+  nextMatchId: number | string | null;
 
-  nextLooserMatchId?: number;
+  nextLooserMatchId?: number | string;
 
-  tournamentRoundText: string;
+  tournamentRoundText?: string;
 
   startTime: string;
 
@@ -140,6 +140,7 @@ export type MatchComponentProps = {
 
   resultFallback: (participant: Participant) => string;
 };
+
 export type Theme = {
   fontFamily: string;
 
@@ -178,15 +179,21 @@ export type Theme = {
   canvasBackground: string;
 };
 
-export type BracketLeaderboardProps = {
-  matchComponent: (props: MatchComponentProps) => JSX.Element;
-
+export type CommonTreeProps = {
   svgWrapper?: (props: {
     bracketWidth: number;
     bracketHeight: number;
     startAt: number[];
     children: ReactElement;
   }) => React.ReactElement;
+
+  theme?: Theme;
+
+  options?: { style: Options };
+};
+
+export type BracketLeaderboardProps = CommonTreeProps & {
+  matchComponent: (props: MatchComponentProps) => JSX.Element;
 
   currentRound?: string;
 
@@ -197,10 +204,6 @@ export type BracketLeaderboardProps = {
   }) => void;
 
   onPartyClick?: (party: Participant, partyWon: boolean) => void;
-
-  theme?: Theme;
-
-  options?: { style: Options };
 };
 
 export type SingleElimLeaderboardProps = BracketLeaderboardProps & {

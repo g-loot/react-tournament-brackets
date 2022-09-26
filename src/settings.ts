@@ -1,4 +1,6 @@
-export const defaultStyle = {
+import { ComputedOptions, Options } from './types';
+
+export const defaultStyle: Options = {
   width: 300,
   boxHeight: 110,
   canvasPadding: 25,
@@ -25,7 +27,7 @@ export const defaultStyle = {
   lostByNoShowText: 'NS',
 };
 
-export const getCalculatedStyles = style => {
+export const getCalculatedStyles = (style = defaultStyle): ComputedOptions => {
   const { boxHeight, width, spaceBetweenColumns, spaceBetweenRows } = style;
   const columnWidth = width + spaceBetweenColumns;
   const rowHeight = boxHeight + spaceBetweenRows;
