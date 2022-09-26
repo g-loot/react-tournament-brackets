@@ -140,6 +140,7 @@ export type MatchComponentProps = {
 
   resultFallback: (participant: Participant) => string;
 };
+
 export type Theme = {
   fontFamily: string;
 
@@ -178,15 +179,21 @@ export type Theme = {
   canvasBackground: string;
 };
 
-export type BracketLeaderboardProps = {
-  matchComponent: (props: MatchComponentProps) => JSX.Element;
-
+export type CommonTreeProps = {
   svgWrapper?: (props: {
     bracketWidth: number;
     bracketHeight: number;
     startAt: number[];
     children: ReactElement;
   }) => React.ReactElement;
+
+  theme?: Theme;
+
+  options?: { style: Options };
+};
+
+export type BracketLeaderboardProps = CommonTreeProps & {
+  matchComponent: (props: MatchComponentProps) => JSX.Element;
 
   currentRound?: string;
 
@@ -197,10 +204,6 @@ export type BracketLeaderboardProps = {
   }) => void;
 
   onPartyClick?: (party: Participant, partyWon: boolean) => void;
-
-  theme?: Theme;
-
-  options?: { style: Options };
 };
 
 export type SingleElimLeaderboardProps = BracketLeaderboardProps & {
