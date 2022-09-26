@@ -1,4 +1,6 @@
-export default [
+import { Match } from '../types';
+
+const soloWalkover: Match[] = [
   {
     id: 20464,
     name: 'Semi Final - Match 1',
@@ -148,3 +150,4 @@ export default [
     ],
   },
 ];
+export default soloWalkover;
