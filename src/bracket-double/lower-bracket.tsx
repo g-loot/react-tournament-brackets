@@ -39,7 +39,7 @@ const LowerBracket = ({
         previousBottomPosition
       );
       return (
-        <>
+        <g key={x + y}>
           {columnIndex !== 0 && (
             <ConnectorsLower
               {...{
@@ -79,7 +79,7 @@ const LowerBracket = ({
               matchComponent={matchComponent}
             />
           </g>
-        </>
+        </g>
       );
     })
   );

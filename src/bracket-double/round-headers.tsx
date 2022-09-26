@@ -26,7 +26,7 @@ const RoundHeaders = ({
         });
 
         return (
-          <>
+          <g key={`round ${x}`}>
             {roundHeader.isShown && (
               <RoundHeader
                 x={x}
@@ -38,7 +38,7 @@ const RoundHeaders = ({
                 columnIndex={columnIndex}
               />
             )}
-          </>
+          </g>
         );
       })}
     </>

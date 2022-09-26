@@ -33,7 +33,7 @@ const UpperBracket = ({
         previousBottomPosition
       );
       return (
-        <>
+        <g key={x + y}>
           {columnIndex !== 0 && (
             <ConnectorsUpper
               {...{
@@ -72,7 +72,7 @@ const UpperBracket = ({
               matchComponent={matchComponent}
             />
           </g>
-        </>
+        </g>
       );
     })
   );
