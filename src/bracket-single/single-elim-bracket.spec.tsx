@@ -18,3 +18,17 @@ it('Renders a single elimination bracket without crashing', () => {
     />
   );
 });
+it('Renders a single elimination bracket with custom Round Headers', () => {
+  render(
+    <SingleEliminationBracket
+      matches={simpleBracket}
+      matchComponent={Match}
+      options={{}}
+      svgWrapper={({ children, ...props }) => (
+        <SVGViewer width={500} height={500} {...props}>
+          {children}
+        </SVGViewer>
+      )}
+    />
+  );
+});

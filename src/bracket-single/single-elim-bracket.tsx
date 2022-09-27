@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { sortAlphanumerically } from 'Utils/string';
 import { calculateSVGDimensions } from 'Core/calculate-svg-dimensions';
 import { MatchContextProvider } from 'Core/match-context';
+import { optionsContext } from 'Core/options-context';
 import MatchWrapper from 'Core/match-wrapper';
 import RoundHeader from 'Components/round-header';
 import { getPreviousMatches } from 'Core/match-functions';
@@ -38,9 +39,9 @@ const SingleEliminationBracket = ({
     },
   };
 
+  const calculatedStyles = getCalculatedStyles(style);
   const { roundHeader, columnWidth, canvasPadding, rowHeight, width } =
-    getCalculatedStyles(style);
-
+    calculatedStyles;
   const lastGame = matches.find(match => !match.nextMatchId);
 
   const generateColumn = (matchesColumn: Match[]): Match[][] => {
@@ -96,84 +97,86 @@ const SingleEliminationBracket = ({
           width={gameWidth}
           viewBox={`0 0 ${gameWidth} ${gameHeight}`}
         >
-          <MatchContextProvider>
-            <g>
-              {columns.map((matchesColumn, columnIndex) =>
-                matchesColumn.map((match, rowIndex) => {
-                  const { x, y } = calculatePositionOfMatch(
-                    rowIndex,
-                    columnIndex,
-                    {
-                      canvasPadding,
-                      columnWidth,
-                      rowHeight,
-                    }
-                  );
-                  const previousBottomPosition = (rowIndex + 1) * 2 - 1;
-
-                  const { previousTopMatch, previousBottomMatch } =
-                    getPreviousMatches(
+          <optionsContext.Provider value={{ style }}>
+            <MatchContextProvider>
+              <g>
+                {columns.map((matchesColumn, columnIndex) =>
+                  matchesColumn.map((match, rowIndex) => {
+                    const { x, y } = calculatePositionOfMatch(
+                      rowIndex,
                       columnIndex,
-                      columns,
-                      previousBottomPosition
+                      {
+                        canvasPadding,
+                        columnWidth,
+                        rowHeight,
+                      }
                     );
-                  return (
-                    <g key={x + y}>
-                      {roundHeader.isShown && (
-                        <RoundHeader
-                          x={x}
-                          roundHeader={roundHeader}
-                          canvasPadding={canvasPadding}
-                          width={width}
-                          numOfRounds={columns.length}
-                          tournamentRoundText={match.tournamentRoundText}
-                          columnIndex={columnIndex}
-                        />
-                      )}
-                      {columnIndex !== 0 && (
-                        <Connectors
-                          {...{
-                            bracketSnippet: {
-                              currentMatch: match,
-                              previousTopMatch,
-                              previousBottomMatch,
-                            },
-                            rowIndex,
-                            columnIndex,
-                            gameHeight,
-                            gameWidth,
-                            style,
-                          }}
-                        />
-                      )}
-                      <g>
-                        <MatchWrapper
-                          x={x}
-                          y={
-                            y +
-                            (roundHeader.isShown
-                              ? roundHeader.height + roundHeader.marginBottom
-                              : 0)
-                          }
-                          rowIndex={rowIndex}
-                          columnIndex={columnIndex}
-                          match={match}
-                          previousBottomMatch={previousBottomMatch}
-                          topText={match.startTime}
-                          bottomText={match.name}
-                          teams={match.participants}
-                          onMatchClick={onMatchClick}
-                          onPartyClick={onPartyClick}
-                          style={style}
-                          matchComponent={matchComponent}
-                        />
+                    const previousBottomPosition = (rowIndex + 1) * 2 - 1;
+
+                    const { previousTopMatch, previousBottomMatch } =
+                      getPreviousMatches(
+                        columnIndex,
+                        columns,
+                        previousBottomPosition
+                      );
+                    return (
+                      <g key={x + y}>
+                        {roundHeader.isShown && (
+                          <RoundHeader
+                            x={x}
+                            roundHeader={roundHeader}
+                            canvasPadding={canvasPadding}
+                            width={width}
+                            numOfRounds={columns.length}
+                            tournamentRoundText={match.tournamentRoundText}
+                            columnIndex={columnIndex}
+                          />
+                        )}
+                        {columnIndex !== 0 && (
+                          <Connectors
+                            {...{
+                              bracketSnippet: {
+                                currentMatch: match,
+                                previousTopMatch,
+                                previousBottomMatch,
+                              },
+                              rowIndex,
+                              columnIndex,
+                              gameHeight,
+                              gameWidth,
+                              style,
+                            }}
+                          />
+                        )}
+                        <g>
+                          <MatchWrapper
+                            x={x}
+                            y={
+                              y +
+                              (roundHeader.isShown
+                                ? roundHeader.height + roundHeader.marginBottom
+                                : 0)
+                            }
+                            rowIndex={rowIndex}
+                            columnIndex={columnIndex}
+                            match={match}
+                            previousBottomMatch={previousBottomMatch}
+                            topText={match.startTime}
+                            bottomText={match.name}
+                            teams={match.participants}
+                            onMatchClick={onMatchClick}
+                            onPartyClick={onPartyClick}
+                            style={style}
+                            matchComponent={matchComponent}
+                          />
+                        </g>
                       </g>
-                    </g>
-                  );
-                })
-              )}
-            </g>
-          </MatchContextProvider>
+                    );
+                  })
+                )}
+              </g>
+            </MatchContextProvider>
+          </optionsContext.Provider>
         </svg>
       </SvgWrapper>
     </ThemeProvider>
