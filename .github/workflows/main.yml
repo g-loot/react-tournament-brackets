@@ -9,7 +9,9 @@ jobs:
   pre-publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
       - name: Bump version and get tag
         id: version_bump
         uses: anothrNick/github-tag-action@1.39.0
@@ -22,11 +24,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: pre-publish
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
       # Setup .npmrc file to publish to GitHub Packages
       - uses: actions/setup-node@v2
-        env:
-          RUNNER_TEMP: /tmp #TODO: REMOVE THIS BEFORE COMMITING.
         with:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
