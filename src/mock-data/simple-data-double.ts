@@ -1,4 +1,6 @@
-export default {
+import { Match } from '../types';
+
+const simpleDataDouble: { upper: Match[]; lower: Match[] } = {
   upper: [
     {
       id: 20231,
@@ -852,3 +854,4 @@ export default {
     },
   ],
 };
+export default simpleDataDouble;
