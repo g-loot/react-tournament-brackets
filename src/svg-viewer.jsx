@@ -10,6 +10,7 @@ const SvgViewer = ({
   children,
   startAt = [0, 0],
   scaleFactor = 1.1,
+  customToolbar,
   ...rest
 }) => {
   const Viewer = useRef(null);
@@ -56,7 +57,7 @@ const SvgViewer = ({
       onZoom={lockToBoundaries}
       onPan={lockToBoundaries}
       miniatureProps={{ position: 'right' }}
-      customToolbar={() => <></>}
+      customToolbar={customToolbar ?? (() => <></>)}
       {...rest}
     >
       {children}
