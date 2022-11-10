@@ -45,18 +45,22 @@ const SingleEliminationBracket = ({
 
   const generateColumn = matchesColumn => {
     const previousMatchesColumn = matchesColumn.reduce((result, match) => {
+      const previousMatches = matches
+        .filter(m => m.nextMatchId === match.id)
+        .sort((a, b) => sortAlphanumerically(a.name, b.name))
+
+      if (previousMatches.length === 1) previousMatches.unshift(null);
+      if (previousMatches.length === 2) previousMatches.unshift(null, null);
       return [
         ...result,
-        ...matches
-          .filter(m => m.nextMatchId === match.id)
-          .sort((a, b) => sortAlphanumerically(a.name, b.name)),
+        ...previousMatches,
       ];
     }, []);
 
-    if (previousMatchesColumn.length > 0) {
+    if (previousMatchesColumn.length > 0 && previousMatchesColumn.every(Boolean)) {
       return [...generateColumn(previousMatchesColumn), previousMatchesColumn];
     }
-    return [previousMatchesColumn];
+    return [previousMatchesColumn.some(Boolean)? previousMatchesColumn : []];
   };
   const generate2DBracketArray = final => {
     return final
@@ -123,7 +127,7 @@ const SingleEliminationBracket = ({
                           canvasPadding={canvasPadding}
                           width={width}
                           numOfRounds={columns.length}
-                          tournamentRoundText={match.tournamentRoundText}
+                          tournamentRoundText={match?.tournamentRoundText}
                           columnIndex={columnIndex}
                         />
                       )}
@@ -143,7 +147,7 @@ const SingleEliminationBracket = ({
                           }}
                         />
                       )}
-                      <g>
+                      {match && <g>
                         <MatchWrapper
                           x={x}
                           y={
@@ -164,7 +168,7 @@ const SingleEliminationBracket = ({
                           style={style}
                           matchComponent={matchComponent}
                         />
-                      </g>
+                      </g>}
                     </>
                   );
                 })
