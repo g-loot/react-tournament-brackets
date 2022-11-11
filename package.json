@@ -14,7 +14,8 @@
     "build-storybook": "build-storybook -o devapp-build",
     "test": "jest --verbose false",
     "lint": "eslint \"src/**/*.js\" \"src/**/*.jsx\"",
-    "format": "eslint --fix \"src/**/*.js\" \"src/**/*.jsx\""
+    "format": "eslint --fix \"src/**/*.js\" \"src/**/*.jsx\"",
+    "prepare": "npm run build"
   },
   "author": "Omar ElGaml",
   "license": "ISC",

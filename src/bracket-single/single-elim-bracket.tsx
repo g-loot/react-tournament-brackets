@@ -50,7 +50,7 @@ const SingleEliminationBracket = ({
         .sort((a, b) => sortAlphanumerically(a.name, b.name))
 
       if (previousMatches.length === 1) previousMatches.unshift(null);
-      if (previousMatches.length === 2) previousMatches.unshift(null, null);
+      if (previousMatches.length === 0) previousMatches.unshift(null, null);
       return [
         ...result,
         ...previousMatches,
