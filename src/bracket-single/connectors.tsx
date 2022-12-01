@@ -26,7 +26,7 @@ const Connectors = ({
   });
   const previousBottomPosition = (rowIndex + 1) * 2 - 1;
   const previousTopMatchPosition =
-    bracketSnippet.match &&
+    bracketSnippet.previousTopMatch &&
     calculatePositionOfMatch(previousBottomPosition - 1, columnIndex - 1, {
       canvasPadding,
       rowHeight,
@@ -34,7 +34,7 @@ const Connectors = ({
       offsetY,
     });
   const previousBottomMatchPosition =
-    bracketSnippet.match &&
+    bracketSnippet.previousBottomMatch &&
     calculatePositionOfMatch(previousBottomPosition, columnIndex - 1, {
       canvasPadding,
       rowHeight,
