@@ -14,8 +14,7 @@
     "build-storybook": "build-storybook -o devapp-build",
     "test": "jest --verbose false",
     "lint": "eslint \"src/**/*.js\" \"src/**/*.jsx\"",
-    "format": "eslint --fix \"src/**/*.js\" \"src/**/*.jsx\"",
-    "prepare": "npm run build"
+    "format": "eslint --fix \"src/**/*.js\" \"src/**/*.jsx\""
   },
   "author": "Omar ElGaml",
   "license": "ISC",
@@ -34,6 +33,7 @@
     "@storybook/addon-links": "^6.5.9",
     "@storybook/addon-storysource": "^6.5.9",
     "@storybook/react": "^6.5.9",
+    "@types/jest": "^29.0.2",
     "@types/styled-components": "^5.1.10",
     "@typescript-eslint/parser": "^4.28.1",
     "babel-eslint": "^10.1.0",
