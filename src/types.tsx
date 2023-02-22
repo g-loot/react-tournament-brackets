@@ -56,6 +56,7 @@ export type Options = {
 
   roundHeader?: {
     isShown?: boolean;
+    isCustomText?: boolean;
     height?: number;
     marginBottom?: number;
     fontSize?: number;

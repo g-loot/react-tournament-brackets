@@ -10,6 +10,7 @@ export const defaultStyle: Options = {
   connectorColorHighlight: '#DDD',
   roundHeader: {
     isShown: true,
+    isCustomText: false,
     height: 40,
     marginBottom: 25,
     fontSize: 16,
