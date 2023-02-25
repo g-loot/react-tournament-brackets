@@ -34,7 +34,7 @@ const RoundHeaders = ({
                 canvasPadding={canvasPadding}
                 width={width}
                 numOfRounds={numOfRounds}
-                tournamentRoundText={columnIndex + 1}
+                tournamentRoundText={(columnIndex + 1).toString()}
                 columnIndex={columnIndex}
               />
             )}

@@ -63,6 +63,29 @@ SoloWalkOverBracket.args = {
   matchComponent: Match,
 };
 
+export const SoloWalkOverBracketCustomHeaders = Template.bind({});
+SoloWalkOverBracketCustomHeaders.args = {
+  matches: soloWalkover,
+  matchComponent: Match,
+  options: {
+    style: {
+      roundHeader: {
+        roundTextGenerator: (currentRoundNumber, roundsTotalNumber) => {
+          if (currentRoundNumber === roundsTotalNumber) {
+            return 'Grand Top';
+          }
+          if (currentRoundNumber === roundsTotalNumber - 1) {
+            return 'Semi Top';
+          }
+          if (currentRoundNumber < roundsTotalNumber - 1) {
+            return 'Top ' + currentRoundNumber;
+          }
+        },
+      },
+    },
+  },
+};
+
 export const CustomMatchViewBracket = Template.bind({});
 CustomMatchViewBracket.args = {
   matches: simpleBracket,

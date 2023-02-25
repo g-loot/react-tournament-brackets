@@ -62,6 +62,10 @@ export type Options = {
     fontColor?: string;
     backgroundColor?: string;
     fontFamily?: string;
+    roundTextGenerator?: (
+      currentRoundNumber: number,
+      roundsTotalNumber: number,
+    ) => string | undefined;
   };
 
   roundSeparatorWidth?: number;

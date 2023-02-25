@@ -16,6 +16,7 @@ export const defaultStyle: Options = {
     fontColor: 'white',
     backgroundColor: 'rgb(47, 54, 72)',
     fontFamily: '"Roboto", "Arial", "Helvetica", "sans-serif"',
+    roundTextGenerator: undefined
   },
   roundSeparatorWidth: 24,
   lineInfo: {

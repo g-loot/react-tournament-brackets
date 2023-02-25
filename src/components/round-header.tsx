@@ -1,4 +1,16 @@
 import React from 'react';
+import { Options } from '../types';
+
+export type RoundHeaderProps = {
+  x: number;
+  y?: number;
+  width: number;
+  roundHeader: Options['roundHeader'];
+  canvasPadding: number;
+  numOfRounds: number;
+  tournamentRoundText: string;
+  columnIndex: number;
+};
 
 export default function RoundHeader({
   x,
@@ -9,7 +21,7 @@ export default function RoundHeader({
   numOfRounds,
   tournamentRoundText,
   columnIndex,
-}) {
+}: RoundHeaderProps) {
   return (
     <g>
       <rect
@@ -33,9 +45,17 @@ export default function RoundHeader({
         dominantBaseline="middle"
         textAnchor="middle"
       >
-        {columnIndex + 1 === numOfRounds && 'Final'}
-        {columnIndex + 1 === numOfRounds - 1 && 'Semi-final'}
-        {columnIndex + 1 < numOfRounds - 1 && `Round ${tournamentRoundText}`}
+        {!roundHeader.roundTextGenerator &&
+          columnIndex + 1 === numOfRounds &&
+          'Final'}
+        {!roundHeader.roundTextGenerator &&
+          columnIndex + 1 === numOfRounds - 1 &&
+          'Semi-final'}
+        {!roundHeader.roundTextGenerator &&
+          columnIndex + 1 < numOfRounds - 1 &&
+          `Round ${tournamentRoundText}`}
+        {roundHeader.roundTextGenerator &&
+          roundHeader.roundTextGenerator(columnIndex + 1, numOfRounds)}
       </text>
     </g>
   );

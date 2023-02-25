@@ -30,11 +30,11 @@ const SingleEliminationBracket = ({
     ...inputStyle,
     roundHeader: {
       ...defaultStyle.roundHeader,
-      ...inputStyle.roundHeader,
+      ...(inputStyle?.roundHeader ?? {}),
     },
     lineInfo: {
       ...defaultStyle.lineInfo,
-      ...inputStyle.lineInfo,
+      ...(inputStyle?.lineInfo ?? {}),
     },
   };
 
