@@ -10,7 +10,7 @@ const SvgViewer = ({
   children,
   startAt = [0, 0],
   scaleFactor = 1.1,
-  customToolbar,
+  customToolbar = null,
   ...rest
 }) => {
   const Viewer = useRef(null);

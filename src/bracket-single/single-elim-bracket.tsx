@@ -6,7 +6,7 @@ import { MatchContextProvider } from 'Core/match-context';
 import MatchWrapper from 'Core/match-wrapper';
 import RoundHeader from 'Components/round-header';
 import { getPreviousMatches } from 'Core/match-functions';
-import { SingleElimLeaderboardProps } from '../types';
+import { Match, SingleElimLeaderboardProps } from '../types';
 import { defaultStyle, getCalculatedStyles } from '../settings';
 import { calculatePositionOfMatch } from './calculate-match-position';
 
@@ -43,22 +43,25 @@ const SingleEliminationBracket = ({
 
   const lastGame = matches.find(match => !match.nextMatchId);
 
-  const generateColumn = matchesColumn => {
-    const previousMatchesColumn = matchesColumn.reduce((result, match) => {
-      return [
-        ...result,
-        ...matches
-          .filter(m => m.nextMatchId === match.id)
-          .sort((a, b) => sortAlphanumerically(a.name, b.name)),
-      ];
-    }, []);
+  const generateColumn = (matchesColumn: Match[]): Match[][] => {
+    const previousMatchesColumn = matchesColumn.reduce<Match[]>(
+      (result, match) => {
+        return [
+          ...result,
+          ...matches
+            .filter(m => m.nextMatchId === match.id)
+            .sort((a, b) => sortAlphanumerically(a.name, b.name)),
+        ];
+      },
+      []
+    );
 
     if (previousMatchesColumn.length > 0) {
       return [...generateColumn(previousMatchesColumn), previousMatchesColumn];
     }
     return [previousMatchesColumn];
   };
-  const generate2DBracketArray = final => {
+  const generate2DBracketArray = (final: Match) => {
     return final
       ? [...generateColumn([final]), [final]].filter(arr => arr.length > 0)
       : [];
@@ -115,7 +118,7 @@ const SingleEliminationBracket = ({
                       previousBottomPosition
                     );
                   return (
-                    <>
+                    <g key={x + y}>
                       {roundHeader.isShown && (
                         <RoundHeader
                           x={x}
@@ -165,7 +168,7 @@ const SingleEliminationBracket = ({
                           matchComponent={matchComponent}
                         />
                       </g>
-                    </>
+                    </g>
                   );
                 })
               )}
