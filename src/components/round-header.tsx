@@ -34,10 +34,10 @@ export default function RoundHeader({
         ry="3"
       />
       <text
-        fontFamily={roundHeader.fontFamily}
         x={x + width / 2}
         y={y + canvasPadding + roundHeader.height / 2}
         style={{
+          fontFamily: roundHeader.fontFamily,
           fontSize: `${roundHeader.fontSize}px`,
           color: roundHeader.fontColor,
         }}
