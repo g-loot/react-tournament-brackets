@@ -6,7 +6,6 @@ module.exports = {
   extends: [
     'airbnb',
     'plugin:prettier/recommended',
-    'prettier/react',
     'plugin:storybook/recommended',
     'plugin:testing-library/dom',
   ],

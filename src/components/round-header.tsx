@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Options } from '../types';
 
 export type RoundHeaderProps = {
@@ -11,6 +12,11 @@ export type RoundHeaderProps = {
   tournamentRoundText: string;
   columnIndex: number;
 };
+
+const Text = styled.text`
+  font-family: ${({ theme }) => theme.fontFamily};
+  color: ${({ theme }) => theme.textColor.highlighted};
+`
 
 export default function RoundHeader({
   x,
@@ -33,7 +39,7 @@ export default function RoundHeader({
         rx="3"
         ry="3"
       />
-      <text
+      <Text
         x={x + width / 2}
         y={y + canvasPadding + roundHeader.height / 2}
         style={{
@@ -56,7 +62,7 @@ export default function RoundHeader({
           `Round ${tournamentRoundText}`}
         {roundHeader.roundTextGenerator &&
           roundHeader.roundTextGenerator(columnIndex + 1, numOfRounds)}
-      </text>
+      </Text>
     </g>
   );
 }

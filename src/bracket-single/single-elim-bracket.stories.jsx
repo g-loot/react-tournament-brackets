@@ -12,6 +12,7 @@ import {
   simpleSmallBracket,
 } from '../mock-data/simple-data';
 import soloWalkover from '../mock-data/solo-walkover';
+import { createTheme } from 'Themes/themes';
 
 export default {
   title: 'Components/Bracket',
@@ -67,10 +68,10 @@ export const SoloWalkOverBracketCustomHeaders = Template.bind({});
 SoloWalkOverBracketCustomHeaders.args = {
   matches: soloWalkover,
   matchComponent: Match,
+  theme: createTheme({ fontFamily: 'monospace' }),
   options: {
     style: {
       roundHeader: {
-        fontFamily: 'monospace',
         roundTextGenerator: (currentRoundNumber, roundsTotalNumber) => {
           if (currentRoundNumber === roundsTotalNumber) {
             return 'Grand Top';
