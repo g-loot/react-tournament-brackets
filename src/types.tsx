@@ -152,6 +152,10 @@ export type Theme = {
 
   disabledColor: string;
 
+  roundHeaders: {
+    background: string;
+  };
+
   matchBackground: {
     wonColor: string;
     lostColor: string;

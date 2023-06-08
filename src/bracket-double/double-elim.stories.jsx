@@ -24,7 +24,7 @@ const StyledSvgViewer = styled(SvgViewer).attrs(props => {
   };
 })``;
 
-export const DoubleElimination = () => {
+export function DoubleElimination() {
   const [width, height] = useWindowSize();
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);
@@ -39,9 +39,9 @@ export const DoubleElimination = () => {
       )}
     />
   );
-};
+}
 
-export const DoubleEliminationBig = () => {
+export function DoubleEliminationBig() {
   const [width, height] = useWindowSize();
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);
@@ -56,9 +56,9 @@ export const DoubleEliminationBig = () => {
       )}
     />
   );
-};
+}
 
-export const DoubleEliminationNoParty = () => {
+export function DoubleEliminationNoParty() {
   const [width, height] = useWindowSize();
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);
@@ -73,9 +73,9 @@ export const DoubleEliminationNoParty = () => {
       )}
     />
   );
-};
+}
 
-export const DoubleEliminationDoubleFinalsLastGamesInLower = () => {
+export function DoubleEliminationDoubleFinalsLastGamesInLower() {
   const [width, height] = useWindowSize();
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);
@@ -90,8 +90,8 @@ export const DoubleEliminationDoubleFinalsLastGamesInLower = () => {
       )}
     />
   );
-};
-export const DoubleEliminationDoubleFinalsLastGamesInUpper = () => {
+}
+export function DoubleEliminationDoubleFinalsLastGamesInUpper() {
   const [width, height] = useWindowSize();
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);
@@ -106,4 +106,4 @@ export const DoubleEliminationDoubleFinalsLastGamesInUpper = () => {
       )}
     />
   );
-};
+}

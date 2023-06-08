@@ -3,7 +3,7 @@ import RoundHeader from 'Components/round-header';
 import { ComputedOptions } from '../types';
 import { calculatePositionOfMatchLowerBracket } from './calculate-match-position';
 
-const RoundHeaders = ({
+function RoundHeaders({
   numOfRounds,
   calculatedStyles: {
     canvasPadding,
@@ -15,7 +15,7 @@ const RoundHeaders = ({
 }: {
   numOfRounds: number;
   calculatedStyles: ComputedOptions;
-}) => {
+}) {
   return (
     <>
       {[...new Array(numOfRounds)].map((matchesColumn, columnIndex) => {
@@ -43,5 +43,6 @@ const RoundHeaders = ({
       })}
     </>
   );
-};
+}
+
 export default RoundHeaders;

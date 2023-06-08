@@ -4,6 +4,7 @@ import React from 'react';
 import useWindowSize from 'Hooks/use-window-size';
 import styled from 'styled-components';
 import Match from 'Components/match';
+import { createTheme } from 'Themes/themes';
 import SingleElimBracketLeaderboard from './single-elim-bracket';
 import SvgViewer from '../svg-viewer';
 import {
@@ -12,7 +13,6 @@ import {
   simpleSmallBracket,
 } from '../mock-data/simple-data';
 import soloWalkover from '../mock-data/solo-walkover';
-import { createTheme } from 'Themes/themes';
 
 export default {
   title: 'Components/Bracket',
@@ -26,7 +26,7 @@ const StyledSvgViewer = styled(SvgViewer).attrs(props => {
   };
 })``;
 
-const Template = ({ ...args }) => {
+function Template({ ...args }) {
   const [width, height] = useWindowSize();
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);
@@ -41,7 +41,7 @@ const Template = ({ ...args }) => {
       {...args}
     />
   );
-};
+}
 
 export const Bracket = Template.bind({});
 Bracket.args = {
@@ -80,7 +80,7 @@ SoloWalkOverBracketCustomHeaders.args = {
             return 'Semi Top';
           }
           if (currentRoundNumber < roundsTotalNumber - 1) {
-            return 'Top ' + currentRoundNumber;
+            return `Top ${currentRoundNumber}`;
           }
         },
       },

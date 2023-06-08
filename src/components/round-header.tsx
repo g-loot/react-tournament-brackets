@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Options } from '../types';
 
-export type RoundHeaderProps = {
+export interface RoundHeaderProps {
   x: number;
   y?: number;
   width: number;
@@ -11,12 +11,15 @@ export type RoundHeaderProps = {
   numOfRounds: number;
   tournamentRoundText: string;
   columnIndex: number;
-};
+}
 
 const Text = styled.text`
   font-family: ${({ theme }) => theme.fontFamily};
   color: ${({ theme }) => theme.textColor.highlighted};
-`
+`;
+const Rect = styled.rect.attrs(({ theme }) => ({
+  fill: theme.roundHeaders.background,
+}))``;
 
 export default function RoundHeader({
   x,
@@ -30,7 +33,7 @@ export default function RoundHeader({
 }: RoundHeaderProps) {
   return (
     <g>
-      <rect
+      <Rect
         x={x}
         y={y + canvasPadding}
         width={width}
