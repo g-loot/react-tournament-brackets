@@ -72,6 +72,8 @@ SoloWalkOverBracketCustomHeaders.args = {
   options: {
     style: {
       roundHeader: {
+        fontColor: undefined,
+        fontFamily: undefined,
         roundTextGenerator: (currentRoundNumber, roundsTotalNumber) => {
           if (currentRoundNumber === roundsTotalNumber) {
             return 'Grand Top';

@@ -64,7 +64,7 @@ export type Options = {
     fontFamily?: string;
     roundTextGenerator?: (
       currentRoundNumber: number,
-      roundsTotalNumber: number,
+      roundsTotalNumber: number
     ) => string | undefined;
   };
 

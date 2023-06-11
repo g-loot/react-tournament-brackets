@@ -13,10 +13,10 @@ export const defaultStyle: Options = {
     height: 40,
     marginBottom: 25,
     fontSize: 16,
-    fontColor: undefined,
+    fontColor: 'white',
     backgroundColor: 'rgb(47, 54, 72)',
-    fontFamily: undefined,
-    roundTextGenerator: undefined
+    fontFamily: '"Roboto", "Arial", "Helvetica", "sans-serif"',
+    roundTextGenerator: undefined,
   },
   roundSeparatorWidth: 24,
   lineInfo: {
