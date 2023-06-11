@@ -6,6 +6,9 @@ const defaultTheme: Theme = {
   transitionTimingFunction: 'cubic-bezier(0, 0.92, 0.77, 0.99)',
 
   disabledColor: '#5D6371',
+  roundHeaders: {
+    background: '#2F3648',
+  },
   matchBackground: {
     wonColor: '#1D2232',
     lostColor: '#141822',

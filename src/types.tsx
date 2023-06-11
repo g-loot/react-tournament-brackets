@@ -64,7 +64,7 @@ export type Options = {
     fontFamily?: string;
     roundTextGenerator?: (
       currentRoundNumber: number,
-      roundsTotalNumber: number,
+      roundsTotalNumber: number
     ) => string | undefined;
   };
 
@@ -151,6 +151,10 @@ export type Theme = {
   transitionTimingFunction: string;
 
   disabledColor: string;
+
+  roundHeaders: {
+    background: string;
+  };
 
   matchBackground: {
     wonColor: string;

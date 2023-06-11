@@ -12,7 +12,7 @@ export default {
   component: SingleEliminationBracket,
 };
 
-export const GlootThemeBracket = () => {
+export function GlootThemeBracket() {
   const [width, height] = useWindowSize();
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);
@@ -45,9 +45,9 @@ export const GlootThemeBracket = () => {
       )}
     />
   );
-};
+}
 
-export const WhiteThemeBracket = () => {
+export function WhiteThemeBracket() {
   const [width, height] = useWindowSize();
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);
@@ -80,4 +80,4 @@ export const WhiteThemeBracket = () => {
       )}
     />
   );
-};
+}

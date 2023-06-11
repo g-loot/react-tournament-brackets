@@ -9,7 +9,7 @@ export default {
   component: BracketLeaderboard,
 };
 
-export const CustomMatchBracket = () => {
+export function CustomMatchBracket() {
   const [width, height] = useWindowSize();
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);
@@ -84,4 +84,4 @@ export const CustomMatchBracket = () => {
       )}
     />
   );
-};
+}

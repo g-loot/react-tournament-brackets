@@ -4,6 +4,7 @@ import React from 'react';
 import useWindowSize from 'Hooks/use-window-size';
 import styled from 'styled-components';
 import Match from 'Components/match';
+import { createTheme } from 'Themes/themes';
 import SingleElimBracketLeaderboard from './single-elim-bracket';
 import SvgViewer from '../svg-viewer';
 import {
@@ -25,7 +26,7 @@ const StyledSvgViewer = styled(SvgViewer).attrs(props => {
   };
 })``;
 
-const Template = ({ ...args }) => {
+function Template({ ...args }) {
   const [width, height] = useWindowSize();
   const finalWidth = Math.max(width - 50, 500);
   const finalHeight = Math.max(height - 100, 500);
@@ -40,7 +41,7 @@ const Template = ({ ...args }) => {
       {...args}
     />
   );
-};
+}
 
 export const Bracket = Template.bind({});
 Bracket.args = {
@@ -67,10 +68,12 @@ export const SoloWalkOverBracketCustomHeaders = Template.bind({});
 SoloWalkOverBracketCustomHeaders.args = {
   matches: soloWalkover,
   matchComponent: Match,
+  theme: createTheme({ fontFamily: 'monospace' }),
   options: {
     style: {
       roundHeader: {
-        fontFamily: 'monospace',
+        fontColor: undefined,
+        fontFamily: undefined,
         roundTextGenerator: (currentRoundNumber, roundsTotalNumber) => {
           if (currentRoundNumber === roundsTotalNumber) {
             return 'Grand Top';
@@ -79,7 +82,7 @@ SoloWalkOverBracketCustomHeaders.args = {
             return 'Semi Top';
           }
           if (currentRoundNumber < roundsTotalNumber - 1) {
-            return 'Top ' + currentRoundNumber;
+            return `Top ${currentRoundNumber}`;
           }
         },
       },
