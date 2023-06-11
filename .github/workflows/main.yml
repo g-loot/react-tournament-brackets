@@ -4,7 +4,7 @@ on:
     # Sequence of patterns matched against refs/heads
     branches:
       - master
-      - v2
+
 jobs:
   pre-publish:
     runs-on: ubuntu-latest
@@ -44,6 +44,9 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGE_TOKEN }}
       - run: npm run build
+
+      - name: run unit tests
+        run: npm test
 
       - name: publish-npm
         run: npm publish --access public
