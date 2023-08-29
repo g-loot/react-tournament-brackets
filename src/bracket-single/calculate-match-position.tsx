@@ -1,8 +1,8 @@
 export const calculateVerticalStartingPoint = (columnIndex, height) =>
-  2 ** columnIndex * (height / 2) - height / 2;
+  (2 ** columnIndex * (height / 4)) - (height / 4);
 
 export const columnIncrement = (columnIndex, height) =>
-  2 ** columnIndex * height;
+  2 ** columnIndex * (height / 2);
 
 export const calculateHeightIncrease = (columnIndex, rowIndex, height) =>
   columnIncrement(columnIndex, height) * rowIndex;
