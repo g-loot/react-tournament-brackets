@@ -1,6 +1,6 @@
-import { Match } from '../types';
+import { MatchType } from '../types';
 
-const dataDoubleNoShow: { upper: Match[]; lower: Match[] } = {
+const dataDoubleNoShow: { upper: MatchType[]; lower: MatchType[] } = {
   upper: [
     {
       id: 261255,

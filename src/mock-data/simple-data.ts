@@ -1,6 +1,6 @@
-import { Match } from '../types';
+import { MatchType } from '../types';
 
-export const walkOverData: Match[] = [
+export const walkOverData: MatchType[] = [
   {
     id: 260005,
     name: 'Final - Match',
@@ -317,7 +317,7 @@ export const walkOverData: Match[] = [
   },
 ];
 
-export const simpleSmallBracket: Match[] = [
+export const simpleSmallBracket: MatchType[] = [
   {
     id: 19753,
     nextMatchId: null,
@@ -437,7 +437,7 @@ export const simpleSmallBracket: Match[] = [
   },
 ];
 
-export const simpleBracket: Match[] = [
+export const simpleBracket: MatchType[] = [
   {
     id: 19874,
     name: 'Final - Match',

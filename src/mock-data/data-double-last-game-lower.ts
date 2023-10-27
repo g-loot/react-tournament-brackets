@@ -1,6 +1,6 @@
-import { Match } from '../types';
+import { MatchType } from '../types';
 
-const dataDoubleLastGameLower: { upper: Match[]; lower: Match[] } = {
+const dataDoubleLastGameLower: { upper: MatchType[]; lower: MatchType[] } = {
   upper: [
     {
       id: 1,
