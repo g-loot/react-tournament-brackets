@@ -1,6 +1,6 @@
 const {
   compilerOptions: { paths: unprocessAliases },
-} = require(`../tsconfig.json`);
+} = require(`../tsconfig.node.json`);
 
 const aliases = Object.keys(unprocessAliases).reduce((obj, alias) => {
   const key = alias.match(/[a-zA-Z0-9]+/g);

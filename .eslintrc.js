@@ -23,7 +23,7 @@ module.exports = {
     browser: true,
     jest: true,
   },
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaVersion: 8,
     ecmaFeatures: {

@@ -2,13 +2,16 @@
   "name": "@g-loot/react-tournament-brackets",
   "version": "1.0.0",
   "description": "A react component to visualize bracket leaderboards",
-  "main": "dist/index.js",
+  "module": "dist/esm/index.js",
+  "main": "dist/cjs/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "rimraf dist && tsc && tsc-alias",
+    "build-cjs": "tsc -p ./tsconfig.node.json && tsc-alias -p ./tsconfig.node.json",
+    "build-esm": "tsc -p ./tsconfig.browser.json && tsc-alias -p ./tsconfig.browser.json",
+    "build": "rimraf dist & npm run build-cjs && npm run build-esm",
     "dev": "start-storybook -p 4442",
     "start": "start-storybook -p $PORT -h 0.0.0.0",
     "build-storybook": "build-storybook -o devapp-build",
@@ -29,7 +32,8 @@
     "deepmerge": "^4.2.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
+    "@babel/core": "^7.23.2",
+    "@babel/eslint-parser": "^7.22.15",
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-typescript": "^7.14.5",
     "@storybook/addon-actions": "^6.5.9",
@@ -46,7 +50,7 @@
     "babel-plugin-module-resolver": "^4.1.0",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.6.0",
-    "eslint": "^8.34.0",
+    "eslint": "^8.52.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.6.0",
     "eslint-import-resolver-alias": "^1.1.2",

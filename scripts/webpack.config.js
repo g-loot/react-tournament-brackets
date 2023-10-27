@@ -21,7 +21,14 @@ module.exports = {
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        use: ['ts-loader'],
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              configFile: 'tsconfig.node.json',
+            },
+          },
+        ],
       },
       {
         test: /\.css$/,
@@ -54,7 +61,7 @@ module.exports = {
     filename: 'bundle.js',
     library: '@g-loot/react-tournament-brackets',
     libraryTarget: 'umd',
-    globalObject: 'this'
+    globalObject: 'this',
   },
   externals: {
     'styled-components': {

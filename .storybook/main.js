@@ -56,7 +56,14 @@ module.exports = {
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
       exclude: /node_modules/,
-      use: ['ts-loader'],
+      use: [
+        {
+          loader: 'ts-loader',
+          options: {
+            configFile: 'tsconfig.node.json',
+          },
+        },
+      ],
     });
     config.resolve.extensions.push('.ts', '.tsx');
     // Alternately, for an alias:
