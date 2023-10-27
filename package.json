@@ -12,13 +12,14 @@
     "build-cjs": "tsc -p ./tsconfig.node.json && tsc-alias -p ./tsconfig.node.json",
     "build-esm": "tsc -p ./tsconfig.browser.json && tsc-alias -p ./tsconfig.browser.json",
     "build": "rimraf dist & npm run build-cjs && npm run build-esm",
+    "create-test-lib": "npm pack",
+    "test-lib-build": "npm run build && npm run create-test-lib",
     "dev": "start-storybook -p 4442",
     "start": "start-storybook -p $PORT -h 0.0.0.0",
     "build-storybook": "build-storybook -o devapp-build",
     "test": "jest --verbose false",
-    "lint": "eslint \"src/**/*.js\" \"src/**/*.jsx\"",
-    "format": "eslint --fix \"src/**/*.js\" \"src/**/*.jsx\"",
-    "create-test-lib": "npm pack"
+    "lint": "eslint \"src/**/*.jsx\" \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "format": "eslint --fix \"src/**/*.jsx\" \"src/**/*.ts\" \"src/**/*.tsx\""
   },
   "author": "Omar ElGaml",
   "license": "ISC",
