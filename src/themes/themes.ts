@@ -1,7 +1,7 @@
 import merge from 'deepmerge';
-import { Theme } from '../types';
+import { ThemeType } from '../types';
 
-const defaultTheme: Theme = {
+const defaultTheme: ThemeType = {
   fontFamily: '"Roboto", "Arial", "Helvetica", "sans-serif"',
   transitionTimingFunction: 'cubic-bezier(0, 0.92, 0.77, 0.99)',
 
@@ -36,7 +36,7 @@ const defaultTheme: Theme = {
   canvasBackground: '#0B0D13',
 };
 
-export function createTheme<T>(customTheme?: Theme | T): Theme {
+export function createTheme<T>(customTheme?: ThemeType | T): ThemeType {
   return merge(defaultTheme, customTheme || {});
 }
 

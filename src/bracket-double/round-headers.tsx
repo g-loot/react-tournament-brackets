@@ -1,6 +1,6 @@
 import React from 'react';
 import RoundHeader from 'Components/round-header';
-import { ComputedOptions } from '../types';
+import { ComputedOptionsType } from '../types';
 import { calculatePositionOfMatchLowerBracket } from './calculate-match-position';
 
 function RoundHeaders({
@@ -14,7 +14,7 @@ function RoundHeaders({
   },
 }: {
   numOfRounds: number;
-  calculatedStyles: ComputedOptions;
+  calculatedStyles: ComputedOptionsType;
 }) {
   return (
     <>

@@ -57,7 +57,13 @@
         <li><a href="#theming-and-styling">Theming and styling</a></li>
       </ul>
     </li>
-    <li><a href="#contributing">Contributing</a></li>
+     <li>
+          <li><a href="#contributing">Contributing</a></li>
+      <ul>
+        <li><a href="#contributer-testing-guide">Contributer Testing Guide</a></li>
+      </ul>
+    </li>
+
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
@@ -466,10 +472,23 @@ Contributions are what make the open source community such an amazing place to b
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+3. For automatic feedback if you're editing the components or adding new ones run `npm run dev`
+4. Test your changes according to the [Contributor Testing Guide](#contributer-testing-guide)
+5. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+6. Push to the Branch (`git push origin feature/AmazingFeature`)
+7. Open a Pull Request
 
+
+## Contributer Testing Guide
+
+### Unit tests and linting
+- Run: `npm run test`
+- Run: `npm run lint`
+### Checking that storybook works
+- Run: `npm run build-storybook` to check that it builds the storybook demo website correctly
+### Checking that the package works when consumed by a test project
+- Run: `npm run test-lib-build` for testing that the package builds and packs into an npm package correctly 
+- Follow the guide for both [nextjs](./demos/nextjs/README.md) and [create-react-app](./demos/create-react-app/README.md) project examples
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements

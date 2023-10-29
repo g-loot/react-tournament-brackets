@@ -1,6 +1,6 @@
-import { Match } from '../types';
+import { MatchType } from '../types';
 
-const simpleDoubleFull: { upper: Match[]; lower: Match[] } = {
+const simpleDoubleFull: { upper: MatchType[]; lower: MatchType[] } = {
   upper: [
     {
       id: 20512,

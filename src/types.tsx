@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 // import { Props as SVGPanZoomProps } from 'react-svg-pan-zoom';
 
-export type Participant = {
+export type ParticipantType = {
   id: string | number;
 
   isWinner?: boolean;
@@ -15,7 +15,7 @@ export type Participant = {
   [key: string]: any;
 };
 
-export type Match = {
+export type MatchType = {
   id: number | string;
 
   /** Link to this match. While onClick() can be used, providing an href
@@ -34,12 +34,12 @@ export type Match = {
 
   state: 'PLAYED' | 'NO_SHOW' | 'WALK_OVER' | 'NO_PARTY' | string;
 
-  participants: Participant[];
+  participants: ParticipantType[];
 
   [key: string]: any;
 };
 
-export type Options = {
+export type OptionsType = {
   width?: number;
 
   boxHeight?: number;
@@ -82,7 +82,7 @@ export type Options = {
   lostByNoShowText?: string;
 };
 
-export type ComputedOptions = Options & {
+export type ComputedOptionsType = OptionsType & {
   rowHeight?: number;
 
   columnWidth?: number;
@@ -105,24 +105,24 @@ export type SvgViewerProps = {
 };
 
 export type MatchComponentProps = {
-  match: Match;
+  match: MatchType;
 
   onMatchClick: (args: {
-    match: Match;
+    match: MatchType;
     topWon: boolean;
     bottomWon: boolean;
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>;
   }) => void;
 
-  onPartyClick: (party: Participant, partyWon: boolean) => void;
+  onPartyClick: (party: ParticipantType, partyWon: boolean) => void;
 
   onMouseEnter: (partyId: string | number) => void;
 
   onMouseLeave: () => void;
 
-  topParty: Participant;
+  topParty: ParticipantType;
 
-  bottomParty: Participant;
+  bottomParty: ParticipantType;
 
   topWon: boolean;
 
@@ -138,14 +138,14 @@ export type MatchComponentProps = {
 
   connectorColor?: string;
 
-  computedStyles?: ComputedOptions;
+  computedStyles?: ComputedOptionsType;
 
   teamNameFallback: string;
 
-  resultFallback: (participant: Participant) => string;
+  resultFallback: (participant: ParticipantType) => string;
 };
 
-export type Theme = {
+export type ThemeType = {
   fontFamily: string;
 
   transitionTimingFunction: string;
@@ -195,9 +195,9 @@ export type CommonTreeProps = {
     children: ReactElement;
   }) => React.ReactElement;
 
-  theme?: Theme;
+  theme?: ThemeType;
 
-  options?: { style: Options };
+  options?: { style: OptionsType };
 };
 
 export type BracketLeaderboardProps = CommonTreeProps & {
@@ -206,18 +206,18 @@ export type BracketLeaderboardProps = CommonTreeProps & {
   currentRound?: string;
 
   onMatchClick?: (args: {
-    match: Match;
+    match: MatchType;
     topWon: boolean;
     bottomWon: boolean;
   }) => void;
 
-  onPartyClick?: (party: Participant, partyWon: boolean) => void;
+  onPartyClick?: (party: ParticipantType, partyWon: boolean) => void;
 };
 
 export type SingleElimLeaderboardProps = BracketLeaderboardProps & {
-  matches: Match[];
+  matches: MatchType[];
 };
 
 export type DoubleElimLeaderboardProps = BracketLeaderboardProps & {
-  matches: { upper: Match[]; lower: Match[] };
+  matches: { upper: MatchType[]; lower: MatchType[] };
 };

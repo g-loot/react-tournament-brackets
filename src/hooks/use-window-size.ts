@@ -10,13 +10,13 @@ const useIsomorphicLayoutEffect =
 function useWindowSize() {
   const [size, setSize] = useState([0, 0]);
   useIsomorphicLayoutEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof global.window === 'undefined') return;
     function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
+      setSize([global.window.innerWidth, window.innerHeight]);
     }
-    window.addEventListener('resize', updateSize);
+    global.window.addEventListener('resize', updateSize);
     updateSize();
-    return () => window.removeEventListener('resize', updateSize);
+    return () => global.window.removeEventListener('resize', updateSize);
   }, []);
   return size;
 }

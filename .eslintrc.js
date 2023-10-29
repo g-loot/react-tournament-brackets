@@ -4,10 +4,12 @@ const aliases = require('./scripts/aliases.js');
 
 module.exports = {
   extends: [
+    'eslint:recommended',
     'airbnb',
     'plugin:prettier/recommended',
     'plugin:storybook/recommended',
     'plugin:testing-library/dom',
+    'plugin:@typescript-eslint/recommended',
   ],
   plugins: ['prettier', 'react-hooks', 'typescript'],
   overrides: [
@@ -23,7 +25,7 @@ module.exports = {
     browser: true,
     jest: true,
   },
-  parser: 'babel-eslint',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 8,
     ecmaFeatures: {

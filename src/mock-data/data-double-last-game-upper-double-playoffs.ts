@@ -1,6 +1,6 @@
-import { Match } from '../types';
+import { MatchType } from '../types';
 
-const dataDoublePlayoffs: { upper: Match[]; lower: Match[] } = {
+const dataDoublePlayoffs: { upper: MatchType[]; lower: MatchType[] } = {
   upper: [
     {
       id: 'WB R1 M1',

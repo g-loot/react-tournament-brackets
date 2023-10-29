@@ -4,7 +4,7 @@ import { generatePreviousRound } from 'Core/match-functions';
 import { calculateSVGDimensions } from 'Core/calculate-svg-dimensions';
 import { MatchContextProvider } from 'Core/match-context';
 
-import { DoubleElimLeaderboardProps, Match } from '../types';
+import { DoubleElimLeaderboardProps, MatchType } from '../types';
 import { defaultStyle, getCalculatedStyles } from '../settings';
 
 import defaultTheme from '../themes/themes';
@@ -15,9 +15,9 @@ import RoundHeaders from './round-headers';
 import FinalGame from './final-game';
 import ExtraFinal from './extra-final';
 
-function findTheFinals(matches: { upper: Match[]; lower: Match[] }): {
-  convergingMatch: Match;
-  finalsArray: Match[];
+function findTheFinals(matches: { upper: MatchType[]; lower: MatchType[] }): {
+  convergingMatch: MatchType;
+  finalsArray: MatchType[];
 } {
   const isFinalInUpper = matches.upper.some(match => !match.nextMatchId);
   const isFinalInLower = matches.lower.some(match => !match.nextMatchId);
@@ -91,9 +91,9 @@ const DoubleEliminationBracket = ({
   const hasMultipleFinals = finalsArray?.length > 1;
 
   const generateColumn = (
-    matchesColumn: Match[],
-    listOfMatches: Match[]
-  ): Match[][] => {
+    matchesColumn: MatchType[],
+    listOfMatches: MatchType[]
+  ): MatchType[][] => {
     const previousMatchesColumn = generatePreviousRound(
       matchesColumn,
       listOfMatches
@@ -107,7 +107,10 @@ const DoubleEliminationBracket = ({
     }
     return [previousMatchesColumn];
   };
-  const generate2DBracketArray = (final: Match, listOfMatches: Match[]) => {
+  const generate2DBracketArray = (
+    final: MatchType,
+    listOfMatches: MatchType[]
+  ) => {
     return final
       ? [...generateColumn([final], listOfMatches), []].filter(
           arr => arr.length > 0

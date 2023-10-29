@@ -6,7 +6,7 @@ import { MatchContextProvider } from 'Core/match-context';
 import MatchWrapper from 'Core/match-wrapper';
 import RoundHeader from 'Components/round-header';
 import { getPreviousMatches } from 'Core/match-functions';
-import { Match, SingleElimLeaderboardProps } from '../types';
+import { MatchType, SingleElimLeaderboardProps } from '../types';
 import { defaultStyle, getCalculatedStyles } from '../settings';
 import { calculatePositionOfMatch } from './calculate-match-position';
 
@@ -43,8 +43,8 @@ const SingleEliminationBracket = ({
 
   const lastGame = matches.find(match => !match.nextMatchId);
 
-  const generateColumn = (matchesColumn: Match[]): Match[][] => {
-    const previousMatchesColumn = matchesColumn.reduce<Match[]>(
+  const generateColumn = (matchesColumn: MatchType[]): MatchType[][] => {
+    const previousMatchesColumn = matchesColumn.reduce<MatchType[]>(
       (result, match) => {
         return [
           ...result,
@@ -61,7 +61,7 @@ const SingleEliminationBracket = ({
     }
     return [previousMatchesColumn];
   };
-  const generate2DBracketArray = (final: Match) => {
+  const generate2DBracketArray = (final: MatchType) => {
     return final
       ? [...generateColumn([final]), [final]].filter(arr => arr.length > 0)
       : [];

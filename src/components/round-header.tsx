@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Options } from '../types';
+import { OptionsType } from '../types';
 
 export interface RoundHeaderProps {
   x: number;
   y?: number;
   width: number;
-  roundHeader: Options['roundHeader'];
+  roundHeader: OptionsType['roundHeader'];
   canvasPadding: number;
   numOfRounds: number;
   tournamentRoundText: string;

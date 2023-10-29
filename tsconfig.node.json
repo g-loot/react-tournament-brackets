@@ -1,13 +1,25 @@
 {
   "include": ["./src/**/*"],
-  "exclude": ["node_modules", "dist", "devapp-build"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "devapp-build",
+    "**/*.stories.jsx",
+    "**/*.stories.tsx",
+    "**/*.stories.js",
+    "**/*.stories.ts",
+    "**/*.spec.jsx",
+    "**/*.spec.tsx",
+    "**/*.spec.js",
+    "**/*.spec.ts"
+  ],
   "compilerOptions": {
+    "outDir": "./dist/cjs/",
+    "module": "commonjs",
     "baseUrl": "src",
     "moduleResolution": "node",
     "target": "es2017",
-    "module": "commonjs",
     "sourceMap": true,
-    "outDir": "./dist",
     "removeComments": true,
     "strict": true,
     "allowJs": true,

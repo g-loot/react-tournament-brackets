@@ -9,6 +9,7 @@ const SRC_DIR = path.resolve(ROOT_DIR, '/src');
 // Export a function. Accept the base config as the only param.
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -56,7 +57,14 @@ module.exports = {
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
       exclude: /node_modules/,
-      use: ['ts-loader'],
+      use: [
+        {
+          loader: 'ts-loader',
+          options: {
+            configFile: 'tsconfig.node.json',
+          },
+        },
+      ],
     });
     config.resolve.extensions.push('.ts', '.tsx');
     // Alternately, for an alias:
@@ -70,4 +78,13 @@ module.exports = {
     // Return the altered config
     return config;
   },
+
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {}
+  },
+
+  docs: {
+    autodocs: true
+  }
 };

@@ -1,6 +1,6 @@
-import { Match } from '../types';
+import { MatchType } from '../types';
 
-const soloWalkover: Match[] = [
+const soloWalkover: MatchType[] = [
   {
     id: 20464,
     name: 'Semi Final - Match 1',
