@@ -127,7 +127,7 @@ const DoubleEliminationBracket = ({
   const totalNumOfRounds =
     lowerColumns.length + 1 + (hasMultipleFinals && finalsArray.length - 1);
   const upperBracketDimensions = calculateSVGDimensions(
-    upperColumns[0].length,
+    Math.max(...upperColumns.map(column => column.length)),
     upperColumns.length,
     rowHeight,
     columnWidth,
@@ -136,7 +136,7 @@ const DoubleEliminationBracket = ({
     currentRound
   );
   const lowerBracketDimensions = calculateSVGDimensions(
-    lowerColumns[0].length,
+    Math.max(...lowerColumns.map(column => column.length)),
     lowerColumns.length,
     rowHeight,
     columnWidth,
@@ -145,7 +145,7 @@ const DoubleEliminationBracket = ({
     currentRound
   );
   const fullBracketDimensions = calculateSVGDimensions(
-    lowerColumns[0].length,
+    Math.max(...lowerColumns.map(column => column.length).concat(upperColumns.map(rows => rows.length))),
     totalNumOfRounds,
     rowHeight,
     columnWidth,

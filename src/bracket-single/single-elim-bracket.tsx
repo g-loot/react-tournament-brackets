@@ -75,7 +75,7 @@ const SingleEliminationBracket = ({
   // ]
 
   const { gameWidth, gameHeight, startPosition } = calculateSVGDimensions(
-    columns[0].length,
+    Math.max(...columns.map(column => column.length)),
     columns.length,
     rowHeight,
     columnWidth,
